@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Home",
+    "apartments": "Apartments",
+    "experiences": "Experiences",
+    "owners": "For owners",
+    "journal": "Journal",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "common": {
+    "bookNow": "Book now",
+    "requestToBook": "Request to book",
+    "checkAvailability": "Check availability",
+    "from": "from",
+    "perNight": "/ night",
+    "viewApartment": "View apartment"
+  },
+  "home": {
+    "heroTitle": "Stay in harmony with Athens.",
+    "heroSubtitle": "Boutique apartments in the city centre and on the Athens Riviera — with local hosts, self check-in, and the best price when you book direct."
+  },
+  "footer": {
+    "tagline": "Apartments, experiences and property care in Athens & Alimos."
+  }
+}
