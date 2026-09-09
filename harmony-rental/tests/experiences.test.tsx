@@ -5,6 +5,7 @@ import type { ReactElement } from "react";
 import en from "@/messages/en.json";
 import el from "@/messages/el.json";
 import { experiences } from "@/content/experiences";
+import { properties } from "@/content/properties";
 import { ExperiencesSections } from "@/components/ExperiencesSections";
 import { AreaGuideSections } from "@/components/AreaGuideSections";
 
@@ -93,5 +94,23 @@ describe("Alimos guide", () => {
   it("renders Kalamaki Beach", () => {
     renderWithIntl(<AreaGuideSections area="alimos" />);
     expect(screen.getAllByText(/Kalamaki/).length).toBeGreaterThan(0);
+  });
+
+  // The brief asks for "3 PropertyCards", but today's inventory has only 1
+  // Alimos apartment — the data wins, this is a cap ("up to 3"), not a
+  // guarantee. The section should still render whatever exists and keep its
+  // "see all" link, rather than padding with invented stock or disappearing.
+  it("shows exactly the available Alimos apartments (not padded to 3) and keeps the see-all link", () => {
+    renderWithIntl(<AreaGuideSections area="alimos" />);
+    const alimosProperties = properties.filter((p) => p.area === "alimos");
+    expect(alimosProperties).toHaveLength(1);
+
+    const region = screen.getByRole("region", { name: en.experiences.stayNearby.title });
+    expect(within(region).getAllByRole("article")).toHaveLength(alimosProperties.length);
+    expect(within(region).getByText(alimosProperties[0].name)).toBeInTheDocument();
+    expect(within(region).getByRole("link", { name: /All Alimos apartments/i })).toHaveAttribute(
+      "href",
+      "/en/apartments?area=alimos",
+    );
   });
 });

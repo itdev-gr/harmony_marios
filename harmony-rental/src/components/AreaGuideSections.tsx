@@ -5,6 +5,10 @@ import { getExperiencesByArea, type ExperienceArea } from "@/content/experiences
 import { Section } from "./Section";
 import { PropertyCard } from "./PropertyCard";
 
+// Up to 3 — the brief's "3 PropertyCards" assumes 3 exist in every area.
+// They don't: today's inventory has only 1 Alimos apartment (the other 8 are
+// all Athens), so this is a cap, not a guarantee — the grid below adapts to
+// however many actually come back rather than padding with invented stock.
 const NEARBY_COUNT = 3;
 
 function CheckIcon() {
@@ -34,6 +38,17 @@ export function AreaGuideSections({ area }: { area: ExperienceArea }) {
     .slice()
     .sort((a, b) => a.category.localeCompare(b.category));
   const nearby = properties.filter((property) => property.area === area).slice(0, NEARBY_COUNT);
+  // With 3 cards the grid reads as a normal 3-up row. With fewer, `1fr`
+  // columns would stretch the lone card(s) full-width and leave an
+  // unfinished-looking empty gap where the rest of the row would be — so
+  // below 3 the columns run a fixed, card-sized width instead, and the
+  // "see all" link grows into a full CTA button to carry the section.
+  const nearbyGridClass =
+    nearby.length >= 3
+      ? "sm:grid-cols-2 lg:grid-cols-3"
+      : nearby.length === 2
+        ? "max-w-2xl sm:grid-cols-2"
+        : "max-w-sm";
 
   return (
     <>
@@ -111,13 +126,16 @@ export function AreaGuideSections({ area }: { area: ExperienceArea }) {
         title={t("stayNearby.title")}
         lead={t("stayNearby.lead")}
         action={
-          <Link href={{ pathname: "/apartments", query: { area } }} className="btn-outline btn-sm">
+          <Link
+            href={{ pathname: "/apartments", query: { area } }}
+            className={nearby.length >= 3 ? "btn-outline btn-sm" : "btn-primary"}
+          >
             {t("stayNearby.cta", { area: tFilters(area) })}
             <span aria-hidden="true">→</span>
           </Link>
         }
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={`grid gap-6 ${nearbyGridClass}`}>
           {nearby.map((property) => (
             <PropertyCard key={property.slug} property={property} />
           ))}
