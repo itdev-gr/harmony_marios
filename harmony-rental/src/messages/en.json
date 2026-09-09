@@ -93,6 +93,49 @@
     "lead": "Five services around one idea: apartments that are worth arriving at, and owners who never have to think about theirs.",
     "more": "Learn more"
   },
+  "experiences": {
+    "eyebrow": "Experiences",
+    "title": "Athens and Alimos, beyond the apartment",
+    "lead": "Sixteen places worth the trip — ancient sites and museums in the city centre, beaches and outdoor escapes on the coast — plus the boat trips and guided tours we can arrange for you.",
+    "boatTours": {
+      "eyebrow": "On the water",
+      "title": "Boat Tours",
+      "cta": "Contact us about a boat tour"
+    },
+    "guidedTours": {
+      "eyebrow": "Guided tours",
+      "title": "Prefer a guide? We can arrange that too",
+      "lead": "Every guide we work with is happy to build a private itinerary around what you actually want to see.",
+      "cta": "Ask about a custom tour"
+    },
+    "areas": {
+      "eyebrow": "Explore by area",
+      "title": "Pick an area, then see everything in it",
+      "lead": "Athens and Alimos each get their own guide, grouped by the kind of place it is.",
+      "count": "{count, plural, =1 {1 place} other {# places}}",
+      "cta": "See the {area} guide"
+    },
+    "guide": {
+      "thingsEyebrow": "Worth the trip",
+      "thingsTitle": "Places to see",
+      "athens": {
+        "eyebrow": "Athens",
+        "title": "The Athens guide",
+        "lead": "Ancient sites, museums and landmarks around the city centre — all an easy walk or metro ride from our Athens apartments."
+      },
+      "alimos": {
+        "eyebrow": "Alimos",
+        "title": "The Alimos guide",
+        "lead": "Beaches, the coastal outdoors and a couple of cultural stops — all close to our apartments on the Athens Riviera."
+      }
+    },
+    "stayNearby": {
+      "eyebrow": "Stay nearby",
+      "title": "Apartments near these places",
+      "lead": "A few apartments a short walk or drive from everything above.",
+      "cta": "All {area} apartments"
+    }
+  },
   "hosts": {
     "eyebrow": "Your hosts",
     "title": "Vasilis & Evelina",
