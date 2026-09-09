@@ -517,3 +517,15 @@ Redirect map (all `permanent: true`, add trailing-slash variants are normalized 
 - Every legacy real-content page maps to a task: home/about (5), listings (2, 6), services (8), tours (9), check-in + facilities (10), blog (11); every legacy URL 301s (12). Demo/junk pages intentionally have no successor.
 - Types used across tasks are defined in Task 2 (`Property`, `site`) and Task 9/10/11 for their own data; `InquiryCta` defined in Task 7 is consumed in Tasks 6 and 8 with the same signature.
 - No invented facts: all copy sources are cited to `docs/CONTENT_INVENTORY.md` sections; unknowns are nullable and render as absent.
+
+---
+
+## Amendment A1 (2026-09-09, user-directed): Adopt Carento design language
+
+The user supplied the purchased "Carento" Next.js template (car rental, Bootstrap 5, Urbanist font) and directed that its DESIGN be adopted, adapted to our content/categories. Decision: keep this plan's architecture (Next 16 + Tailwind v4 + next-intl + content layer + tests) and transplant Carento's visual language onto it. Reference copy of the template lives at the session scratchpad `carento/carento_v2.0.0_Unzip-First/1.carento_nextjs_template/` (source of truth for look: `public/assets/css/main.css` tokens + `components/sections/*.tsx` layouts + Figma in the zip).
+
+Superseded: the "Athenian Riviera" token set (sand/sea/terracotta) as the PRIMARY look. New global tokens (Carento): font Urbanist (latin) with Inter fallback for Greek; neutrals #000→#fff scale (`neutral-100 #f2f4f6`, `neutral-200 #e4e6e8`, `neutral-500 #737373`, `neutral-900 #313131`, `neutral-950 #1e1e1e`); brand green `#70f46d` (hover `#5edd5b`, dark tint `#2d4a2c`, link hover `#235922`); pastel section backgrounds (`#fff0ec`, `#d8f4db`, `#e3f0ff`, `#f6f3fc`, `#fcfcf3`); border `#dde1de`; warning `#ffc700`. Component language: white cards radius ~16px with `#dde1de` borders, pill buttons (black or brand green with black text), specs row with icon+label separated by dividers, hero with large rounded media panel + floating search card, black footer with newsletter row, pastel category tiles.
+
+New tasks inserted after Task 7 (renumbering avoided — letter suffixes):
+- **Task 7A — Carento reskin, global + existing pages**: swap fonts/tokens in globals.css & fonts.ts; restyle Header (white bar, pill CTA), Footer (black, columns + newsletter row), Hero (search card style), PropertyCard (car-card anatomy adapted to apartments), Section/CtaBand/Testimonials/Faq/ServiceRow, apartments list+detail, contact, about. Copy needed decorative/icon assets from the template's `public/assets/imgs` into `harmony-rental/public/carento/` (selective, no demo photos of cars). All existing tests must stay green (assertions are content-based, not style-based).
+- Tasks 8–11 proceed as planned but styled in the Carento language (their dispatches carry the new token/component notes).
