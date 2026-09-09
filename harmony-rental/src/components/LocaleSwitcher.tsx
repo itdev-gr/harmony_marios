@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 
 const LOCALES = [
@@ -12,9 +12,10 @@ const LOCALES = [
 export function LocaleSwitcher() {
   const locale = useLocale();
   const pathname = usePathname() ?? "/";
+  const tA11y = useTranslations("a11y");
 
   return (
-    <div aria-label="Language" className="flex items-center gap-1 text-sm font-medium tracking-wide">
+    <div aria-label={tA11y("language")} className="flex items-center gap-1 text-sm font-medium tracking-wide">
       {LOCALES.map(({ code, label }, index) => (
         <span key={code} className="flex items-center gap-1">
           {index > 0 && (

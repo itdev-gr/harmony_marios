@@ -14,7 +14,13 @@
     "checkAvailability": "Check availability",
     "from": "from",
     "perNight": "/ night",
-    "viewApartment": "View apartment"
+    "viewApartment": "View apartment",
+    "menu": "Menu"
+  },
+  "a11y": {
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "language": "Language"
   },
   "home": {
     "heroTitle": "Stay in harmony with Athens.",

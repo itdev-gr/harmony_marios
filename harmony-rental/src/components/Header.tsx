@@ -19,6 +19,7 @@ const NAV_ITEMS = [
 export function Header() {
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tA11y = useTranslations("a11y");
 
   return (
     <header className="sticky top-0 z-40 border-b border-mist bg-sand/90 backdrop-blur">
@@ -27,7 +28,7 @@ export function Header() {
           Harmony Rental
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-8 text-sm font-medium md:flex">
+        <nav aria-label={tA11y("mainNav")} className="hidden items-center gap-8 text-sm font-medium md:flex">
           {NAV_ITEMS.map((item) => (
             <Link key={item.href} href={item.href} className="text-ink/80 transition hover:text-terracotta">
               {tNav(item.key)}
@@ -53,11 +54,11 @@ export function Header() {
               <span className="h-0.5 w-4 bg-ink" />
               <span className="h-0.5 w-4 bg-ink" />
             </span>
-            Menu
+            {tCommon("menu")}
           </summary>
 
           <div className="absolute right-0 z-50 mt-3 w-64 rounded-2xl border border-mist bg-paper p-5 shadow-lg">
-            <nav aria-label="Mobile navigation" className="flex flex-col gap-3 text-sm font-medium">
+            <nav aria-label={tA11y("mobileNav")} className="flex flex-col gap-3 text-sm font-medium">
               {NAV_ITEMS.map((item) => (
                 <Link key={item.href} href={item.href} className="text-ink/80 transition hover:text-terracotta">
                   {tNav(item.key)}

@@ -1,13 +1,19 @@
 import { render, screen, within } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
+import type { AbstractIntlMessages } from "next-intl";
 import type { ReactElement } from "react";
 import en from "@/messages/en.json";
+import el from "@/messages/el.json";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-function renderWithIntl(ui: ReactElement) {
+function renderWithIntl(
+  ui: ReactElement,
+  locale: string = "en",
+  messages: AbstractIntlMessages = en,
+) {
   return render(
-    <NextIntlClientProvider locale="en" messages={en}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       {ui}
     </NextIntlClientProvider>,
   );
@@ -48,6 +54,12 @@ describe("Header", () => {
   it("offers a no-JS mobile disclosure menu", () => {
     const { container } = renderWithIntl(<Header />);
     expect(container.querySelector("details")).toBeInTheDocument();
+  });
+
+  it("translates the mobile menu trigger for the el locale", () => {
+    renderWithIntl(<Header />, "el", el);
+    expect(screen.getByText("Μενού")).toBeInTheDocument();
+    expect(screen.queryByText("Menu")).not.toBeInTheDocument();
   });
 });
 
