@@ -1,0 +1,72 @@
+import { render, screen, within } from "@testing-library/react";
+import { NextIntlClientProvider } from "next-intl";
+import type { ReactElement } from "react";
+import en from "@/messages/en.json";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+function renderWithIntl(ui: ReactElement) {
+  return render(
+    <NextIntlClientProvider locale="en" messages={en}>
+      {ui}
+    </NextIntlClientProvider>,
+  );
+}
+
+describe("Header", () => {
+  it("shows the wordmark", () => {
+    renderWithIntl(<Header />);
+    expect(screen.getByText("Harmony Rental")).toBeInTheDocument();
+  });
+
+  it("links the main nav Apartments item to /apartments", () => {
+    renderWithIntl(<Header />);
+    const nav = screen.getByRole("navigation", { name: /main/i });
+    // routing.localePrefix is "always", so the rendered href carries the
+    // active locale ("/en/apartments") even though the component's own
+    // <Link href> prop is the locale-agnostic "/apartments".
+    expect(within(nav).getByRole("link", { name: "Apartments" })).toHaveAttribute(
+      "href",
+      "/en/apartments",
+    );
+  });
+
+  it("shows a Book now call to action linking to /apartments", () => {
+    renderWithIntl(<Header />);
+    const bookLinks = screen.getAllByRole("link", { name: "Book now" });
+    expect(bookLinks.length).toBeGreaterThan(0);
+    for (const link of bookLinks) expect(link).toHaveAttribute("href", "/en/apartments");
+  });
+
+  it("offers an EN / ΕΛ locale toggle with no flags", () => {
+    renderWithIntl(<Header />);
+    expect(screen.getAllByText("EN").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("ΕΛ").length).toBeGreaterThan(0);
+    expect(screen.queryByText(/🇬🇧|🇬🇷/u)).not.toBeInTheDocument();
+  });
+
+  it("offers a no-JS mobile disclosure menu", () => {
+    const { container } = renderWithIntl(<Header />);
+    expect(container.querySelector("details")).toBeInTheDocument();
+  });
+});
+
+describe("Footer", () => {
+  it("shows the contact email", () => {
+    renderWithIntl(<Footer />);
+    expect(screen.getByText("info@harmonyrental.gr")).toBeInTheDocument();
+  });
+
+  it("never credits a developer", () => {
+    renderWithIntl(<Footer />);
+    expect(screen.queryByText(/Developed by/i)).not.toBeInTheDocument();
+  });
+
+  it("shows the current year in the legal line", () => {
+    renderWithIntl(<Footer />);
+    const year = new Date().getFullYear().toString();
+    expect(
+      screen.getByText(new RegExp(`©\\s*${year}\\s*Harmony Rental`)),
+    ).toBeInTheDocument();
+  });
+});

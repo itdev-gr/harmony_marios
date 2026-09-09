@@ -21,6 +21,9 @@
     "heroSubtitle": "Boutique apartments in the city centre and on the Athens Riviera — with local hosts, self check-in, and the best price when you book direct."
   },
   "footer": {
-    "tagline": "Apartments, experiences and property care in Athens & Alimos."
+    "tagline": "Apartments, experiences and property care in Athens & Alimos.",
+    "exploreHeading": "Explore",
+    "contactHeading": "Contact",
+    "legal": "© {year} Harmony Rental"
   }
 }
