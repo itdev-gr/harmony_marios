@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPosts } from "@/lib/journal";
 import { JournalIndex } from "@/components/JournalSections";
+import { languageAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -12,6 +13,7 @@ export async function generateMetadata({
   return {
     title: `${t("title")} — Harmony Rental`,
     description: t("lead"),
+    alternates: languageAlternates("/journal", locale),
   };
 }
 

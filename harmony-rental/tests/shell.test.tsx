@@ -7,6 +7,16 @@ import el from "@/messages/el.json";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+// Controls what `useSearchParams()` returns for the LocaleSwitcher query-
+// string-preservation test below; left empty for every other test in this
+// file, where it behaves the same as the un-mocked "outside a router"
+// value (empty search params).
+let mockSearch = "";
+vi.mock("next/navigation", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/navigation")>();
+  return { ...actual, useSearchParams: () => new URLSearchParams(mockSearch) };
+});
+
 function renderWithIntl(
   ui: ReactElement,
   locale: string = "en",
@@ -60,6 +70,17 @@ describe("Header", () => {
     renderWithIntl(<Header />, "el", el);
     expect(screen.getByText("Μενού")).toBeInTheDocument();
     expect(screen.queryByText("Menu")).not.toBeInTheDocument();
+  });
+
+  it("keeps the query string when the locale toggle switches locale", () => {
+    mockSearch = "area=alimos";
+    renderWithIntl(<Header />);
+    // The toggle renders twice (desktop nav + mobile disclosure menu) — both
+    // must carry the query string through.
+    const elLinks = screen.getAllByRole("link", { name: "ΕΛ" });
+    expect(elLinks.length).toBeGreaterThan(0);
+    for (const link of elLinks) expect(link).toHaveAttribute("href", "/el?area=alimos");
+    mockSearch = "";
   });
 });
 

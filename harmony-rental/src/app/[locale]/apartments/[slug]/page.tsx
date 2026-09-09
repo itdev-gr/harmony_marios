@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { properties, getProperty } from "@/content/properties";
 import { ApartmentDetail } from "@/components/ApartmentDetail";
+import { languageAlternates } from "@/lib/seo";
 
 const MAX_DESCRIPTION = 155;
 
@@ -20,13 +21,14 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/apartments/[slug]">): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const property = getProperty(slug);
   if (!property) return {};
 
   return {
     title: `${property.name} — Harmony Rental`,
     description: excerpt(property.summary),
+    alternates: languageAlternates(`/apartments/${slug}`, locale),
   };
 }
 

@@ -34,6 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routing.locales.flatMap((locale) =>
     paths.map((path) => ({
       url: `${BASE_URL}/${locale}${path}`,
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, `${BASE_URL}/${l}${path}`]),
+        ),
+      },
     })),
   );
 }

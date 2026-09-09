@@ -1,6 +1,8 @@
 "use client";
 
+import { Suspense } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { Link, usePathname } from "@/i18n/navigation";
 
 const LOCALES = [
@@ -8,10 +10,38 @@ const LOCALES = [
   { code: "el", label: "ΕΛ" },
 ] as const;
 
-/** Text-only "EN / ΕΛ" toggle — no flags — that swaps locale on the current path. */
+/**
+ * Text-only "EN / ΕΛ" toggle — no flags — that swaps locale on the current
+ * path, preserving the query string (e.g. `/apartments?area=alimos` stays
+ * `?area=alimos` after switching locale). Reading it needs `useSearchParams`,
+ * which Next requires to sit behind a `Suspense` boundary; the fallback
+ * renders the same toggle without the query string rather than nothing, so
+ * there's no flash of a missing control.
+ */
 export function LocaleSwitcher() {
-  const locale = useLocale();
   const pathname = usePathname() ?? "/";
+
+  return (
+    <Suspense fallback={<LocaleLinks href={pathname} />}>
+      <LocaleSwitcherWithQuery />
+    </Suspense>
+  );
+}
+
+function LocaleSwitcherWithQuery() {
+  const pathname = usePathname() ?? "/";
+  // `useSearchParams` can come back null outside a router context (e.g. a
+  // component test that renders `LocaleSwitcher` without the app router) —
+  // fall back to no query string rather than throwing.
+  const searchParams = useSearchParams();
+  const query = searchParams?.toString() ?? "";
+  const href = query ? `${pathname}?${query}` : pathname;
+
+  return <LocaleLinks href={href} />;
+}
+
+function LocaleLinks({ href }: { href: string }) {
+  const locale = useLocale();
   const tA11y = useTranslations("a11y");
 
   return (
@@ -27,7 +57,7 @@ export function LocaleSwitcher() {
             </span>
           )}
           <Link
-            href={pathname}
+            href={href}
             locale={code}
             aria-current={locale === code ? "true" : undefined}
             className={

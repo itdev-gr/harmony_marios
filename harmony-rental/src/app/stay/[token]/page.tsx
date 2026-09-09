@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getStay } from "@/content/stay";
 import { getProperty } from "@/content/properties";
+import { site } from "@/content/site";
 
 /**
  * Token-gated guest arrival page (Task 10). Locale-free and unlisted: the
@@ -29,6 +30,12 @@ export default async function StayPage({ params }: PageProps<"/stay/[token]">) {
 
   const property = getProperty(stay.propertySlug);
   if (!property) notFound();
+
+  // wa.me wants a bare digit string (country code + number, no "+" or
+  // spaces); the tel: link keeps the "+" — both derived from the same
+  // site-wide contact number so there's one source of truth for it.
+  const telHref = `tel:${site.contact.phone.replace(/\s+/g, "")}`;
+  const waHref = `https://wa.me/${site.contact.phone.replace(/[^\d]/g, "")}`;
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16 md:py-20">
@@ -60,7 +67,21 @@ export default async function StayPage({ params }: PageProps<"/stay/[token]">) {
       </div>
 
       <p className="mt-10 text-sm text-neutral-500">
-        Questions before or during your stay? Message us on WhatsApp any time.
+        Questions before or during your stay? Call{" "}
+        <a
+          href={telHref}
+          className="font-semibold text-brand-tint underline underline-offset-2 hover:text-link-hover"
+        >
+          {site.contact.phone}
+        </a>{" "}
+        or message us on{" "}
+        <a
+          href={waHref}
+          className="font-semibold text-brand-tint underline underline-offset-2 hover:text-link-hover"
+        >
+          WhatsApp
+        </a>{" "}
+        any time.
       </p>
     </div>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ExperiencesSections } from "@/components/ExperiencesSections";
+import { languageAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,8 +10,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "experiences" });
 
   return {
-    title: "Experiences — Harmony Rental",
+    title: `${t("metaTitle")} — Harmony Rental`,
     description: t("lead"),
+    alternates: languageAlternates("/experiences", locale),
   };
 }
 

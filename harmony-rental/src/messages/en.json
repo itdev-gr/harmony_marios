@@ -26,6 +26,7 @@
     "language": "Language"
   },
   "home": {
+    "metaTitle": "Boutique apartments in Athens & Alimos",
     "heroTitle": "Stay in harmony with Athens.",
     "heroSubtitle": "Boutique apartments in the city centre and on the Athens Riviera — with local hosts, self check-in, and the best price when you book direct.",
     "heroBadge": "Book direct — best price",
@@ -96,6 +97,7 @@
   "experiences": {
     "eyebrow": "Experiences",
     "title": "Athens and Alimos, beyond the apartment",
+    "metaTitle": "Experiences",
     "lead": "Sixteen places worth the trip — ancient sites and museums in the city centre, beaches and outdoor escapes on the coast — plus the boat trips and guided tours we can arrange for you.",
     "boatTours": {
       "eyebrow": "On the water",
@@ -121,11 +123,13 @@
       "athens": {
         "eyebrow": "Athens",
         "title": "The Athens guide",
+        "metaTitle": "Athens guide",
         "lead": "Ancient sites, museums and landmarks around the city centre — all an easy walk or metro ride from our Athens apartments."
       },
       "alimos": {
         "eyebrow": "Alimos",
         "title": "The Alimos guide",
+        "metaTitle": "Alimos guide",
         "lead": "Beaches, the coastal outdoors and a couple of cultural stops — all close to our apartments on the Athens Riviera."
       }
     },
@@ -159,6 +163,7 @@
   "about": {
     "eyebrow": "About us",
     "title": "A small Athens company, looking after a handful of apartments.",
+    "metaTitle": "About",
     "lead": "Harmony Rental hosts travellers in Athens and Alimos, renovates the apartments we take on, and shows guests the parts of Greece we would want to be shown ourselves. Everything we do runs through the same small team.",
     "vision": {
       "title": "Our vision",
@@ -188,6 +193,7 @@
   "owners": {
     "eyebrow": "For property owners",
     "title": "Own a property in Athens? We renovate, furnish, list and host it — full circle.",
+    "metaTitle": "For owners",
     "lead": "One team handles the whole journey — from a tired flat to a well-reviewed, fully compliant short-term rental — so you don't have to coordinate five contractors and a separate manager.",
     "heroCta": "Tell us about your property",
     "services": {
@@ -229,6 +235,7 @@
     "renovation": {
       "eyebrow": "Apartment renovation",
       "title": "A renovation with one team accountable, start to finish",
+      "metaTitle": "Apartment renovation",
       "lead": "From the first consultation to the handover, the same team plans, builds and signs off every stage — permits and Greek building regulations included.",
       "process": {
         "eyebrow": "Our process",
@@ -271,12 +278,14 @@
   "contact": {
     "eyebrow": "Get in touch",
     "title": "Talk to us",
+    "metaTitle": "Contact",
     "lead": "Questions about a stay, a renovation, or anything else — send a message and a person replies, usually within the hour.",
     "formTitle": "Send us a message"
   },
   "guestInfo": {
     "eyebrow": "Before you arrive",
     "title": "Guest information",
+    "metaTitle": "Guest information",
     "lead": "Everything you need to know about checking in, getting from the airport, and where to eat nearby. The arrival details and Wi-Fi for your specific apartment are sent to you separately, closer to your stay.",
     "policy": {
       "eyebrow": "Check-in & check-out",

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getPosts, getPost } from "@/lib/journal";
 import { JournalArticle } from "@/components/JournalSections";
+import { languageAlternates } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getPosts().map((post) => ({ slug: post.slug }));
@@ -11,13 +12,14 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/journal/[slug]">): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
 
   return {
     title: `${post.title} — Harmony Rental`,
     description: post.description,
+    alternates: languageAlternates(`/journal/${slug}`, locale),
   };
 }
 

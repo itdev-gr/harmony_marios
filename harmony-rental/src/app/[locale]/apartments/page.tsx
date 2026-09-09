@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ApartmentsList } from "@/components/ApartmentsList";
+import { languageAlternates } from "@/lib/seo";
 
 /** `?guests=2&guests=4` (hand-edited URLs) — take the first value. */
 const first = (value: string | string[] | undefined) =>
@@ -15,6 +16,7 @@ export async function generateMetadata({
   return {
     title: `${t("title")} — Harmony Rental`,
     description: t("lead"),
+    alternates: languageAlternates("/apartments", locale),
   };
 }
 

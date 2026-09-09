@@ -159,9 +159,10 @@ typed as `Stay { token, propertySlug, sections }`:
 
 ## Images checklist
 
-**No real property/site photography exists in this repo yet** — `public/`
-currently only has the default Next.js placeholder icons. The client needs
-to supply (or commission a shoot for) the following before launch; each slot
+**No real property/site photography exists in this repo yet** — `public/` is
+currently empty (the site icon lives in code, at `src/app/icon.svg`, not
+under `public/`). The client needs to supply (or commission a shoot for) the
+following before launch; each slot
 below is already wired into the code and will render automatically once the
 file exists at that path (see the ⛔ blocker in "Open questions" below):
 
@@ -174,10 +175,10 @@ file exists at that path (see the ⛔ blocker in "Open questions" below):
 - **Host portraits**: `public/images/hosts/*.jpg` for Vasilis & Evelina in
   "Your hosts" (`src/components/HostsBand.tsx`) — pending approval, see
   open question 7 below; until photos exist the band shows initials.
-- **Renovation before/afters**: no code slot exists for this yet — it's
-  driven by `site.renovationProjects` in `src/content/site.ts`, which is
-  currently an empty array (`{ before, after, caption }[]`). Once the client
-  supplies before/after photo pairs, populate that array with real
+- **Renovation before/afters**: already wired into the code — it's driven by
+  `site.renovationProjects` in `src/content/site.ts`, which is currently an
+  empty array (`{ before, after, caption }[]`). Once the client supplies
+  before/after photo pairs, populate that array with real
   `/images/renovation/...` paths and the `/owners/renovation` portfolio
   section will render them; no further code change should be needed.
 
