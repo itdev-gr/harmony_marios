@@ -274,6 +274,47 @@
     "lead": "Questions about a stay, a renovation, or anything else — send a message and a person replies, usually within the hour.",
     "formTitle": "Send us a message"
   },
+  "guestInfo": {
+    "eyebrow": "Before you arrive",
+    "title": "Guest information",
+    "lead": "Everything you need to know about checking in, getting from the airport, and where to eat nearby. The arrival details and Wi-Fi for your specific apartment are sent to you separately, closer to your stay.",
+    "policy": {
+      "eyebrow": "Check-in & check-out",
+      "title": "Check-in & check-out",
+      "lead": "Self check-in, at your own pace — here's what to expect.",
+      "checkinLabel": "Check-in",
+      "checkinValue": "15:00–01:00 (self check-in after 15:00)",
+      "checkoutLabel": "Check-out",
+      "checkoutValue": "By 11:00",
+      "requirementsTitle": "Before you arrive, please send us:",
+      "requirement1": "A photo of your passport",
+      "requirement2": "A phone number",
+      "requirement3": "An email address",
+      "regulationNote": "Greek law requires every guest to be registered with the authorities before check-in, so we can't confirm your arrival without these details."
+    },
+    "transport": {
+      "eyebrow": "Getting here",
+      "title": "Airport transfers",
+      "lead": "Let us know your flight details and we can arrange a taxi or van to meet you at the airport.",
+      "vehicle": "Vehicle",
+      "day": "Day (05:00–23:30)",
+      "night": "Night (23:30–05:00)",
+      "taxi": "Taxi",
+      "van": "Van (up to 7 guests)"
+    },
+    "eat": {
+      "eyebrow": "While you're here",
+      "title": "Where to eat",
+      "lead": "A short list of places nearby that we come back to ourselves.",
+      "barbadimos": "Traditional Greek taverna.",
+      "athinaikon": "A long-standing Athens restaurant.",
+      "fouar": "Thai restaurant inside an art gallery.",
+      "cocktailBar": "Cocktail bar in Monastiraki.",
+      "vintage": "Wine bar.",
+      "lamiral": "All-day restaurant and bar in Plaka.",
+      "loukoumades": "Loukoumades — Greek doughnuts, best eaten warm."
+    }
+  },
   "footer": {
     "tagline": "Apartments, experiences and property care in Athens & Alimos.",
     "exploreHeading": "Explore",
