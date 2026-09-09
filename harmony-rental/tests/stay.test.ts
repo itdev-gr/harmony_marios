@@ -1,5 +1,12 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { stays, getStay } from "@/content/stay";
 import { getProperty } from "@/content/properties";
+
+const stayContentSource = readFileSync(
+  path.resolve(process.cwd(), "src/content/stay.ts"),
+  "utf8",
+);
 
 const notFound = vi.fn(() => {
   throw new Error("NEXT_NOT_FOUND");
@@ -50,9 +57,17 @@ describe("stays data", () => {
     expect(getStay("not-a-real-token")).toBeUndefined();
   });
 
-  it("never leaks the Gazi building's legacy street-door keypad code", () => {
+  it("never leaks the Gazi building's legacy street-door keypad code in the exported data", () => {
     const json = JSON.stringify(stays);
     expect(json).not.toContain("8196");
+  });
+
+  // Scans the FILE SOURCE (comments included), not just the exported data —
+  // a leak written into a code comment would pass the assertion above but
+  // must still fail this one, since this file ships to the client and
+  // contractors.
+  it("never leaks the keypad code anywhere in stay.ts, comments included", () => {
+    expect(stayContentSource).not.toContain("8196");
   });
 });
 

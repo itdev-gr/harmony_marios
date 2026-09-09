@@ -10,8 +10,8 @@
  * guessing a slug does not reveal a token.
  *
  * SECURITY: the legacy Gazi Living page published its street-door keypad
- * code (`8196#`) in plain text. That code is intentionally NOT reproduced
- * here — see the "Arrival & access" section for that property, and the
+ * code in plain text. That code is intentionally NOT reproduced anywhere in
+ * this repo — see the "Arrival & access" section for that property, and the
  * "Security note for the client" in the project README.
  */
 export type StaySection = { title: string; body: string };
