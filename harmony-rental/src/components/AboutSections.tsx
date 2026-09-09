@@ -41,6 +41,10 @@ export function AboutSections() {
         </div>
       </section>
 
+      {/* client to approve: why-choose-us copy expanded beyond legacy site */}
+      {/* The old site offered one line ("tailored services backed by local
+          expertise… quality, personalized experiences, and professionalism");
+          these four points are written for this rebuild. */}
       <Section
         id="why"
         tone="paper"
