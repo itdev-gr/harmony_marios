@@ -15,7 +15,10 @@
     "from": "from",
     "perNight": "/ night",
     "viewApartment": "View apartment",
-    "menu": "Menu"
+    "menu": "Menu",
+    "guestsCount": "{count, plural, =1 {1 guest} other {# guests}}",
+    "bedroomsCount": "{count, plural, =1 {1 bedroom} other {# bedrooms}}",
+    "sizeSqm": "{size} m²"
   },
   "a11y": {
     "mainNav": "Main navigation",
@@ -24,7 +27,82 @@
   },
   "home": {
     "heroTitle": "Stay in harmony with Athens.",
-    "heroSubtitle": "Boutique apartments in the city centre and on the Athens Riviera — with local hosts, self check-in, and the best price when you book direct."
+    "heroSubtitle": "Boutique apartments in the city centre and on the Athens Riviera — with local hosts, self check-in, and the best price when you book direct.",
+    "heroBadge": "Book direct — best price",
+    "search": {
+      "legend": "Find a stay",
+      "arrival": "Arrival",
+      "departure": "Departure",
+      "guests": "Guests",
+      "guestsOption": "{count, plural, =1 {1 guest} other {# guests}}",
+      "guestsMax": "6+ guests"
+    },
+    "featured": {
+      "eyebrow": "Apartments",
+      "title": "A few places to call yours",
+      "lead": "Nine apartments across central Athens and Alimos — each one looked after by us, not by a call centre.",
+      "all": "All apartments"
+    },
+    "cta": {
+      "title": "Planning a stay in Athens?",
+      "body": "Tell us your dates and who is coming, and we will suggest the apartment that fits — or hold one for you while you decide.",
+      "action": "Talk to us"
+    }
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Stays, experiences and property care",
+    "lead": "Five services around one idea: apartments that are worth arriving at, and owners who never have to think about theirs.",
+    "more": "Learn more"
+  },
+  "hosts": {
+    "eyebrow": "Your hosts",
+    "title": "Vasilis & Evelina",
+    "body": "Harmony Rental is run by Vasilis and Evelina, who prepare every apartment themselves, answer your messages in person and are a short drive away if anything is needed. They live here, so the check-in note usually comes with the bakery that opens early on your street and the beach worth the detour before your flight home.",
+    "note": "Athens & Alimos"
+  },
+  "testimonials": {
+    "eyebrow": "Guests",
+    "title": "What guests tell us",
+    "countries": {
+      "Slovakia": "Slovakia",
+      "Poland": "Poland",
+      "France": "France"
+    }
+  },
+  "faq": {
+    "eyebrow": "Good to know",
+    "title": "Frequently asked questions",
+    "lead": "Anything else — write to us and a person answers, usually within the hour."
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "A small Athens company, looking after a handful of apartments.",
+    "lead": "Harmony Rental hosts travellers in Athens and Alimos, renovates the apartments we take on, and shows guests the parts of Greece we would want to be shown ourselves. Everything we do runs through the same small team.",
+    "vision": {
+      "title": "Our vision",
+      "body": "To become Greece's leading provider of premium property services, recognised for quality, reliability and personalised experiences in the tourism industry."
+    },
+    "mission": {
+      "title": "Our mission",
+      "body": "To provide exceptional apartment rentals, renovations and tour services across Greece, ensuring memorable experiences and satisfaction for every client."
+    },
+    "goals": {
+      "title": "Our goals",
+      "body": "To continuously improve what we offer, exceed our clients' expectations, and build long-term relationships based on trust, quality and professionalism."
+    },
+    "why": {
+      "eyebrow": "Why choose us",
+      "title": "Local expertise, kept personal",
+      "localTitle": "We are actually here",
+      "localBody": "Athens and Alimos are where we live and work. Every apartment is one we know by heart, which is why our directions, our tips and our answers are specific rather than generic.",
+      "tailoredTitle": "Tailored, not templated",
+      "tailoredBody": "A family of six, a couple on a long weekend and an owner handing over the keys all need different things. We plan each stay and each project around the people in it.",
+      "qualityTitle": "Quality you can see",
+      "qualityBody": "We renovate, furnish and maintain the homes we let, so the photos match the doorway you walk through and the standard holds between guests.",
+      "circleTitle": "The full circle",
+      "circleBody": "Renovation, furnishing, listing, hosting and day-to-day care under one roof — for owners, that means one number to call and one team accountable."
+    }
   },
   "footer": {
     "tagline": "Apartments, experiences and property care in Athens & Alimos.",

@@ -9,5 +9,9 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
-body { @apply bg-sand text-ink font-body antialiased; }
-h1, h2, h3 { @apply font-display text-sea; }
+/* Layered so page-level utilities (e.g. a white headline on the dark hero)
+   still win — unlayered base rules would outrank Tailwind's utilities. */
+@layer base {
+  body { @apply bg-sand text-ink font-body antialiased; }
+  h1, h2, h3 { @apply font-display text-sea; }
+}
