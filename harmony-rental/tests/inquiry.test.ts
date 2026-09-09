@@ -89,6 +89,16 @@ describe("submitInquiry — booking (propertySlug present)", () => {
     expect(result).toEqual({ ok: true });
     expect(mockSendMail).not.toHaveBeenCalled();
   });
+
+  it("drops a submission silently when the honeypot is whitespace-only, without sending", async () => {
+    const result = await submitInquiry(
+      { ok: false },
+      formData({ ...validBooking, website: " " }),
+    );
+
+    expect(result).toEqual({ ok: true });
+    expect(mockSendMail).not.toHaveBeenCalled();
+  });
 });
 
 describe("submitInquiry — generic contact (no propertySlug)", () => {

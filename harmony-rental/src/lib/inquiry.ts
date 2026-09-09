@@ -60,9 +60,14 @@ export async function submitInquiry(
   formData: FormData,
 ): Promise<InquiryState> {
   // Honeypot: a field real visitors never see or fill. A bot that fills
-  // every input trips it — drop the submission silently, no validation, no
-  // email, and no signal back to the bot that anything was rejected.
-  if (str(formData.get("website")) !== undefined) {
+  // every input trips it — including one that only pads it with whitespace
+  // rather than real text, so this checks the raw value (not the `str()`
+  // helper below, which would trim " " down to "" and miss it). Anything
+  // but a truly untouched, empty submission is treated as filled, and the
+  // submission is dropped silently: no validation, no email, no signal back
+  // to the bot that anything was rejected.
+  const honeypot = formData.get("website");
+  if (honeypot !== null && String(honeypot) !== "") {
     return { ok: true };
   }
 

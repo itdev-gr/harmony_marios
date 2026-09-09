@@ -46,6 +46,16 @@ function PrefilledInquiryForm({ property }: { property?: Property }) {
   );
 }
 
+/** A field's validation error, announced to assistive tech via `role="alert"` and wired to its input with `aria-describedby`. Renders nothing when there is no message. */
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} role="alert" className="-mt-2 text-xs text-terracotta">
+      {message}
+    </p>
+  );
+}
+
 function InquiryForm({
   property,
   defaultFrom,
@@ -59,11 +69,22 @@ function InquiryForm({
 }) {
   const t = useTranslations("inquiry");
   const [state, formAction, pending] = useActionState(submitInquiry, initialState);
-  const honeypotId = useId();
+  const uid = useId();
+  const errors = state.fieldErrors ?? {};
+  const errorId = {
+    name: `${uid}-err-name`,
+    email: `${uid}-err-email`,
+    from: `${uid}-err-from`,
+    to: `${uid}-err-to`,
+    guests: `${uid}-err-guests`,
+  };
 
   if (state.ok) {
     return (
-      <p role="status" className="mt-6 rounded-xl border border-sea/10 bg-sand px-5 py-4 text-sm text-ink/80">
+      <p
+        role="status"
+        className="mt-6 rounded-2xl border border-sea/10 bg-sand px-5 py-4 text-sm text-ink/80"
+      >
         {t("success")}
       </p>
     );
@@ -77,45 +98,71 @@ function InquiryForm({
           never fill it. A filled value tells submitInquiry to drop the
           submission silently. */}
       <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
-        <label htmlFor={honeypotId}>{t("honeypotLabel")}</label>
-        <input id={honeypotId} type="text" name="website" tabIndex={-1} autoComplete="off" />
+        <label htmlFor={`${uid}-honeypot`}>{t("honeypotLabel")}</label>
+        <input id={`${uid}-honeypot`} type="text" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       <label className="flex flex-col gap-1.5">
         <span className={fieldLabel}>{t("name")}</span>
-        <input name="name" type="text" required minLength={2} className={fieldControl} />
+        <input
+          name="name"
+          type="text"
+          required
+          minLength={2}
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? errorId.name : undefined}
+          className={fieldControl}
+        />
       </label>
-      {state.fieldErrors?.name && (
-        <p className="-mt-2 text-xs text-terracotta">{state.fieldErrors.name}</p>
-      )}
+      <FieldError id={errorId.name} message={errors.name} />
 
       <label className="flex flex-col gap-1.5">
         <span className={fieldLabel}>{t("email")}</span>
-        <input name="email" type="email" required className={fieldControl} />
+        <input
+          name="email"
+          type="email"
+          required
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? errorId.email : undefined}
+          className={fieldControl}
+        />
       </label>
-      {state.fieldErrors?.email && (
-        <p className="-mt-2 text-xs text-terracotta">{state.fieldErrors.email}</p>
-      )}
+      <FieldError id={errorId.email} message={errors.email} />
 
       {property && (
         <div className="grid grid-cols-2 gap-4">
-          <label className="flex flex-col gap-1.5">
-            <span className={fieldLabel}>{t("from")}</span>
-            <input
-              name="from"
-              type="date"
-              required
-              defaultValue={defaultFrom}
-              className={fieldControl}
-            />
-          </label>
-          <label className="flex flex-col gap-1.5">
-            <span className={fieldLabel}>{t("to")}</span>
-            <input name="to" type="date" required defaultValue={defaultTo} className={fieldControl} />
-          </label>
+          <div className="flex flex-col gap-2">
+            <label className="flex flex-col gap-1.5">
+              <span className={fieldLabel}>{t("from")}</span>
+              <input
+                name="from"
+                type="date"
+                required
+                defaultValue={defaultFrom}
+                aria-invalid={Boolean(errors.from)}
+                aria-describedby={errors.from ? errorId.from : undefined}
+                className={fieldControl}
+              />
+            </label>
+            <FieldError id={errorId.from} message={errors.from} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="flex flex-col gap-1.5">
+              <span className={fieldLabel}>{t("to")}</span>
+              <input
+                name="to"
+                type="date"
+                required
+                defaultValue={defaultTo}
+                aria-invalid={Boolean(errors.to)}
+                aria-describedby={errors.to ? errorId.to : undefined}
+                className={fieldControl}
+              />
+            </label>
+            <FieldError id={errorId.to} message={errors.to} />
+          </div>
         </div>
       )}
-      {state.fieldErrors?.to && <p className="-mt-2 text-xs text-terracotta">{state.fieldErrors.to}</p>}
 
       {property && (
         <label className="flex flex-col gap-1.5">
@@ -127,13 +174,13 @@ function InquiryForm({
             max={12}
             required
             defaultValue={defaultGuests ?? "2"}
+            aria-invalid={Boolean(errors.guests)}
+            aria-describedby={errors.guests ? errorId.guests : undefined}
             className={fieldControl}
           />
         </label>
       )}
-      {state.fieldErrors?.guests && (
-        <p className="-mt-2 text-xs text-terracotta">{state.fieldErrors.guests}</p>
-      )}
+      <FieldError id={errorId.guests} message={errors.guests} />
 
       <label className="flex flex-col gap-1.5">
         <span className={fieldLabel}>{t("message")}</span>
@@ -146,7 +193,9 @@ function InquiryForm({
       </label>
 
       {state.error === "send-failed" && (
-        <p className="text-xs text-terracotta">{t("errors.sendFailed")}</p>
+        <p role="alert" className="text-xs text-terracotta">
+          {t("errors.sendFailed")}
+        </p>
       )}
 
       <button
