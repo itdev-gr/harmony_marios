@@ -1,17 +1,85 @@
 @import "tailwindcss";
+
+/* Design tokens transplanted from the Carento template (public/assets/css/main.css
+   `:root`), renamed to our own vocabulary. Light scheme throughout: white and
+   pastel section grounds, near-black type, one loud green for actions. */
 @theme {
-  --color-sand: #f7f4ef;
-  --color-paper: #ffffff;
-  --color-ink: #211f1c;
-  --color-sea: #123f4a;
-  --color-terracotta: #c0684a;
-  --color-mist: #e4edee;
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  /* Clear Tailwind's stock neutral ramp so only Carento's greys are reachable. */
+  --color-neutral-*: initial;
+
+  --color-brand: #70f46d;
+  --color-brand-dark: #5edd5b;
+  --color-brand-tint: #2d4a2c;
+  --color-link-hover: #235922;
+
+  --color-neutral-100: #f2f4f6;
+  --color-neutral-200: #e4e6e8;
+  --color-neutral-300: #d6d7d8;
+  --color-neutral-400: #8e8e8e;
+  --color-neutral-500: #737373;
+  --color-neutral-700: #4d4d4d;
+  --color-neutral-900: #313131;
+  --color-neutral-950: #1e1e1e;
+
+  --color-pastel-peach: #fff0ec;
+  --color-pastel-green: #d8f4db;
+  --color-pastel-blue: #e3f0ff;
+  --color-pastel-lilac: #f6f3fc;
+  --color-pastel-cream: #fcfcf3;
+
+  --color-line: #dde1de;
+  --color-warning: #ffc700;
+  /* Carento's danger is #ff2e00; darkened so 14px error text still clears AA. */
+  --color-danger: #cc2500;
+
+  /* Urbanist leads; Inter covers the Greek glyphs Urbanist has no subset for. */
+  --font-display: var(--font-urbanist), var(--font-inter), sans-serif;
+  --font-body: var(--font-urbanist), var(--font-inter), sans-serif;
+
+  --shadow-card: 0 6px 22px 0 rgb(0 0 0 / 0.09);
+  --shadow-float: 0 10px 20px 0 rgb(0 0 0 / 0.05);
 }
-/* Layered so page-level utilities (e.g. a white headline on the dark hero)
-   still win — unlayered base rules would outrank Tailwind's utilities. */
+
+/* Layered so page-level utilities still win — unlayered base rules would
+   outrank Tailwind's utilities. */
 @layer base {
-  body { @apply bg-sand text-ink font-body antialiased; }
-  h1, h2, h3 { @apply font-display text-sea; }
+  body {
+    @apply bg-white font-body text-neutral-700 antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold tracking-tight text-neutral-950;
+  }
+  /* One visible focus ring for the whole site; dark grounds override it with
+     `focus-visible:outline-brand`. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-tint);
+    outline-offset: 2px;
+  }
+}
+
+/* The shared component language: pill buttons, bordered white cards and form
+   controls, so every page speaks the same dialect. */
+@layer components {
+  .btn-primary {
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-display text-sm font-bold text-black transition duration-200 hover:bg-brand-dark;
+  }
+  .btn-dark {
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 py-3 font-display text-sm font-bold text-white transition duration-200 hover:bg-brand hover:text-black;
+  }
+  .btn-outline {
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-display text-sm font-bold text-neutral-950 transition duration-200 hover:border-brand hover:bg-brand;
+  }
+  .btn-sm {
+    @apply px-5 py-2.5;
+  }
+
+  .field-label {
+    @apply font-display text-xs font-bold tracking-wide text-neutral-700 uppercase;
+  }
+  .field-control {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 font-body text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-brand focus:ring-2 focus:ring-brand/50;
+  }
 }

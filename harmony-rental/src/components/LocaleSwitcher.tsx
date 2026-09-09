@@ -15,11 +15,14 @@ export function LocaleSwitcher() {
   const tA11y = useTranslations("a11y");
 
   return (
-    <div aria-label={tA11y("language")} className="flex items-center gap-1 text-sm font-medium tracking-wide">
+    <div
+      aria-label={tA11y("language")}
+      className="flex items-center gap-1 font-display text-sm font-semibold tracking-wide"
+    >
       {LOCALES.map(({ code, label }, index) => (
         <span key={code} className="flex items-center gap-1">
           {index > 0 && (
-            <span aria-hidden="true" className="text-ink/30">
+            <span aria-hidden="true" className="text-neutral-300">
               /
             </span>
           )}
@@ -27,7 +30,11 @@ export function LocaleSwitcher() {
             href={pathname}
             locale={code}
             aria-current={locale === code ? "true" : undefined}
-            className={locale === code ? "text-ink" : "text-ink/50 transition hover:text-ink"}
+            className={
+              locale === code
+                ? "text-neutral-950"
+                : "text-neutral-500 transition hover:text-link-hover"
+            }
           >
             {label}
           </Link>

@@ -34,11 +34,14 @@ export function Footer() {
   );
 
   return (
-    <footer className="bg-sea text-sand">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-3">
-        <div className="space-y-4">
-          <p className="font-display text-xl">Harmony Rental</p>
-          <p className="max-w-xs text-sm text-sand/80">{tFooter("tagline")}</p>
+    <footer className="bg-neutral-950 text-white [&_:focus-visible]:outline-brand">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4 md:gap-12">
+        <div className="space-y-4 md:col-span-2">
+          <p className="flex items-center gap-1.5 font-display text-xl font-extrabold tracking-tight text-white">
+            Harmony Rental
+            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand" />
+          </p>
+          <p className="max-w-xs text-sm leading-relaxed text-neutral-300">{tFooter("tagline")}</p>
           {socials.length > 0 && (
             <ul className="flex gap-3 pt-2">
               {socials.map(([platform, url]) => (
@@ -48,7 +51,7 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={platform}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-sand/30 text-xs uppercase transition hover:border-sand hover:bg-sand/10"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 font-display text-xs font-bold uppercase transition hover:border-brand hover:bg-brand hover:text-black"
                   >
                     {platform.slice(0, 1).toUpperCase()}
                   </a>
@@ -59,13 +62,16 @@ export function Footer() {
         </div>
 
         <nav aria-label={tFooter("exploreHeading")}>
-          <p className="text-sm font-semibold tracking-wide text-sand/60 uppercase">
+          <p className="font-display text-sm font-bold tracking-wide text-brand uppercase">
             {tFooter("exploreHeading")}
           </p>
-          <ul className="mt-4 space-y-2 text-sm">
+          <ul className="mt-5 space-y-2.5 text-sm">
             {NAV_ITEMS.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-sand/85 transition hover:text-sand">
+                <Link
+                  href={item.href}
+                  className="font-display font-semibold text-neutral-300 transition hover:text-brand"
+                >
                   {tNav(item.key)}
                 </Link>
               </li>
@@ -74,18 +80,21 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="text-sm font-semibold tracking-wide text-sand/60 uppercase">
+          <p className="font-display text-sm font-bold tracking-wide text-brand uppercase">
             {tFooter("contactHeading")}
           </p>
-          <ul className="mt-4 space-y-2 text-sm text-sand/85">
+          <ul className="mt-5 space-y-2.5 text-sm text-neutral-300">
             <li>{contact.address}</li>
             <li>
-              <a href={`tel:${contact.phone.replace(/\s+/g, "")}`} className="transition hover:text-sand">
+              <a
+                href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                className="transition hover:text-brand"
+              >
                 {contact.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${contact.email}`} className="transition hover:text-sand">
+              <a href={`mailto:${contact.email}`} className="transition hover:text-brand">
                 {contact.email}
               </a>
             </li>
@@ -93,8 +102,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-sand/15">
-        <p className="mx-auto max-w-6xl px-6 py-6 text-xs text-sand/60">{tFooter("legal", { year })}</p>
+      <div className="border-t border-white/10">
+        <p className="mx-auto max-w-6xl px-6 py-6 text-xs text-neutral-400">
+          {tFooter("legal", { year })}
+        </p>
       </div>
     </footer>
   );
