@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import type { Property } from "@/content/types";
 import { Gallery } from "./Gallery";
 import { StickyBookBar } from "./StickyBookBar";
+import { InquiryCta } from "./InquiryCta";
 
 const OTA_PLATFORMS = [
   { key: "airbnb", label: "Airbnb" },
@@ -77,9 +78,6 @@ export function ApartmentDetail({ property }: { property: Property }) {
 
   const mapsHref = `https://maps.google.com/?q=${encodeURIComponent(
     `${property.neighborhood}, Athens`,
-  )}`;
-  const mailtoHref = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-    tDetail("mailSubject", { name: property.name }),
   )}`;
   // All null in today's inventory, so this renders nothing until the client
   // hands over real listing URLs.
@@ -201,14 +199,7 @@ export function ApartmentDetail({ property }: { property: Property }) {
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-ink/70">{tDetail("bookLead")}</p>
 
-              {/* InquiryCta mounts here in Task 7 — until then the mailto below
-                  keeps the page bookable. */}
-              <a
-                href={mailtoHref}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-terracotta px-6 py-3 text-center text-sm font-medium text-paper transition hover:bg-terracotta/90"
-              >
-                {tDetail("bookAction")}
-              </a>
+              <InquiryCta property={property} />
 
               <p className="mt-4 text-center text-sm text-ink/60">{site.contact.phone}</p>
             </section>

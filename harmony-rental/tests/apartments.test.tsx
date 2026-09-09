@@ -231,15 +231,21 @@ describe("Apartment detail", () => {
     expect(badge).toHaveAttribute("rel", expect.stringContaining("noopener"));
   });
 
-  it("holds a booking slot with a working mailto until the inquiry form lands", () => {
+  it("holds a booking slot with the inquiry form, pre-addressed to this apartment", () => {
     const { container } = renderWithIntl(<ApartmentDetail property={alimos} />);
     const book = container.querySelector("#book");
     expect(book).toBeInTheDocument();
-    const cta = within(book as HTMLElement).getByRole("link", {
-      name: en.apartments.detail.bookAction,
-    });
-    expect(cta.getAttribute("href")).toContain("mailto:info@harmonyrental.gr?subject=");
-    expect(cta.getAttribute("href")).toContain(encodeURIComponent(alimos.name));
+    const scope = within(book as HTMLElement);
+    expect(scope.getByLabelText(en.inquiry.name)).toBeInTheDocument();
+    expect(scope.getByLabelText(en.inquiry.email)).toBeInTheDocument();
+    expect(scope.getByLabelText(en.inquiry.from)).toBeInTheDocument();
+    expect(scope.getByLabelText(en.inquiry.to)).toBeInTheDocument();
+    expect(scope.getByLabelText(en.inquiry.guests)).toBeInTheDocument();
+    expect(scope.getByRole("button", { name: en.inquiry.submit })).toBeInTheDocument();
+    const propertySlugInput = (book as HTMLElement).querySelector(
+      'input[type="hidden"][name="propertySlug"]',
+    );
+    expect(propertySlugInput).toHaveValue(alimos.slug);
   });
 
   it("offers a mobile sticky bar that jumps to the booking slot", () => {
