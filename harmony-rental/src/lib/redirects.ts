@@ -1,9 +1,18 @@
-import type { Redirect } from "next/dist/lib/load-custom-routes";
 // Relative imports (not the "@/..." alias): this module is loaded directly
 // by next.config.ts, whose transpilation step doesn't apply tsconfig path
 // aliases the way the app's own webpack/Turbopack build does.
 import { properties } from "../content/properties";
 import { getPosts } from "./journal";
+
+/**
+ * A local structural stand-in for Next's own (non-public) `Redirect` type
+ * from `next/dist/lib/load-custom-routes`. Every field here is required by
+ * `NextConfig["redirects"]`'s return type and the rest of that type's
+ * fields are optional, so this is structurally assignable to it without
+ * reaching into Next's internals — avoids coupling this module's build to
+ * an undocumented file path that could move across Next versions.
+ */
+type Redirect = { source: string; destination: string; permanent: boolean };
 
 /**
  * 301 (permanent) redirect map from the legacy harmonyrental.gr WordPress
