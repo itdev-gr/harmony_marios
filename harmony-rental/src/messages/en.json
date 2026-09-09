@@ -49,6 +49,46 @@
       "action": "Talk to us"
     }
   },
+  "apartments": {
+    "eyebrow": "Our apartments",
+    "title": "Apartments in Athens & Alimos",
+    "lead": "Nine apartments — some in the middle of the city, some a walk from the sea. Pick an area and how many of you are coming.",
+    "count": "{count, plural, =1 {1 apartment} other {# apartments}}",
+    "empty": "Nothing matches that combination yet. Try another area or party size — or write to us and we will find you a fit.",
+    "filters": {
+      "area": "Area",
+      "all": "All",
+      "athens": "Athens",
+      "alimos": "Alimos",
+      "guests": "Guests",
+      "guestsAny": "Any size",
+      "apply": "Apply",
+      "clear": "Clear filters"
+    },
+    "detail": {
+      "backToAll": "All apartments",
+      "gallery": "Photos of {name}",
+      "photosSoon": "Photos coming soon",
+      "photoOf": "{name} — photo {index}",
+      "facts": {
+        "size": "Size",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "sleeps": "Sleeps"
+      },
+      "about": "About this apartment",
+      "amenities": "What's included",
+      "beds": "Bed setup",
+      "distances": "What is nearby",
+      "map": "Open the neighbourhood in Google Maps",
+      "registration": "Property registration (AMA): {number}",
+      "alsoOn": "Also on {platform}",
+      "book": "Request to book",
+      "bookLead": "Tell us your dates and who is coming. We answer in person, usually within the hour, and hold the apartment while you decide.",
+      "bookAction": "Email us about this apartment",
+      "mailSubject": "Booking enquiry — {name}"
+    }
+  },
   "services": {
     "eyebrow": "What we do",
     "title": "Stays, experiences and property care",

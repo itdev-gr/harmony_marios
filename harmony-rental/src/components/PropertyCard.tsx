@@ -39,7 +39,15 @@ function SizeIcon() {
  * "related stays" rails. Only facts the inventory actually holds are shown —
  * the legacy site printed "NA" and an empty "$" for every missing field.
  */
-export function PropertyCard({ property }: { property: Property }) {
+export function PropertyCard({
+  property,
+  query,
+}: {
+  property: Property;
+  /** Dates/party size carried over from a search, so the detail page can
+      pre-fill its inquiry form. Omitted everywhere else. */
+  query?: Record<string, string>;
+}) {
   const t = useTranslations("common");
   const [photoFailed, setPhotoFailed] = useState(false);
 
@@ -104,7 +112,11 @@ export function PropertyCard({ property }: { property: Property }) {
         )}
 
         <Link
-          href={`/apartments/${property.slug}`}
+          href={
+            query && Object.keys(query).length > 0
+              ? { pathname: `/apartments/${property.slug}`, query }
+              : `/apartments/${property.slug}`
+          }
           className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-medium text-terracotta transition after:absolute after:inset-0 hover:gap-3"
         >
           {t("viewApartment")}
