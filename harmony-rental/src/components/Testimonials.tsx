@@ -9,7 +9,11 @@ const GREEK = /\p{Script=Greek}/u;
  * data layer rather than the message catalogue; on the Greek locale we show a
  * review's own Greek original when it has one. Country names are translated.
  */
-export function Testimonials({ tone = "sand" }: { tone?: "sand" | "paper" }) {
+export function Testimonials({
+  tone = "blue",
+}: {
+  tone?: "sand" | "paper" | "green" | "blue";
+}) {
   const t = useTranslations("testimonials");
   const locale = useLocale();
 
@@ -24,14 +28,19 @@ export function Testimonials({ tone = "sand" }: { tone?: "sand" | "paper" }) {
 
           return (
             <li key={testimonial.name} className="h-full">
-              <figure className="flex h-full flex-col gap-6 rounded-2xl border border-mist bg-paper p-7">
-                <span aria-hidden="true" className="font-display text-4xl leading-none text-terracotta/50">
+              <figure className="flex h-full flex-col gap-5 rounded-2xl border border-line bg-white p-7">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-pastel-green font-display text-3xl leading-none font-extrabold text-brand-tint"
+                >
                   &ldquo;
                 </span>
-                <blockquote className="flex-1 text-sm leading-relaxed text-ink/80">{quote}</blockquote>
-                <figcaption className="border-t border-mist pt-5 text-sm">
-                  <span className="font-medium text-sea">{testimonial.name}</span>
-                  <span className="text-ink/50"> · {t(`countries.${testimonial.country}`)}</span>
+                <blockquote className="flex-1 text-sm leading-relaxed text-neutral-700">
+                  {quote}
+                </blockquote>
+                <figcaption className="border-t border-line pt-5 text-sm">
+                  <span className="font-display font-bold text-neutral-950">{testimonial.name}</span>
+                  <span className="text-neutral-500"> · {t(`countries.${testimonial.country}`)}</span>
                 </figcaption>
               </figure>
             </li>

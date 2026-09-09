@@ -10,24 +10,27 @@ export function Faq({
   id = "faq",
 }: {
   items: readonly FaqItem[];
-  tone?: "sand" | "paper";
+  tone?: "sand" | "paper" | "green" | "blue";
   id?: string;
 }) {
   const t = useTranslations("faq");
 
   return (
     <Section id={id} eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} tone={tone}>
-      <div className="max-w-3xl border-t border-mist">
+      <div className="flex max-w-3xl flex-col gap-3">
         {items.map((item) => (
-          <details key={item.question} className="group border-b border-mist">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-lg text-sea transition hover:text-terracotta [&::-webkit-details-marker]:hidden">
+          <details
+            key={item.question}
+            className="group rounded-2xl border border-line bg-white px-6 open:shadow-card"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-lg font-bold tracking-tight text-neutral-950 transition hover:text-link-hover [&::-webkit-details-marker]:hidden">
               {item.question}
               <span
                 aria-hidden="true"
-                className="relative h-4 w-4 shrink-0 text-terracotta before:absolute before:top-1/2 before:left-0 before:h-px before:w-4 before:-translate-y-1/2 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-4 after:w-px after:-translate-x-1/2 after:bg-current after:transition-transform after:duration-300 group-open:after:scale-y-0"
+                className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-pastel-green text-brand-tint before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3.5 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-current after:absolute after:top-1/2 after:left-1/2 after:h-3.5 after:w-px after:-translate-x-1/2 after:-translate-y-1/2 after:bg-current after:transition-transform after:duration-300 group-open:after:scale-y-0"
               />
             </summary>
-            <p className="pb-6 text-sm leading-relaxed text-ink/70">{item.answer}</p>
+            <p className="pb-6 text-sm leading-relaxed text-neutral-500">{item.answer}</p>
           </details>
         ))}
       </div>

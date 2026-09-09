@@ -12,18 +12,23 @@ const OTA_PLATFORMS = [
   { key: "booking", label: "Booking.com" },
 ] as const;
 
+/** Carento's `list-ticks-green`: a green disc with a dark tick inside. */
 function CheckIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
+    <span
       aria-hidden="true"
-      className="mt-0.5 h-4 w-4 shrink-0 text-terracotta"
+      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pastel-green"
     >
-      <path d="m5 12.5 4.5 4.5L19 7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        className="h-3 w-3 text-brand-tint"
+      >
+        <path d="m5 12.5 4.5 4.5L19 7" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
   );
 }
 
@@ -35,8 +40,8 @@ function Block({
   children: ReactNode;
 }) {
   return (
-    <section className="border-t border-sea/10 pt-8">
-      <h2 className="font-display text-2xl text-sea">{title}</h2>
+    <section className="border-t border-line pt-8">
+      <h2 className="font-display text-2xl font-bold tracking-tight text-neutral-950">{title}</h2>
       <div className="mt-5">{children}</div>
     </section>
   );
@@ -87,11 +92,11 @@ export function ApartmentDetail({ property }: { property: Property }) {
   });
 
   return (
-    <article className="bg-sand">
-      <div className="mx-auto w-full max-w-6xl px-6 pt-8 pb-20 md:pt-12 md:pb-28">
+    <article className="bg-white">
+      <div className="mx-auto w-full max-w-6xl px-6 pt-8 pb-20 md:pt-10 md:pb-24">
         <Link
           href="/apartments"
-          className="inline-flex items-center gap-2 text-sm font-medium text-ink/60 transition hover:text-terracotta"
+          className="inline-flex items-center gap-2 font-display text-sm font-bold text-neutral-500 transition hover:text-link-hover"
         >
           <span aria-hidden="true">←</span>
           {tDetail("backToAll")}
@@ -103,13 +108,13 @@ export function ApartmentDetail({ property }: { property: Property }) {
 
         <header className="mt-10">
           <div className="max-w-2xl">
-            <h1 className="font-display text-4xl leading-tight text-balance text-sea md:text-5xl">
+            <h1 className="font-display text-4xl leading-tight font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl">
               {property.name}
             </h1>
-            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink/65">
+            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-neutral-500">
               <span>{property.neighborhood}</span>
-              <span aria-hidden="true" className="h-1 w-1 rounded-full bg-ink/25" />
-              <span className="rounded-full border border-sea/15 px-3 py-1 text-xs font-medium text-sea">
+              <span aria-hidden="true" className="h-1 w-1 rounded-full bg-neutral-300" />
+              <span className="rounded-full bg-pastel-green px-3 py-1 font-display text-xs font-bold tracking-wide text-brand-tint uppercase">
                 {t(`filters.${property.area}`)}
               </span>
             </p>
@@ -121,27 +126,34 @@ export function ApartmentDetail({ property }: { property: Property }) {
             {/* Flex rather than a fixed grid: an apartment with two known facts
                 fills the plate instead of leaving empty cells. */}
             {facts.length > 0 && (
-              <dl className="flex flex-wrap gap-px overflow-hidden rounded-2xl border border-sea/10 bg-sea/10">
+              <dl className="flex flex-wrap gap-3">
                 {facts.map((fact) => (
-                  <div key={fact.key} className="min-w-[7.5rem] flex-1 bg-paper px-5 py-5">
-                    <dt className="text-[11px] font-medium tracking-[0.14em] text-ink/50 uppercase">
+                  <div
+                    key={fact.key}
+                    className="min-w-[7.5rem] flex-1 rounded-xl border border-line bg-white px-5 py-4"
+                  >
+                    <dt className="font-display text-xs font-bold tracking-wide text-neutral-500 uppercase">
                       {fact.label}
                     </dt>
-                    <dd className="mt-2 font-display text-2xl text-sea">{fact.value}</dd>
+                    <dd className="mt-2 font-display text-2xl font-bold text-neutral-950">
+                      {fact.value}
+                    </dd>
                   </div>
                 ))}
               </dl>
             )}
 
             <Block title={tDetail("about")}>
-              <p className="max-w-2xl text-base leading-relaxed text-ink/75">{property.summary}</p>
+              <p className="max-w-2xl text-base leading-relaxed text-neutral-700">
+                {property.summary}
+              </p>
             </Block>
 
             {property.amenities.length > 0 && (
               <Block title={tDetail("amenities")}>
                 <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                   {property.amenities.map((amenity) => (
-                    <li key={amenity} className="flex items-start gap-3 text-sm text-ink/75">
+                    <li key={amenity} className="flex items-start gap-3 text-sm text-neutral-700">
                       <CheckIcon />
                       <span>{amenity}</span>
                     </li>
@@ -156,7 +168,7 @@ export function ApartmentDetail({ property }: { property: Property }) {
                   {property.bedSetup.map((bed) => (
                     <li
                       key={bed}
-                      className="rounded-xl border border-sea/10 bg-paper px-5 py-3.5 text-sm text-ink/75"
+                      className="rounded-xl border border-line bg-white px-5 py-3.5 text-sm text-neutral-700"
                     >
                       {bed}
                     </li>
@@ -171,10 +183,12 @@ export function ApartmentDetail({ property }: { property: Property }) {
                   {property.distances.map((distance) => (
                     <div
                       key={distance.label}
-                      className="flex items-baseline justify-between gap-4 border-b border-sea/10 py-3 last:border-b-0"
+                      className="flex items-baseline justify-between gap-4 border-b border-line py-3 last:border-b-0"
                     >
-                      <dt className="text-sm text-ink/75">{distance.label}</dt>
-                      <dd className="font-display text-base text-sea">{distance.value}</dd>
+                      <dt className="text-sm text-neutral-700">{distance.label}</dt>
+                      <dd className="font-display text-base font-bold text-neutral-950">
+                        {distance.value}
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -182,7 +196,7 @@ export function ApartmentDetail({ property }: { property: Property }) {
             )}
 
             {property.registrationNo && (
-              <p className="text-xs text-ink/45">
+              <p className="text-xs text-neutral-500">
                 {tDetail("registration", { number: property.registrationNo })}
               </p>
             )}
@@ -192,24 +206,26 @@ export function ApartmentDetail({ property }: { property: Property }) {
             <section
               id="book"
               aria-labelledby="book-title"
-              className="scroll-mt-28 rounded-2xl border border-sea/10 bg-paper p-7"
+              className="scroll-mt-28 rounded-2xl border border-line bg-white p-7 shadow-float"
             >
-              <h2 id="book-title" className="font-display text-2xl text-sea">
+              <h2 id="book-title" className="font-display text-2xl font-bold tracking-tight text-neutral-950">
                 {tDetail("book")}
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-ink/70">{tDetail("bookLead")}</p>
+              <p className="mt-4 text-sm leading-relaxed text-neutral-500">{tDetail("bookLead")}</p>
 
               <InquiryCta property={property} />
 
-              <p className="mt-4 text-center text-sm text-ink/60">{site.contact.phone}</p>
+              <p className="mt-4 text-center font-display text-sm font-bold text-neutral-700">
+                {site.contact.phone}
+              </p>
             </section>
 
-            <div className="flex flex-col gap-3 rounded-2xl border border-sea/10 px-7 py-6">
+            <div className="flex flex-col gap-3 rounded-2xl border border-line bg-pastel-cream px-7 py-6">
               <a
                 href={mapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-start gap-2 text-sm font-medium text-sea transition hover:text-terracotta"
+                className="inline-flex items-start gap-2 font-display text-sm font-bold text-neutral-950 transition hover:text-link-hover"
               >
                 <span aria-hidden="true">↗</span>
                 {tDetail("map")}
@@ -221,7 +237,7 @@ export function ApartmentDetail({ property }: { property: Property }) {
                   href={platform.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-start gap-2 text-sm text-ink/65 transition hover:text-terracotta"
+                  className="inline-flex items-start gap-2 text-sm font-medium text-neutral-700 transition hover:text-link-hover"
                 >
                   <span aria-hidden="true">↗</span>
                   {tDetail("alsoOn", { platform: platform.label })}

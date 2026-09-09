@@ -6,19 +6,19 @@ export function CtaBand({ id = "cta" }: { id?: string }) {
   const t = useTranslations("home.cta");
 
   return (
-    <section aria-labelledby={`${id}-title`} className="bg-sand">
-      <div className="mx-auto w-full max-w-6xl px-6 pb-24 md:pb-32">
-        <div className="flex flex-col gap-8 rounded-2xl bg-terracotta px-8 py-14 text-paper md:flex-row md:items-center md:justify-between md:px-14">
+    <section aria-labelledby={`${id}-title`} className="bg-white">
+      <div className="mx-auto w-full max-w-6xl px-6 pb-20 md:pb-24">
+        <div className="flex flex-col gap-8 rounded-2xl bg-brand px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
           <div className="max-w-xl">
-            <h2 id={`${id}-title`} className="font-display text-3xl text-paper md:text-4xl">
+            <h2
+              id={`${id}-title`}
+              className="font-display text-3xl font-bold tracking-tight text-black md:text-4xl"
+            >
               {t("title")}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-paper/85">{t("body")}</p>
+            <p className="mt-4 text-base leading-relaxed text-brand-tint">{t("body")}</p>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-paper px-7 py-3.5 text-sm font-medium text-terracotta transition hover:bg-sand"
-          >
+          <Link href="/contact" className="btn-dark shrink-0 px-7 py-3.5 hover:bg-white">
             {t("action")}
             <span aria-hidden="true">→</span>
           </Link>

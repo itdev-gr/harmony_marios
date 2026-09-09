@@ -2,9 +2,41 @@ import { useLocale, useTranslations } from "next-intl";
 
 const GUEST_OPTIONS = [1, 2, 3, 4, 5] as const;
 
-const fieldLabel = "text-[11px] font-medium tracking-[0.14em] text-ink/50 uppercase";
+function CalendarIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0 text-neutral-950"
+    >
+      <rect x="3.5" y="5" width="17" height="15.5" rx="3" />
+      <path d="M8 3v4M16 3v4M3.5 10h17" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function GuestIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0 text-neutral-950"
+    >
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+const fieldLabel = "font-display text-xs font-bold tracking-wide text-neutral-500 uppercase";
 const fieldControl =
-  "w-full bg-transparent font-body text-sm text-ink outline-none placeholder:text-ink/40";
+  "w-full bg-transparent font-display text-sm font-semibold text-neutral-950 outline-none placeholder:text-neutral-400";
 
 export function Hero() {
   const t = useTranslations("home");
@@ -12,71 +44,70 @@ export function Hero() {
   const locale = useLocale();
 
   return (
-    <section className="relative isolate overflow-hidden bg-sea text-paper">
+    <section className="relative z-10 isolate bg-pastel-cream">
       {/* hero photo slot: /images/hero.jpg — client to supply a golden-hour
-          Riviera / Acropolis shot. Until it exists the ground is layered CSS
-          only, so nothing 404s and the section never collapses. */}
+          Riviera / Acropolis shot. Until it exists the ground is a soft pastel
+          wash only, so nothing 404s and the section never collapses. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-20 bg-[radial-gradient(120%_90%_at_15%_0%,#1c5b68_0%,#123f4a_45%,#0d2f38_100%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 opacity-[0.55] mix-blend-soft-light bg-[repeating-linear-gradient(115deg,rgba(247,244,239,0.10)_0px,rgba(247,244,239,0.10)_1px,transparent_1px,transparent_9px)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -top-24 -right-24 -z-10 h-[28rem] w-[28rem] rounded-full bg-terracotta/25 blur-3xl"
+        className="absolute inset-x-0 top-0 -z-10 h-2/3 bg-[radial-gradient(90%_70%_at_85%_0%,rgba(112,244,109,0.20)_0%,rgba(112,244,109,0)_60%)]"
       />
 
-      <div className="mx-auto w-full max-w-6xl px-6 pt-24 pb-20 md:pt-32 md:pb-28">
-        <p className="inline-flex items-center gap-2 rounded-full border border-sand/25 bg-sand/10 px-4 py-1.5 text-[11px] font-medium tracking-[0.16em] text-sand uppercase">
-          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-terracotta" />
+      <div className="mx-auto w-full max-w-6xl px-6 pt-16 md:pt-24">
+        <p className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 font-display text-xs font-bold tracking-wide text-black uppercase">
+          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-black" />
           {t("heroBadge")}
         </p>
 
-        <h1 className="mt-8 max-w-4xl font-display text-5xl leading-[0.98] text-balance text-sand md:text-6xl lg:text-7xl">
+        <h1 className="mt-7 max-w-4xl font-display text-5xl leading-[1.02] font-extrabold tracking-tight text-balance text-neutral-950 md:text-6xl lg:text-7xl">
           {t("heroTitle")}
         </h1>
 
-        <p className="mt-7 max-w-xl text-base leading-relaxed text-sand/80 md:text-lg">
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-500 md:text-lg">
           {t("heroSubtitle")}
         </p>
 
-        {/* No-JS availability form: a plain GET to the apartments page, which
-            reads from/to/guests off the query string. */}
+        {/* Carento's `box-search-advance`: a white card floating over the seam
+            between the hero and the section below. No-JS — a plain GET to the
+            apartments page, which reads from/to/guests off the query string. */}
         <form
           method="get"
           action={`/${locale}/apartments`}
           aria-label={t("search.legend")}
-          className="mt-12 grid max-w-3xl gap-px overflow-hidden rounded-2xl border border-sand/20 bg-mist/70 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_auto]"
+          className="relative z-10 mt-12 -mb-10 grid gap-y-5 rounded-2xl border border-line bg-white p-6 shadow-float sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-end lg:gap-x-2 lg:p-7"
         >
-          <label className="flex flex-col gap-1.5 bg-paper px-5 py-4">
-            <span className={fieldLabel}>{t("search.arrival")}</span>
-            <input type="date" name="from" className={fieldControl} />
+          <label className="flex items-center gap-3 lg:px-5">
+            <CalendarIcon />
+            <span className="flex min-w-0 flex-col gap-1">
+              <span className={fieldLabel}>{t("search.arrival")}</span>
+              <input type="date" name="from" className={fieldControl} />
+            </span>
           </label>
 
-          <label className="flex flex-col gap-1.5 bg-paper px-5 py-4">
-            <span className={fieldLabel}>{t("search.departure")}</span>
-            <input type="date" name="to" className={fieldControl} />
+          <label className="flex items-center gap-3 lg:border-l lg:border-line lg:px-5">
+            <CalendarIcon />
+            <span className="flex min-w-0 flex-col gap-1">
+              <span className={fieldLabel}>{t("search.departure")}</span>
+              <input type="date" name="to" className={fieldControl} />
+            </span>
           </label>
 
-          <label className="flex flex-col gap-1.5 bg-paper px-5 py-4">
-            <span className={fieldLabel}>{t("search.guests")}</span>
-            <select name="guests" defaultValue="2" className={fieldControl}>
-              {GUEST_OPTIONS.map((count) => (
-                <option key={count} value={count}>
-                  {t("search.guestsOption", { count })}
-                </option>
-              ))}
-              <option value="6">{t("search.guestsMax")}</option>
-            </select>
+          <label className="flex items-center gap-3 lg:border-l lg:border-line lg:px-5">
+            <GuestIcon />
+            <span className="flex min-w-0 flex-col gap-1">
+              <span className={fieldLabel}>{t("search.guests")}</span>
+              <select name="guests" defaultValue="2" className={fieldControl}>
+                {GUEST_OPTIONS.map((count) => (
+                  <option key={count} value={count}>
+                    {t("search.guestsOption", { count })}
+                  </option>
+                ))}
+                <option value="6">{t("search.guestsMax")}</option>
+              </select>
+            </span>
           </label>
 
-          <button
-            type="submit"
-            className="bg-terracotta px-7 py-4 font-body text-sm font-medium text-paper transition hover:bg-terracotta/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand"
-          >
+          <button type="submit" className="btn-primary w-full px-8 py-3.5 sm:col-span-2 lg:col-span-1 lg:w-auto">
             {tCommon("checkAvailability")}
           </button>
         </form>

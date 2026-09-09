@@ -14,11 +14,15 @@ const MAX_TILES = 5;
  */
 function PhotoPlate({ initial, caption }: { initial: string; caption?: string }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 bg-mist">
-      <span aria-hidden="true" className="font-display text-6xl text-sea/25">
+    <div className="flex h-full flex-col items-center justify-center gap-3 bg-neutral-100">
+      <span aria-hidden="true" className="font-display text-6xl font-extrabold text-neutral-300">
         {initial}
       </span>
-      {caption && <p className="text-xs tracking-[0.14em] text-sea/45 uppercase">{caption}</p>}
+      {caption && (
+        <p className="font-display text-xs font-bold tracking-wide text-neutral-400 uppercase">
+          {caption}
+        </p>
+      )}
     </div>
   );
 }
@@ -37,7 +41,7 @@ export function Gallery({ property }: { property: Property }) {
 
   if (tiles.length === 0) {
     return (
-      <div className="aspect-[16/9] overflow-hidden rounded-2xl md:aspect-[21/9]">
+      <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-line md:aspect-[21/9]">
         <PhotoPlate initial={initial} caption={t("photosSoon")} />
       </div>
     );
@@ -54,7 +58,7 @@ export function Gallery({ property }: { property: Property }) {
         return (
           <div
             key={src}
-            className={`relative overflow-hidden rounded-2xl bg-mist ${
+            className={`relative overflow-hidden rounded-2xl border border-line bg-neutral-100 ${
               isLead ? "aspect-[16/9] sm:col-span-2 md:aspect-[21/9]" : "aspect-[4/3]"
             }`}
           >

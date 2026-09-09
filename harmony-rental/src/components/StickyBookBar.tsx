@@ -11,13 +11,12 @@ export function StickyBookBar({ property }: { property: Property }) {
   const t = useTranslations("common");
 
   return (
-    <div className="sticky bottom-0 z-40 border-t border-mist bg-paper/95 backdrop-blur md:hidden">
+    <div className="sticky bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur md:hidden">
       <div className="flex items-center justify-between gap-4 px-5 py-3">
-        <p className="min-w-0 truncate font-display text-base text-sea">{property.name}</p>
-        <a
-          href="#book"
-          className="shrink-0 rounded-full bg-terracotta px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-terracotta/90"
-        >
+        <p className="min-w-0 truncate font-display text-base font-bold text-neutral-950">
+          {property.name}
+        </p>
+        <a href="#book" className="btn-primary btn-sm shrink-0">
           {t("requestToBook")}
         </a>
       </div>

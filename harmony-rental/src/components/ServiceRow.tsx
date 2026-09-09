@@ -55,18 +55,20 @@ export function ServiceRow({ service }: { service: Service }) {
   const meta = SERVICE_META[service.slug];
 
   return (
-    <div className="group relative flex h-full flex-col gap-4 rounded-2xl border border-mist bg-sand/40 p-7 transition hover:border-sea/20 hover:bg-sand">
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-paper text-sea ring-1 ring-mist">
+    <div className="group relative flex h-full flex-col gap-4 rounded-2xl border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-card">
+      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-pastel-green text-neutral-950">
         {meta?.icon ?? KeyIcon}
       </span>
 
-      <h3 className="font-display text-xl text-sea">{service.title}</h3>
-      <p className="text-sm leading-relaxed text-ink/70">{service.description}</p>
+      <h3 className="font-display text-xl font-bold tracking-tight text-neutral-950">
+        {service.title}
+      </h3>
+      <p className="text-sm leading-relaxed text-neutral-500">{service.description}</p>
 
       {meta && (
         <Link
           href={meta.href}
-          className="mt-auto inline-flex items-center gap-2 pt-2 text-sm font-medium text-terracotta transition after:absolute after:inset-0 hover:gap-3"
+          className="mt-auto inline-flex items-center gap-2 pt-2 font-display text-sm font-bold text-brand-tint transition after:absolute after:inset-0 hover:gap-3 hover:text-link-hover"
         >
           {t("more")}
           <span className="sr-only"> — {service.title}</span>

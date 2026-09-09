@@ -28,15 +28,12 @@ export function HomeSections() {
 
       <Section
         id="featured"
-        tone="sand"
+        tone="paper"
         eyebrow={t("featured.eyebrow")}
         title={t("featured.title")}
         lead={t("featured.lead")}
         action={
-          <Link
-            href="/apartments"
-            className="inline-flex items-center gap-2 rounded-full border border-sea/20 px-5 py-2.5 text-sm font-medium text-sea transition hover:border-sea hover:bg-sea hover:text-sand"
-          >
+          <Link href="/apartments" className="btn-outline btn-sm">
             {t("featured.all")}
             <span aria-hidden="true">→</span>
           </Link>
@@ -51,7 +48,7 @@ export function HomeSections() {
 
       <Section
         id="services"
-        tone="paper"
+        tone="green"
         eyebrow={tServices("eyebrow")}
         title={tServices("title")}
         lead={tServices("lead")}
@@ -65,7 +62,7 @@ export function HomeSections() {
 
       <HostsBand />
 
-      <Testimonials tone="sand" />
+      <Testimonials tone="blue" />
 
       <Faq items={site.faqs.guest} tone="paper" />
 

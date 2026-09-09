@@ -8,9 +8,8 @@ import { submitInquiry, type InquiryState } from "@/lib/inquiry";
 
 const initialState: InquiryState = { ok: false };
 
-const fieldLabel = "text-[11px] font-medium tracking-[0.14em] text-ink/50 uppercase";
-const fieldControl =
-  "w-full rounded-lg border border-sea/15 bg-paper px-3.5 py-2.5 font-body text-sm text-ink outline-none placeholder:text-ink/40 focus-visible:border-terracotta";
+const fieldLabel = "field-label";
+const fieldControl = "field-control";
 
 /**
  * The booking / contact form. Used two ways: mounted with a `property` on
@@ -50,7 +49,7 @@ function PrefilledInquiryForm({ property }: { property?: Property }) {
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="-mt-2 text-xs text-terracotta">
+    <p id={id} role="alert" className="-mt-2 text-xs font-semibold text-danger">
       {message}
     </p>
   );
@@ -83,7 +82,7 @@ function InquiryForm({
     return (
       <p
         role="status"
-        className="mt-6 rounded-2xl border border-sea/10 bg-sand px-5 py-4 text-sm text-ink/80"
+        className="mt-6 rounded-2xl border border-brand bg-pastel-green px-5 py-4 text-sm font-medium text-brand-tint"
       >
         {t("success")}
       </p>
@@ -193,7 +192,7 @@ function InquiryForm({
       </label>
 
       {state.error === "send-failed" && (
-        <p role="alert" className="text-xs text-terracotta">
+        <p role="alert" className="text-xs font-semibold text-danger">
           {t("errors.sendFailed")}
         </p>
       )}
@@ -201,7 +200,7 @@ function InquiryForm({
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-terracotta px-6 py-3 text-center text-sm font-medium text-paper transition hover:bg-terracotta/90 disabled:opacity-60"
+        className="btn-primary mt-2 w-full disabled:opacity-60"
       >
         {pending ? t("sending") : t("submit")}
       </button>

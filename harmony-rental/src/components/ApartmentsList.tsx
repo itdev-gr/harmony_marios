@@ -83,22 +83,22 @@ export function ApartmentsList({
 
   return (
     <>
-      <section aria-labelledby="apartments-title" className="bg-sand">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-          <p className="text-xs font-medium tracking-[0.18em] text-terracotta uppercase">
+      <section aria-labelledby="apartments-title" className="bg-white">
+        <div className="mx-auto w-full max-w-6xl px-6 pt-14 pb-20 md:pt-20 md:pb-24">
+          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
             {t("eyebrow")}
           </p>
           <h1
             id="apartments-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-tight text-balance text-sea md:text-5xl lg:text-6xl"
+            className="mt-4 max-w-3xl font-display text-4xl leading-tight font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
           >
             {t("title")}
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
             {t("lead")}
           </p>
 
-          <div className="mt-10 flex flex-col gap-5 border-y border-sea/10 py-5 md:flex-row md:items-center md:justify-between">
+          <div className="mt-10 flex flex-col gap-5 rounded-2xl border border-line bg-white p-5 shadow-float md:flex-row md:items-center md:justify-between">
             <nav aria-label={t("filters.area")} className="flex flex-wrap items-center gap-2">
               {tabs.map((tab) => {
                 const isActive = tab.area === activeArea;
@@ -112,8 +112,8 @@ export function ApartmentsList({
                     aria-current={isActive ? "page" : undefined}
                     className={
                       isActive
-                        ? "rounded-full bg-sea px-5 py-2 text-sm font-medium text-sand"
-                        : "rounded-full border border-sea/15 px-5 py-2 text-sm font-medium text-ink/70 transition hover:border-sea/40 hover:text-sea"
+                        ? "rounded-full bg-neutral-950 px-5 py-2 font-display text-sm font-bold text-white"
+                        : "rounded-full border border-line px-5 py-2 font-display text-sm font-bold text-neutral-700 transition hover:border-brand hover:bg-brand hover:text-black"
                     }
                   >
                     {tab.label}
@@ -132,14 +132,14 @@ export function ApartmentsList({
               {from && <input type="hidden" name="from" value={from} />}
               {to && <input type="hidden" name="to" value={to} />}
 
-              <label className="flex items-center gap-2 rounded-full border border-sea/15 bg-paper py-2 pr-3 pl-5">
-                <span className="text-[11px] font-medium tracking-[0.14em] text-ink/50 uppercase">
+              <label className="flex items-center gap-2 rounded-full border border-line bg-white py-2 pr-3 pl-5">
+                <span className="font-display text-xs font-bold tracking-wide text-neutral-500 uppercase">
                   {t("filters.guests")}
                 </span>
                 <select
                   name="guests"
                   defaultValue={activeGuests ? String(activeGuests) : ""}
-                  className="bg-transparent font-body text-sm text-ink outline-none"
+                  className="bg-transparent font-display text-sm font-semibold text-neutral-950 outline-none"
                 >
                   <option value="">{t("filters.guestsAny")}</option>
                   {GUEST_OPTIONS.map((count) => (
@@ -150,16 +150,15 @@ export function ApartmentsList({
                 </select>
               </label>
 
-              <button
-                type="submit"
-                className="rounded-full border border-sea/15 px-5 py-2.5 text-sm font-medium text-sea transition hover:border-sea hover:bg-sea hover:text-sand"
-              >
+              <button type="submit" className="btn-primary btn-sm">
                 {t("filters.apply")}
               </button>
             </form>
           </div>
 
-          <p className="mt-6 text-sm text-ink/55">{t("count", { count: matches.length })}</p>
+          <p className="mt-6 font-display text-sm font-semibold text-neutral-500">
+            {t("count", { count: matches.length })}
+          </p>
 
           {matches.length > 0 ? (
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -168,16 +167,15 @@ export function ApartmentsList({
               ))}
             </div>
           ) : (
-            <div className="mt-8 rounded-2xl border border-sea/10 bg-paper px-8 py-14 text-center">
-              <p className="mx-auto max-w-md text-base leading-relaxed text-ink/70">
+            <div className="mt-8 rounded-2xl border border-line bg-pastel-cream px-8 py-14 text-center">
+              <p className="mx-auto max-w-md text-base leading-relaxed text-neutral-700">
                 {t("empty")}
               </p>
-              <Link
-                href="/apartments"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-sea px-6 py-2.5 text-sm font-medium text-sand transition hover:bg-sea/90"
-              >
-                {t("filters.clear")}
-              </Link>
+              <div className="mt-6 flex justify-center">
+                <Link href="/apartments" className="btn-dark btn-sm">
+                  {t("filters.clear")}
+                </Link>
+              </div>
             </div>
           )}
         </div>
