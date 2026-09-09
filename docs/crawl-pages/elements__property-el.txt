@@ -1,0 +1,340 @@
+URL: https://harmonyrental.gr/elements/property-el/
+TITLE: Property Amenities - HarmonyRental.gr - harmonyrental.gr
+DESC: Explore our property amenities. Enhance your stay with us today!
+
+Property Amenities - HarmonyRental.gr - harmonyrental.gr
+Skip to main content
+harmonyrental.gr
+Home
+Apartment Rentals in Greece – Harmony Rental
+Athens Rentals – HarmonyRental.gr
+Alimos Properties – harmonyrental.gr
+Expert Apartment Renovation Services
+Athens Tour List – Explore Iconic Sites
+Home Airbnb Services – Harmony Rental
+Entry Process & Facilities
+Check-In & Check-Out Process
+Transportation
+Food Tips for Your Stay – Harmony Rental
+About Us
+Contact Us
+X
+Home
+Apartment Rentals in Greece – Harmony Rental
+Athens Rentals – HarmonyRental.gr
+Alimos Properties – harmonyrental.gr
+Expert Apartment Renovation Services
+Athens Tour List – Explore Iconic Sites
+Home Airbnb Services – Harmony Rental
+Entry Process & Facilities
+Check-In & Check-Out Process
+Transportation
+Food Tips for Your Stay – Harmony Rental
+About Us
+Contact Us
+X
+Advance Search
+Warning
+: Undefined array key "select_options_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+492
+Warning
+: Undefined array key "price_range_slider_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+493
+Warning
+: Undefined array key "features_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+494
+Select Status
+ Alimos 
+ Athens 
+Select Type
+ Apartment 
+Search
+Select City
+ Alimos 
+ Athens 
+Price Range:
+ $
+ - 
+ $
+Amenities
+Air Conditioning
+Airport shuttle
+Balcony
+Bathtab
+Family rooms
+Flat-screen TV
+Free parking
+Free Wifi
+Goddess
+Heating
+Kitchen
+Lift
+Non-smoking rooms
+Parking
+Private Bathroom
+Shower
+Terrace
+Transfer from/to the airport
+View
+Washing machine
+Property Grid
+Apartment
+For Alimos
+ 62 m²
+ sq m size
+Coastal Harmony Alimos
+ 20 Vasilissis Amalias, Alimos, Athens, 17455, Greece 
+Bedrooms
+ 1 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+December 18, 2024
+Apartment
+For Athens
+ 102 m²
+ sq m size
+Harmony Luxury Grand Suite
+ 54 Βίκτωρος Οὑγκώ, Αθήνα 
+Bedrooms
+ 3 
+Bathrooms
+ 2 
+Parking
+ NA 
+Harmony Rental
+December 18, 2024
+Apartment
+For Athens
+Acropolis Harmony Loft
+ NA 
+Bedrooms
+ 3 
+Bathrooms
+ 2 
+Parking
+ NA 
+Harmony Rental
+December 16, 2024
+Apartment
+For Athens
+ 39 m²
+ sq.m. size
+Harmony Gazi Living
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+December 2, 2024
+Featured
+Apartment
+For Athens
+ 39 m²
+ sq.m. size
+Vasilis Luxury Apartment 6 | Harmony Rental
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+November 2, 2024
+Apartment
+For Athens
+ 110 m²
+ sq.m. size
+Vasilis Luxury Apartment 5 in Athens
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+November 2, 2024
+Featured Properties Grid
+Featured
+Apartment
+For Athens
+Athens
+Vasilis Luxury Apartment 6 | Harmony Rental
+39 m² sq.m. size
+NA
+NA
+NA
+Property Carousel
+Apartment
+For Alimos
+ 62 m²
+ sq m size
+Coastal Harmony Alimos
+ 20 Vasilissis Amalias, Alimos, Athens, 17455, Greece 
+Bedrooms
+ 1 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+December 18, 2024
+Apartment
+For Athens
+ 102 m²
+ sq m size
+Harmony Luxury Grand Suite
+ 54 Βίκτωρος Οὑγκώ, Αθήνα 
+Bedrooms
+ 3 
+Bathrooms
+ 2 
+Parking
+ NA 
+Harmony Rental
+December 18, 2024
+Apartment
+For Athens
+Acropolis Harmony Loft
+ NA 
+Bedrooms
+ 3 
+Bathrooms
+ 2 
+Parking
+ NA 
+Harmony Rental
+December 16, 2024
+Apartment
+For Athens
+ 39 m²
+ sq.m. size
+Harmony Gazi Living
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+December 2, 2024
+Featured
+Apartment
+For Athens
+ 39 m²
+ sq.m. size
+Vasilis Luxury Apartment 6 | Harmony Rental
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+November 2, 2024
+Apartment
+For Athens
+ 110 m²
+ sq.m. size
+Vasilis Luxury Apartment 5 in Athens
+ NA 
+Bedrooms
+ NA 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+November 2, 2024
+Featured Properties Carousel
+Featured
+Apartment
+For Athens
+Athens
+Vasilis Luxury Apartment 6 | Harmony Rental
+39 m² sq.m. size
+NA
+NA
+NA
+Properties By City
+New York City
+0 Properties
+View All Listings
+London
+0 Properties
+View All Listings
+Toronto
+0 Properties
+View All Listings
+Paris
+0 Properties
+View All Listings
+Sydney
+0 Properties
+View All Listings
+Bangkok
+0 Properties
+View All Listings
+Properties By category
+Family House
+0 Properties
+View All Listings
+Apartment
+10 Properties
+View All Listings
+Town House
+0 Properties
+View All Listings
+Condo
+0 Properties
+View All Listings
+Modern Villa
+0 Properties
+View All Listings
+Farm House
+0 Properties
+View All Listings
+Open Street Map
+Property Slider
+Subscribe Our Newsletter
+ Join our email subscription now to get updates and notifications. 
+ Email 
+Send
+We can find you the perfect property and help you locate the home of your dreams.
+Instagram
+Facebook-f
+Tiktok
+General Info
+About Us
+Our Properties
+Quick Links
+Blog / News
+Contact Us
+Contacts
++306988811888
+info@harmonyrental.gr
+Vizantiou 2, Athina 117 41, Greece.
+© 2024 Harmony Rental. All Rights Reserved. Developed by 
+IT DEV
+Terms & Condition
+User Login
+Username*
+Password*
+Lost your password?
+Don't have an account? 
+Sign Up

@@ -1,0 +1,166 @@
+URL: https://harmonyrental.gr/alimos/
+TITLE: Alimos Properties - harmonyrental.gr - harmonyrental.gr
+DESC: Explore properties in Alimos. Find your ideal home today!
+
+Alimos Properties - harmonyrental.gr - harmonyrental.gr
+Skip to main content
+harmonyrental.gr
+Home
+Apartment Rentals in Greece – Harmony Rental
+Athens Rentals – HarmonyRental.gr
+Alimos Properties – harmonyrental.gr
+Expert Apartment Renovation Services
+Athens Tour List – Explore Iconic Sites
+Home Airbnb Services – Harmony Rental
+Entry Process & Facilities
+Check-In & Check-Out Process
+Transportation
+Food Tips for Your Stay – Harmony Rental
+About Us
+Contact Us
+X
+Home
+Apartment Rentals in Greece – Harmony Rental
+Athens Rentals – HarmonyRental.gr
+Alimos Properties – harmonyrental.gr
+Expert Apartment Renovation Services
+Athens Tour List – Explore Iconic Sites
+Home Airbnb Services – Harmony Rental
+Entry Process & Facilities
+Check-In & Check-Out Process
+Transportation
+Food Tips for Your Stay – Harmony Rental
+About Us
+Contact Us
+X
+Our Appartments in Alimos
+Warning
+: Undefined array key "select_options_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+492
+Warning
+: Undefined array key "price_range_slider_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+493
+Warning
+: Undefined array key "features_color" in 
+/home/u889715421/domains/harmonyrental.gr/public_html/wp-content/plugins/luxus-core/includes/widgets/elementor-widgets/advance-search.php
+ on line 
+494
+Select Status
+ Alimos 
+ Athens 
+Select Type
+ Apartment 
+Search
+Select City
+ Alimos 
+ Athens 
+Price Range:
+ $
+ - 
+ $
+Amenities
+Air Conditioning
+Airport shuttle
+Balcony
+Bathtab
+Family rooms
+Flat-screen TV
+Free parking
+Free Wifi
+Goddess
+Heating
+Kitchen
+Lift
+Non-smoking rooms
+Parking
+Private Bathroom
+Shower
+Terrace
+Transfer from/to the airport
+View
+Washing machine
+Apartment List
+Apartment
+For Alimos
+ 62 m²
+ sq m size
+Coastal Harmony Alimos
+ 20 Vasilissis Amalias, Alimos, Athens, 17455, Greece 
+Bedrooms
+ 1 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+December 18, 2024
+Apartment
+For Alimos
+ 62 m²
+ size
+Vasilis Luxury Apartment Alimos | Harmony Rental
+ NA 
+Bedrooms
+ 1 
+Bathrooms
+ NA 
+Parking
+ NA 
+Harmony Rental
+October 9, 2024
+Alimos all Tour Destination List
+ Cine Alimos 
+ Outdoor cinema 
+ Details
+ Phaleron War Cemetery 
+ Military cemetery 
+ Details
+ WETPARK ALIMOS 
+ Playground 
+ Details
+ Thalia Gallery 
+ Art gallery 
+ Details
+ Kalamaki Beach 
+ Beach 
+ Details
+ Hymettus 
+ Mountain peak 
+ Details
+ Kinetta beach 
+ Beach 
+ Details
+ Asteras Beach 
+ Beach 
+ Details
+Subscribe Our Newsletter
+ Join our email subscription now to get updates and notifications. 
+ Email 
+Send
+We can find you the perfect property and help you locate the home of your dreams.
+Instagram
+Facebook-f
+Tiktok
+General Info
+About Us
+Our Properties
+Quick Links
+Blog / News
+Contact Us
+Contacts
++306988811888
+info@harmonyrental.gr
+Vizantiou 2, Athina 117 41, Greece.
+© 2024 Harmony Rental. All Rights Reserved. Developed by 
+IT DEV
+Terms & Condition
+User Login
+Username*
+Password*
+Lost your password?
+Don't have an account? 
+Sign Up
