@@ -315,6 +315,17 @@
       "loukoumades": "Loukoumades — Greek doughnuts, best eaten warm."
     }
   },
+  "journal": {
+    "eyebrow": "Journal",
+    "title": "The Harmony Rental journal",
+    "lead": "Practical, data-driven guides to renting well in Athens — neighborhoods, paperwork, budgets and timing, from the team that manages apartments here every day.",
+    "readMore": "Read more",
+    "backToAll": "All articles",
+    "author": "Harmony Rental",
+    "categories": {
+      "renting-in-athens": "Renting in Athens"
+    }
+  },
   "footer": {
     "tagline": "Apartments, experiences and property care in Athens & Alimos.",
     "exploreHeading": "Explore",

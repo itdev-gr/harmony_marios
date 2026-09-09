@@ -82,4 +82,58 @@
   .field-control {
     @apply w-full rounded-xl border border-line bg-white px-4 py-3 font-body text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-brand focus:ring-2 focus:ring-brand/50;
   }
+
+  /* Reading typography for journal post bodies, rendered from markdown via
+     react-markdown. Kept as one small ruleset here rather than a Tailwind
+     typography plugin — the post content is fixed, trusted markdown with a
+     narrow, known set of elements (headings, paragraphs, lists, tables,
+     links, bold, blockquotes, hr). */
+  .journal-prose h2 {
+    @apply mt-12 mb-4 font-display text-2xl font-bold tracking-tight text-neutral-950 first:mt-0;
+  }
+  .journal-prose h3 {
+    @apply mt-9 mb-3 font-display text-xl font-bold tracking-tight text-neutral-950;
+  }
+  .journal-prose h4 {
+    @apply mt-7 mb-2 font-display text-base font-bold tracking-tight text-neutral-950;
+  }
+  .journal-prose p {
+    @apply mt-4 leading-relaxed text-neutral-700 first:mt-0;
+  }
+  .journal-prose ul {
+    @apply mt-4 list-disc space-y-2 pl-5 text-neutral-700;
+  }
+  .journal-prose ol {
+    @apply mt-4 list-decimal space-y-2 pl-5 text-neutral-700;
+  }
+  .journal-prose li > p {
+    @apply mt-0;
+  }
+  .journal-prose strong {
+    @apply font-semibold text-neutral-950;
+  }
+  .journal-prose a {
+    @apply font-medium text-brand-tint underline underline-offset-2 hover:text-link-hover;
+  }
+  .journal-prose blockquote {
+    @apply mt-4 border-l-2 border-brand pl-4 text-neutral-500 italic;
+  }
+  .journal-prose hr {
+    @apply my-10 border-line;
+  }
+  .journal-prose table {
+    @apply w-full min-w-[560px] border-collapse text-sm;
+  }
+  .journal-prose thead {
+    @apply bg-pastel-cream;
+  }
+  .journal-prose th {
+    @apply border-b border-line px-4 py-3 text-left font-display font-bold text-neutral-950;
+  }
+  .journal-prose td {
+    @apply border-b border-line px-4 py-3 align-top text-neutral-700;
+  }
+  .journal-prose tr:last-child > td {
+    @apply border-b-0;
+  }
 }
