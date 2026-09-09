@@ -8,6 +8,11 @@ const stayContentSource = readFileSync(
   "utf8",
 );
 
+// The legacy Gazi building's leaked door code — built from parts so the
+// digits never appear verbatim anywhere in this repo (it ships to the
+// client and contractors), even inside the assertion that checks for them.
+const legacyDoorCode = ["81", "96"].join("");
+
 const notFound = vi.fn(() => {
   throw new Error("NEXT_NOT_FOUND");
 });
@@ -59,7 +64,7 @@ describe("stays data", () => {
 
   it("never leaks the Gazi building's legacy street-door keypad code in the exported data", () => {
     const json = JSON.stringify(stays);
-    expect(json).not.toContain("8196");
+    expect(json).not.toContain(legacyDoorCode);
   });
 
   // Scans the FILE SOURCE (comments included), not just the exported data —
@@ -67,7 +72,7 @@ describe("stays data", () => {
   // must still fail this one, since this file ships to the client and
   // contractors.
   it("never leaks the keypad code anywhere in stay.ts, comments included", () => {
-    expect(stayContentSource).not.toContain("8196");
+    expect(stayContentSource).not.toContain(legacyDoorCode);
   });
 });
 
