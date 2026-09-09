@@ -142,6 +142,73 @@
       "circleBody": "Renovation, furnishing, listing, hosting and day-to-day care under one roof — for owners, that means one number to call and one team accountable."
     }
   },
+  "owners": {
+    "eyebrow": "For property owners",
+    "title": "Own a property in Athens? We renovate, furnish, list and host it — full circle.",
+    "lead": "One team handles the whole journey — from a tired flat to a well-reviewed, fully compliant short-term rental — so you don't have to coordinate five contractors and a separate manager.",
+    "heroCta": "Tell us about your property",
+    "services": {
+      "eyebrow": "Property management",
+      "title": "What we handle for you",
+      "lead": "Everything that keeps a short-term rental running well, in one place."
+    },
+    "why": {
+      "eyebrow": "Why Harmony",
+      "title": "Why owners work with us"
+    },
+    "compliance": {
+      "eyebrow": "Compliance",
+      "title": "Registered and above board",
+      "body": "Short-term rentals in Greece must carry a valid Registration Number (AMA) before they can be listed. We handle that registration for every property we manage, keep the paperwork current, and display the number on the listing — so you and your guests both know it's in order."
+    },
+    "circle": {
+      "eyebrow": "How it works",
+      "title": "The full circle",
+      "lead": "Five stages, one team accountable for all of them.",
+      "steps": {
+        "renovate": "Renovate",
+        "furnish": "Furnish",
+        "list": "List",
+        "host": "Host",
+        "earn": "Earn"
+      }
+    },
+    "crossLink": {
+      "title": "Starting with a renovation?",
+      "body": "See the seven steps we follow, from the first consultation to handover, and the timeline to expect.",
+      "cta": "Our renovation process"
+    },
+    "inquiry": {
+      "eyebrow": "Get in touch",
+      "title": "Tell us about your property",
+      "lead": "A location, a few photos and what you're hoping for is enough to start — we'll come back with next steps, not a sales pitch."
+    },
+    "renovation": {
+      "eyebrow": "Apartment renovation",
+      "title": "A renovation with one team accountable, start to finish",
+      "lead": "From the first consultation to the handover, the same team plans, builds and signs off every stage — permits and Greek building regulations included.",
+      "process": {
+        "eyebrow": "Our process",
+        "title": "The seven steps",
+        "lead": "The same process behind every apartment we've renovated."
+      },
+      "timeline": {
+        "title": "Typical timeline",
+        "value": "4–12 weeks",
+        "body": "The full range for a complete renovation, depending on scope — we set a detailed schedule with you during planning."
+      },
+      "portfolio": {
+        "eyebrow": "Recent work",
+        "title": "Before & after",
+        "lead": "A selection of apartments we've taken from tired to rent-ready."
+      },
+      "crossLink": {
+        "title": "Already renovated — or don't need to be?",
+        "body": "See how we furnish, list and host a property once it's ready, and what we handle for owners day to day.",
+        "cta": "For property owners"
+      }
+    }
+  },
   "inquiry": {
     "name": "Full name",
     "email": "Email",

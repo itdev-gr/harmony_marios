@@ -119,6 +119,155 @@ export const site = {
       },
     ],
   },
+  // The 6 Home Airbnb sub-services, kept close to the legacy /home-airbnb/
+  // copy (inventory §1). English-only, like `services` above — this is
+  // reused verbatim content, not UI chrome, so it isn't run through the
+  // messages catalogue.
+  ownerServices: [
+    {
+      slug: "prep-styling",
+      title: "Property Preparation & Styling",
+      description:
+        "We help prepare your home to meet Airbnb standards by offering professional cleaning, interior " +
+        "styling, and furnishing services. Our team ensures that your space is both comfortable and visually " +
+        "appealing to attract more guests.",
+    },
+    {
+      slug: "listing-optimization",
+      title: "Listing Optimization",
+      description:
+        "Our experts create and optimize your Airbnb listing to enhance visibility. We handle everything from " +
+        "professional photography to detailed descriptions, highlighting your property's best features to make " +
+        "it stand out.",
+    },
+    {
+      slug: "guest-management",
+      title: "Guest Management & Support",
+      description:
+        "Harmony Rental provides end-to-end guest management, including communication, check-in, and check-out " +
+        "processes. We handle guest inquiries and requests promptly, ensuring a seamless and pleasant experience " +
+        "for your visitors.",
+    },
+    {
+      slug: "maintenance-cleaning",
+      title: "Maintenance & Cleaning Services",
+      description:
+        "We manage routine maintenance and thorough cleaning between stays, ensuring your property is always in " +
+        "pristine condition for guests. Our team is on call for any urgent repairs or maintenance needs, giving " +
+        "you peace of mind.",
+    },
+    {
+      slug: "pricing-revenue",
+      title: "Pricing & Revenue Optimization",
+      description:
+        "Our team conducts market analysis to set competitive rates, maximizing your revenue potential. We " +
+        "adjust pricing based on demand, seasonality, and local events to keep your property profitable year-round.",
+    },
+    {
+      slug: "compliance-safety",
+      title: "Compliance & Safety Assurance",
+      description:
+        "We ensure your property meets all local regulations and safety standards. Our team conducts safety " +
+        "checks and helps manage necessary permits, ensuring that your Airbnb listing operates legally and safely.",
+    },
+  ],
+
+  // "Why Harmony" value props for owners, from the same legacy page.
+  ownerValueProps: [
+    {
+      slug: "expertise",
+      title: "Professional Expertise",
+      description:
+        "Our experienced team provides top-tier property management services, ensuring high guest satisfaction " +
+        "and positive reviews.",
+    },
+    {
+      slug: "earnings",
+      title: "Maximized Earnings",
+      description:
+        "With our market analysis and dynamic pricing strategies, we help you achieve the best return on your " +
+        "investment.",
+    },
+    {
+      slug: "experience",
+      title: "Seamless Experience",
+      description:
+        "From listing creation to guest check-out, we handle every aspect of your Airbnb management, saving you " +
+        "time and effort.",
+    },
+    {
+      slug: "quality",
+      title: "Quality Assurance",
+      description:
+        "We prioritize the quality and safety of your property, maintaining high standards to enhance your " +
+        "guests' experience.",
+    },
+  ],
+
+  // The 7-step renovation process from /apartment-renovation/ — inventory
+  // calls this "the strongest, most original page on the site"; copy kept
+  // close to verbatim.
+  renovationProcess: [
+    {
+      step: 1,
+      title: "Consultation & Planning",
+      description:
+        "We begin with a detailed consultation to understand your needs, vision, and budget. Our team then " +
+        "creates a personalized renovation plan, outlining materials, layout, and estimated timelines.",
+    },
+    {
+      step: 2,
+      title: "Design & Approval",
+      description:
+        "Our experts develop design proposals, including 3D visualizations, to illustrate the final look. " +
+        "After approval, we secure any necessary permits and approvals, ensuring everything meets Greek " +
+        "regulations and client expectations.",
+    },
+    {
+      step: 3,
+      title: "Demolition & Preparation",
+      description:
+        "We safely demolish and remove existing fixtures, walls, or floors as needed, preparing the space for " +
+        "renovation. Our team manages waste disposal efficiently, minimizing disruption to your environment.",
+    },
+    {
+      step: 4,
+      title: "Structural Work",
+      description:
+        "We handle structural changes, including modifications to walls, ceilings, flooring, electrical, and " +
+        "plumbing systems. All work is performed according to Greek building codes, ensuring safety and " +
+        "compliance throughout the process.",
+    },
+    {
+      step: 5,
+      title: "Interior Finishing",
+      description:
+        "Our team installs new flooring, tiles, cabinetry, and fixtures per the approved design. We complete " +
+        "painting, lighting installation, and any decorative elements, creating a cohesive and modern interior.",
+    },
+    {
+      step: 6,
+      title: "Quality Control & Inspections",
+      description:
+        "Each phase undergoes thorough quality checks to meet our high standards. We also conduct comprehensive " +
+        "inspections, guaranteeing that all renovation aspects align with safety and quality regulations.",
+    },
+    {
+      step: 7,
+      title: "Final Touches & Handover",
+      description:
+        "We finalize the renovation with detailed cleaning, furniture setup (if included), and finishing " +
+        "touches. The fully renovated apartment is then handed over, ready for immediate use and enjoyment.",
+    },
+  ],
+
+  // Before/after case studies for the renovation portfolio section. The
+  // legacy site had a bare, uncaptioned gallery under this heading with no
+  // real project content (inventory §4 #40) — empty here until the client
+  // supplies real pairs (image paths + a short caption per project); the
+  // section renders nothing while this stays empty.
+  renovationProjects: [] as { before: string; after: string; caption: string }[],
+
   testimonials: [
     {
       name: "Miroslava",
