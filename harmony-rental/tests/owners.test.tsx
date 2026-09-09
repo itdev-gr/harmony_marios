@@ -64,9 +64,10 @@ describe("Owners page", () => {
     }
   });
 
-  it("offers an owner inquiry form", () => {
+  it("offers an owner inquiry form that tags submissions kind=owner", () => {
     const { container } = renderWithIntl(<OwnersSections />);
     expect(container.querySelector("form")).toBeInTheDocument();
+    expect(container.querySelector('input[name="kind"]')).toHaveAttribute("value", "owner");
   });
 
   it("links on to the renovation page", () => {

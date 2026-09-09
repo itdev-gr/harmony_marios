@@ -16,6 +16,14 @@ export type InquiryState = {
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use the date picker (YYYY-MM-DD).");
 
+// `kind` distinguishes the generic contact form from the owners page's
+// inquiry form so the two land with different email subjects (see `subject`
+// below); an enum so a forged/unexpected value fails validation rather than
+// being silently accepted. It's meaningless once a property is attached
+// (booking subjects always win), but both schemas accept it for a single
+// shared `InquiryCta` field.
+const kindSchema = z.enum(["contact", "owner"]).optional();
+
 // The property detail page posts dates and a guest count; the generic
 // contact page (no propertySlug) only ever asks for name/email/message.
 const bookingSchema = z
@@ -27,6 +35,7 @@ const bookingSchema = z
     guests: z.coerce.number().int().min(1).max(12, "Between 1 and 12 guests."),
     message: z.string().trim().optional(),
     propertySlug: z.string().min(1),
+    kind: kindSchema,
   })
   .refine((data) => data.to > data.from, {
     message: "Departure must be after arrival.",
@@ -41,6 +50,7 @@ const contactSchema = z.object({
   guests: z.coerce.number().int().min(1).max(12).optional(),
   message: z.string().trim().optional(),
   propertySlug: z.string().optional(),
+  kind: kindSchema,
 });
 
 /** FormData yields `null` for a missing field and `""` for an empty one; fold both to `undefined` so optional zod fields short-circuit correctly. */
@@ -51,9 +61,11 @@ function str(value: FormDataEntryValue | null): string | undefined {
 }
 
 /**
- * Server action behind both the apartment booking CTA and the generic
- * contact form. `propertySlug` present ⇒ booking inquiry (dates + guests
- * required); absent ⇒ a plain "Website inquiry".
+ * Server action behind the apartment booking CTA, the generic contact form,
+ * and the owners page's inquiry form. `propertySlug` present ⇒ booking
+ * inquiry (dates + guests required, subject names the apartment); absent ⇒
+ * `kind === "owner"` sends "Owner inquiry", anything else a plain "Website
+ * inquiry".
  */
 export async function submitInquiry(
   _prevState: InquiryState,
@@ -82,6 +94,7 @@ export async function submitInquiry(
     guests: str(formData.get("guests")),
     message: str(formData.get("message")),
     propertySlug,
+    kind: str(formData.get("kind")),
   };
 
   const parsed = (isBooking ? bookingSchema : contactSchema).safeParse(raw);
@@ -99,7 +112,11 @@ export async function submitInquiry(
 
   const data = parsed.data;
   const property = isBooking ? getProperty(data.propertySlug!) : undefined;
-  const subject = property ? `Booking inquiry — ${property.name}` : "Website inquiry";
+  const subject = property
+    ? `Booking inquiry — ${property.name}`
+    : data.kind === "owner"
+      ? "Owner inquiry"
+      : "Website inquiry";
 
   const lines = [
     `Name: ${data.name}`,

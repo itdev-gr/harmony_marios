@@ -202,7 +202,7 @@ export function OwnersSections() {
               {t("inquiry.title")}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-neutral-500">{t("inquiry.lead")}</p>
-            <InquiryCta />
+            <InquiryCta kind="owner" />
           </div>
 
           <div className="flex flex-col gap-3 self-start rounded-2xl border border-line bg-pastel-cream px-7 py-6">

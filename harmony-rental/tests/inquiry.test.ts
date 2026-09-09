@@ -127,3 +127,42 @@ describe("submitInquiry — generic contact (no propertySlug)", () => {
     expect(mockSendMail).not.toHaveBeenCalled();
   });
 });
+
+describe("submitInquiry — owner inquiry (kind=owner, no propertySlug)", () => {
+  const validOwner = {
+    name: "Jamie Rivera",
+    email: "jamie@example.com",
+    message: "I have an apartment in Koukaki I'd like renovated and managed.",
+    kind: "owner",
+    website: "",
+  };
+
+  it("emails a subject of exactly 'Owner inquiry'", async () => {
+    const result = await submitInquiry({ ok: false }, formData(validOwner));
+
+    expect(result.ok).toBe(true);
+    expect(mockSendMail).toHaveBeenCalledTimes(1);
+    expect(mockSendMail.mock.calls[0][0].subject).toBe("Owner inquiry");
+  });
+
+  it("rejects a forged/unrecognized kind value rather than accepting it", async () => {
+    const result = await submitInquiry(
+      { ok: false },
+      formData({ ...validOwner, kind: "admin" }),
+    );
+
+    expect(result.ok).toBe(false);
+    expect(mockSendMail).not.toHaveBeenCalled();
+  });
+
+  it("still uses the booking subject when a propertySlug is also present, ignoring kind=owner", async () => {
+    const result = await submitInquiry(
+      { ok: false },
+      formData({ ...validBooking, kind: "owner" }),
+    );
+
+    expect(result.ok).toBe(true);
+    expect(mockSendMail.mock.calls[0][0].subject).toContain(property.name);
+    expect(mockSendMail.mock.calls[0][0].subject).not.toBe("Owner inquiry");
+  });
+});

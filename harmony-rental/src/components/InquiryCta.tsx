@@ -11,26 +11,45 @@ const initialState: InquiryState = { ok: false };
 const fieldLabel = "field-label";
 const fieldControl = "field-control";
 
+/** Distinguishes the generic contact form from the owners page's inquiry
+ *  form so they land with different email subjects — see `submitInquiry`.
+ *  Meaningless (ignored) once a `property` is attached, since a booking's
+ *  subject always names the apartment instead. */
+type InquiryKind = "contact" | "owner";
+
 /**
- * The booking / contact form. Used two ways: mounted with a `property` on
+ * The booking / contact form. Used three ways: mounted with a `property` on
  * the apartment detail page (dates + guests required, subject names the
- * apartment), or bare on the contact page (name/email/message only, subject
- * "Website inquiry" — see `submitInquiry`).
+ * apartment); bare on the contact page (name/email/message only, subject
+ * "Website inquiry"); or with `kind="owner"` on the owners page (same fields
+ * as contact, subject "Owner inquiry" — see `submitInquiry`).
  *
  * The detail route deliberately never reads `searchParams` (keeps the page
  * statically generated), so any prefill of dates/guests carried over from
  * the availability search happens here instead, client-side, via
  * `useSearchParams` — which requires the `Suspense` boundary below.
  */
-export function InquiryCta({ property }: { property?: Property }) {
+export function InquiryCta({
+  property,
+  kind = "contact",
+}: {
+  property?: Property;
+  kind?: InquiryKind;
+}) {
   return (
-    <Suspense fallback={<InquiryForm property={property} />}>
-      <PrefilledInquiryForm property={property} />
+    <Suspense fallback={<InquiryForm property={property} kind={kind} />}>
+      <PrefilledInquiryForm property={property} kind={kind} />
     </Suspense>
   );
 }
 
-function PrefilledInquiryForm({ property }: { property?: Property }) {
+function PrefilledInquiryForm({
+  property,
+  kind,
+}: {
+  property?: Property;
+  kind: InquiryKind;
+}) {
   // `useSearchParams` can come back null outside a router context (e.g. a
   // component test that renders `InquiryCta` without the app router) —
   // fall back to no prefill rather than throwing.
@@ -38,6 +57,7 @@ function PrefilledInquiryForm({ property }: { property?: Property }) {
   return (
     <InquiryForm
       property={property}
+      kind={kind}
       defaultFrom={params?.get("from") ?? undefined}
       defaultTo={params?.get("to") ?? undefined}
       defaultGuests={params?.get("guests") ?? undefined}
@@ -57,11 +77,13 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 
 function InquiryForm({
   property,
+  kind = "contact",
   defaultFrom,
   defaultTo,
   defaultGuests,
 }: {
   property?: Property;
+  kind?: InquiryKind;
   defaultFrom?: string;
   defaultTo?: string;
   defaultGuests?: string;
@@ -92,6 +114,7 @@ function InquiryForm({
   return (
     <form action={formAction} className="mt-6 flex flex-col gap-4" noValidate>
       {property && <input type="hidden" name="propertySlug" value={property.slug} />}
+      {!property && kind === "owner" && <input type="hidden" name="kind" value="owner" />}
 
       {/* Honeypot: hidden from sighted and AT users alike, real visitors
           never fill it. A filled value tells submitInquiry to drop the
