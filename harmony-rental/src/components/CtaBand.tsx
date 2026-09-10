@@ -7,7 +7,7 @@ export function CtaBand({ id = "cta" }: { id?: string }) {
 
   return (
     <section aria-labelledby={`${id}-title`} className="bg-white">
-      <div className="mx-auto w-full max-w-6xl px-6 pb-20 md:pb-24">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 md:py-24">
         <div className="flex flex-col gap-8 rounded-2xl bg-brand px-8 py-14 md:flex-row md:items-center md:justify-between md:px-14">
           <div className="max-w-xl">
             <h2
