@@ -23,6 +23,17 @@ type Redirect = { source: string; destination: string; permanent: boolean };
  * `source` paths never need an explicit trailing-slash variant — Next
  * normalizes trailing slashes before matching custom routes.
  */
+/**
+ * Greek used to live under `/el` (localePrefix "always"); it is now the
+ * unprefixed default. Keep the old URLs alive with permanent redirects so
+ * indexed `/el/...` links and bookmarks land on the same page. English keeps
+ * its `/en` prefix, so nothing changes there.
+ */
+const LOCALE_REDIRECTS: Redirect[] = [
+  { source: "/el", destination: "/", permanent: true },
+  { source: "/el/:path*", destination: "/:path*", permanent: true },
+];
+
 const STATIC_REDIRECTS: Redirect[] = [
   { source: "/about-us-1", destination: "/en/about", permanent: true },
   { source: "/about-us-2", destination: "/en/about", permanent: true },
@@ -115,5 +126,11 @@ function journalRedirects(): Redirect[] {
 }
 
 export function redirects(): Redirect[] {
-  return [...STATIC_REDIRECTS, ...CHECK_IN_REDIRECTS, ...apartmentRedirects(), ...journalRedirects()];
+  return [
+    ...LOCALE_REDIRECTS,
+    ...STATIC_REDIRECTS,
+    ...CHECK_IN_REDIRECTS,
+    ...apartmentRedirects(),
+    ...journalRedirects(),
+  ];
 }

@@ -54,7 +54,8 @@
       "title": "Tips for your stay in Athens",
       "lead": "Guides and local know-how from the people who host you.",
       "viewAll": "View all articles"
-    }
+    },
+    "heroTile": "{count} apartments\nAthens & Alimos"
   },
   "apartments": {
     "eyebrow": "Our apartments",

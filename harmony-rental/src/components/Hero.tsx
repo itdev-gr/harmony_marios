@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
+import { properties } from "@/content/properties";
 
 const GUEST_OPTIONS = [1, 2, 3, 4, 5] as const;
 
@@ -71,18 +72,47 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Carento Hero1's media panel — a real apartment photo (Coastal
-              Harmony Alimos living room) until the client supplies a dedicated
-              hero shot at /images/hero.jpg. */}
-          <div className="relative hidden aspect-[4/5] overflow-hidden rounded-3xl border border-line shadow-card lg:block">
-            <Image
-              src="/images/coastal-harmony-alimos/01.jpg"
-              alt=""
-              fill
-              priority
-              sizes="400px"
-              className="object-cover"
-            />
+          {/* Carento Hero3's staggered collage: three real apartment photos at
+              offset heights plus one brand tile, in place of a single flat
+              panel. Hidden on small screens where the text needs the room. */}
+          <div className="hidden grid-cols-2 gap-3.5 lg:grid">
+            <div className="grid content-start gap-3.5 pt-9">
+              <div className="relative h-56 overflow-hidden rounded-2xl border border-line shadow-card">
+                <Image
+                  src="/images/harmony-luxury-grand-suite/03.jpg"
+                  alt=""
+                  fill
+                  priority
+                  sizes="200px"
+                  className="object-cover"
+                />
+              </div>
+              <p className="flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-[#14b8ff] px-4 text-center font-display text-sm leading-snug font-extrabold text-white">
+                {t("heroTile", { count: properties.length })}
+              </p>
+            </div>
+            <div className="grid content-start gap-3.5">
+              <div className="relative h-36 overflow-hidden rounded-2xl border border-line shadow-card">
+                <Image
+                  src="/images/harmony-gazi-living/01.jpg"
+                  alt=""
+                  fill
+                  priority
+                  sizes="200px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-60 overflow-hidden rounded-2xl border border-line shadow-card">
+                <Image
+                  src="/images/coastal-harmony-alimos/01.jpg"
+                  alt=""
+                  fill
+                  priority
+                  sizes="200px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
 

@@ -107,7 +107,7 @@ describe("sitemap", () => {
   it("includes both locale variants of an apartment page", () => {
     const urls = entries.map((e) => e.url);
     expect(urls).toContain("https://harmonyrental.gr/en/apartments/coastal-harmony-alimos");
-    expect(urls).toContain("https://harmonyrental.gr/el/apartments/coastal-harmony-alimos");
+    expect(urls).toContain("https://harmonyrental.gr/apartments/coastal-harmony-alimos");
   });
 
   it("never includes anything under /stay", () => {
