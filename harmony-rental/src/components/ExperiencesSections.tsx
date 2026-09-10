@@ -3,15 +3,25 @@ import { Link } from "@/i18n/navigation";
 import { site } from "@/content/site";
 import { experiences, type ExperienceArea } from "@/content/experiences";
 import { Section } from "./Section";
+import { PageHero } from "./PageHero";
 import { CtaBand } from "./CtaBand";
 
 const AREAS = ["athens", "alimos"] as const satisfies readonly ExperienceArea[];
 
-const boatTourService = site.services.find((service) => service.slug === "boat-tour")!;
-const guidedTourService = site.services.find((service) => service.slug === "tour")!;
+function requiredService(slug: string) {
+  const service = site.services.find((s) => s.slug === slug);
+  if (!service) throw new Error(`ExperiencesSections: missing "${slug}" service in content/site.ts`);
+  return service;
+}
+const boatTourService = requiredService("boat-tour");
+const guidedTourService = requiredService("tour");
 // The FAQ line naming the boat types — reused verbatim rather than inventing
 // a fresh list (inventory §1: "yachts, sailboats, and speedboats").
-const boatFaq = site.faqs.guest.find((faq) => faq.question.includes("boats"))!;
+const boatFaq = (() => {
+  const faq = site.faqs.guest.find((f) => f.question.includes("boats"));
+  if (!faq) throw new Error('ExperiencesSections: missing the "boats" FAQ in content/site.ts');
+  return faq;
+})();
 
 /**
  * The `/experiences` page body: an intro, the Boat Tours service (advertised
@@ -25,22 +35,7 @@ export function ExperiencesSections() {
 
   return (
     <>
-      <section aria-labelledby="experiences-title" className="bg-pastel-cream">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
-            {t("eyebrow")}
-          </p>
-          <h1
-            id="experiences-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
-          >
-            {t("title")}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
-            {t("lead")}
-          </p>
-        </div>
-      </section>
+      <PageHero id="experiences" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
 
       <Section
         id="boat-tours"

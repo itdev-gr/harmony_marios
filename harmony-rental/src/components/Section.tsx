@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-/** `sand | paper | sea` are the original three; `green | blue` were added for
- *  Carento's alternating pastel section grounds. */
-type Tone = "sand" | "paper" | "sea" | "green" | "blue";
+/** `sand | paper` are the original names (sand now maps to the pale blue
+ *  cream); `green | blue` are the alternating pastel section grounds. */
+type Tone = "sand" | "paper" | "green" | "blue";
 
 const TONE: Record<Tone, { section: string; eyebrow: string; title: string; lead: string }> = {
   paper: {
@@ -28,12 +28,6 @@ const TONE: Record<Tone, { section: string; eyebrow: string; title: string; lead
     eyebrow: "text-brand-tint",
     title: "text-neutral-950",
     lead: "text-neutral-700",
-  },
-  sea: {
-    section: "bg-neutral-950 [&_:focus-visible]:outline-brand",
-    eyebrow: "text-brand",
-    title: "text-white",
-    lead: "text-neutral-300",
   },
 };
 

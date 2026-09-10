@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { site } from "@/content/site";
 import { InquiryCta } from "./InquiryCta";
+import { PageHero } from "./PageHero";
 
 /**
  * The contact page body — a lead band plus the same inquiry form used on
@@ -12,22 +13,7 @@ export function ContactSections() {
 
   return (
     <>
-      <section aria-labelledby="contact-title" className="bg-pastel-cream">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
-            {t("eyebrow")}
-          </p>
-          <h1
-            id="contact-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
-          >
-            {t("title")}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
-            {t("lead")}
-          </p>
-        </div>
-      </section>
+      <PageHero id="contact" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
 
       <section className="bg-white">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 py-20 md:grid-cols-[minmax(0,1fr)_320px] md:py-24">

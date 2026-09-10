@@ -3,6 +3,7 @@ import type { ReactElement } from "react";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/content/site";
 import { Section } from "./Section";
+import { PageHero } from "./PageHero";
 import { InquiryCta } from "./InquiryCta";
 
 const CIRCLE_STEPS = ["renovate", "furnish", "list", "host", "earn"] as const;
@@ -84,26 +85,12 @@ export function OwnersSections() {
 
   return (
     <>
-      <section aria-labelledby="owners-title" className="bg-pastel-cream">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
-            {t("eyebrow")}
-          </p>
-          <h1
-            id="owners-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
-          >
-            {t("title")}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
-            {t("lead")}
-          </p>
+      <PageHero id="owners" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")}>
           <a href="#owner-inquiry" className="btn-primary mt-8">
             {t("heroCta")}
             <span aria-hidden="true">→</span>
           </a>
-        </div>
-      </section>
+      </PageHero>
 
       <Section
         id="owner-services"

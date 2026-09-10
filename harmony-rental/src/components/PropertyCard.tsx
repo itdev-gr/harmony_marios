@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Property } from "@/content/types";
+import { PhotoPlate } from "./PhotoPlate";
 
 function GuestsIcon() {
   return (
@@ -97,11 +98,7 @@ export function PropertyCard({
         ) : (
           // Photo slot: /images/<slug>/01.jpg — client to supply. Until then a
           // calm monogram plate rather than a broken image.
-          <div className="flex h-full items-center justify-center bg-neutral-100">
-            <span aria-hidden="true" className="font-display text-6xl font-extrabold text-neutral-300">
-              {property.name.charAt(0)}
-            </span>
-          </div>
+          <PhotoPlate initial={property.name.charAt(0)} />
         )}
 
         <p className="absolute top-5 left-5 rounded-full bg-white px-4 py-1 font-display text-xs font-bold tracking-wide text-brand-tint uppercase">

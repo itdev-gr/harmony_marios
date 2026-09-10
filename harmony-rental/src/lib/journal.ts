@@ -23,6 +23,12 @@ function readPost(slug: string): JournalPost {
   const raw = fs.readFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), "utf-8");
   const { data, content } = matter(raw);
 
+  for (const field of ["title", "description", "date"] as const) {
+    if (!data[field] || String(data[field]).trim() === "") {
+      throw new Error(`journal: ${slug}.mdx is missing frontmatter field "${field}"`);
+    }
+  }
+
   return {
     slug,
     title: String(data.title ?? ""),

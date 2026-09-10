@@ -24,14 +24,11 @@
   --color-neutral-900: #313131;
   --color-neutral-950: #00072d;
 
-  --color-pastel-peach: #fff0ec;
   --color-pastel-green: #e6f4fd;
   --color-pastel-blue: #e8e8ff;
-  --color-pastel-lilac: #f6f3fc;
   --color-pastel-cream: #f7f7ff;
 
   --color-line: #dde1ef;
-  --color-warning: #ffc700;
   /* Carento's danger is #ff2e00; darkened so 14px error text still clears AA. */
   --color-danger: #cc2500;
 
@@ -47,7 +44,7 @@
    outrank Tailwind's utilities. */
 @layer base {
   body {
-    @apply bg-white font-body text-neutral-700 antialiased;
+    @apply bg-white font-body text-neutral-700;
   }
   h1,
   h2,

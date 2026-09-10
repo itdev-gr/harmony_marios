@@ -3,16 +3,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/content/site";
+import { NAV_ITEMS } from "@/lib/nav";
 
-const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/apartments", key: "apartments" },
-  { href: "/experiences", key: "experiences" },
-  { href: "/owners", key: "owners" },
-  { href: "/journal", key: "journal" },
-  { href: "/about", key: "about" },
-  { href: "/contact", key: "contact" },
-] as const;
 
 type SocialPlatform = "instagram" | "facebook" | "tiktok" | "linkedin" | "youtube";
 

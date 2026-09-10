@@ -3,26 +3,16 @@ import { Link } from "@/i18n/navigation";
 import { properties } from "@/content/properties";
 import { getExperiencesByArea, type ExperienceArea } from "@/content/experiences";
 import { Section } from "./Section";
+import { PageHero } from "./PageHero";
 import { PropertyCard } from "./PropertyCard";
+import { PhotoPlate } from "./PhotoPlate";
+import { CheckIcon } from "./CheckIcon";
 
 // Up to 3 — the brief's "3 PropertyCards" assumes 3 exist in every area.
 // They don't: today's inventory has only 1 Alimos apartment (the other 8 are
 // all Athens), so this is a cap, not a guarantee — the grid below adapts to
 // however many actually come back rather than padding with invented stock.
 const NEARBY_COUNT = 3;
-
-function CheckIcon() {
-  return (
-    <span
-      aria-hidden="true"
-      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-pastel-green"
-    >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-3 w-3 text-brand-tint">
-        <path d="m5 12.5 4.5 4.5L19 7" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </span>
-  );
-}
 
 /**
  * Shared body for `/experiences/athens` and `/experiences/alimos`: a hero,
@@ -52,22 +42,7 @@ export function AreaGuideSections({ area }: { area: ExperienceArea }) {
 
   return (
     <>
-      <section aria-labelledby="guide-title" className="bg-pastel-cream">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
-            {t(`guide.${area}.eyebrow`)}
-          </p>
-          <h1
-            id="guide-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
-          >
-            {t(`guide.${area}.title`)}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
-            {t(`guide.${area}.lead`)}
-          </p>
-        </div>
-      </section>
+      <PageHero id="guide" eyebrow={t(`guide.${area}.eyebrow`)} title={t(`guide.${area}.title`)} lead={t(`guide.${area}.lead`)} />
 
       <Section
         id="guide-list"
@@ -86,11 +61,7 @@ export function AreaGuideSections({ area }: { area: ExperienceArea }) {
               <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-2xl border border-line bg-neutral-100 md:w-2/5">
                 {/* Photo slot: real destination photography to come — a calm
                     monogram plate in the meantime, same pattern as PropertyCard. */}
-                <div className="flex h-full items-center justify-center">
-                  <span aria-hidden="true" className="font-display text-6xl font-extrabold text-neutral-300">
-                    {experience.name.charAt(0)}
-                  </span>
-                </div>
+                <PhotoPlate initial={experience.name.charAt(0)} />
               </div>
 
               <div className="flex-1">

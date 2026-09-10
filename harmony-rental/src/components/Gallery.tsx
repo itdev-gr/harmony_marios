@@ -4,26 +4,7 @@ import { useCallback, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { Property } from "@/content/types";
-
-/**
- * The calm monogram plate we show instead of a broken image — the same one the
- * cards use, since some photo slots (/images/<slug>/NN.jpg) may still be with
- * the client.
- */
-function PhotoPlate({ initial, caption }: { initial: string; caption?: string }) {
-  return (
-    <div className="flex h-full flex-col items-center justify-center gap-3 bg-neutral-100">
-      <span aria-hidden="true" className="font-display text-6xl font-extrabold text-neutral-300">
-        {initial}
-      </span>
-      {caption && (
-        <p className="font-display text-xs font-bold tracking-wide text-neutral-400 uppercase">
-          {caption}
-        </p>
-      )}
-    </div>
-  );
-}
+import { PhotoPlate } from "./PhotoPlate";
 
 function ArrowButton({
   direction,

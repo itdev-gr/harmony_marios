@@ -5,18 +5,10 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NAV_ITEMS } from "@/lib/nav";
 
 // Short labels only in the nav — never the SEO-title-length menu items from
 // the old site (legacy bug #29).
-const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/apartments", key: "apartments" },
-  { href: "/experiences", key: "experiences" },
-  { href: "/owners", key: "owners" },
-  { href: "/journal", key: "journal" },
-  { href: "/about", key: "about" },
-  { href: "/contact", key: "contact" },
-] as const;
 
 const navLink =
   "font-display text-sm font-semibold text-neutral-950 transition hover:text-link-hover";

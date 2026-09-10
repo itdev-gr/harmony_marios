@@ -2,7 +2,7 @@ export const site = {
   contact: {
     phone: "+30 698 881 1888",
     email: "info@harmonyrental.gr",
-    address: "Vizantiou 2, Athina 117 41, Greece.",
+    address: "Vizantiou 2, Athina 117 41, Greece",
   },
   services: [
     {
