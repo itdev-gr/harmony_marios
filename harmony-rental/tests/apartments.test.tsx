@@ -299,6 +299,22 @@ describe("Apartment detail", () => {
     );
   });
 
+  it("renders the filmstrip gallery: counter, thumbnails, arrows", () => {
+    renderWithIntl(<ApartmentDetail property={alimos} />);
+    expect(screen.getByText("1 / 10")).toBeInTheDocument();
+    expect(screen.getAllByRole("tab")).toHaveLength(10);
+    expect(screen.getByRole("button", { name: en.apartments.detail.prevPhoto })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: en.apartments.detail.nextPhoto })).toBeInTheDocument();
+  });
+
+  it("hides gallery controls when there is a single photo", () => {
+    renderWithIntl(
+      <ApartmentDetail property={{ ...alimos, images: [alimos.images[0]] }} />,
+    );
+    expect(screen.queryByText("1 / 1")).not.toBeInTheDocument();
+    expect(screen.queryAllByRole("tab")).toHaveLength(0);
+  });
+
   it("shows up to three related apartments, same-area first, never itself", () => {
     renderWithIntl(<ApartmentDetail property={withRegistration} />);
     const related = within(

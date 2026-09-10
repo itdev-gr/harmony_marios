@@ -89,7 +89,10 @@
       "location": "Location",
       "mapTitle": "Map showing the location of {name}",
       "relatedTitle": "You may also like",
-      "relatedAll": "All apartments"
+      "relatedAll": "All apartments",
+      "prevPhoto": "Previous photo",
+      "nextPhoto": "Next photo",
+      "thumbnails": "Photo thumbnails"
     }
   },
   "services": {
