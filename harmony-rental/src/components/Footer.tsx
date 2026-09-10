@@ -29,10 +29,8 @@ export function Footer() {
     <footer className="bg-neutral-950 text-white [&_:focus-visible]:outline-brand">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4 md:gap-12">
         <div className="space-y-4 md:col-span-2">
-          <p className="flex items-center gap-1.5 font-display text-xl font-extrabold tracking-tight text-white">
-            Harmony Rental
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand" />
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.svg" alt="Harmony Rental" className="h-24 w-auto self-start" />
           <p className="max-w-xs text-sm leading-relaxed text-neutral-300">{tFooter("tagline")}</p>
           {socials.length > 0 && (
             <ul className="flex gap-3 pt-2">

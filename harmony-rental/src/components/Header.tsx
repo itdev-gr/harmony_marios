@@ -28,14 +28,15 @@ export function Header() {
   return (
     <header className={`sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur transition-shadow ${scrolled ? "shadow-md" : ""}`}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
-        {/* Wordmark stays one text node — the green dot is decoration, not a
-            character, so the mark reads as "Harmony Rental" everywhere. */}
+        {/* The client's emblem beside a text wordmark, so the mark still reads
+            as "Harmony Rental" for assistive tech and search. */}
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-1.5 font-display text-xl font-extrabold tracking-tight text-neutral-950"
+          className="flex shrink-0 items-center gap-2.5 font-display text-xl font-extrabold tracking-tight text-neutral-950"
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.svg" alt="" className="h-8 w-auto" />
           Harmony Rental
-          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand" />
         </Link>
 
         <nav
