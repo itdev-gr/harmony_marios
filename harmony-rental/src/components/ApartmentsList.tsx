@@ -113,7 +113,7 @@ export function ApartmentsList({
                     className={
                       isActive
                         ? "rounded-full bg-neutral-950 px-5 py-2 font-display text-sm font-bold text-white"
-                        : "rounded-full border border-line px-5 py-2 font-display text-sm font-bold text-neutral-700 transition hover:border-brand hover:bg-brand hover:text-black"
+                        : "rounded-full border border-line px-5 py-2 font-display text-sm font-bold text-neutral-700 transition hover:border-brand hover:bg-brand hover:text-white"
                     }
                   >
                     {tab.label}

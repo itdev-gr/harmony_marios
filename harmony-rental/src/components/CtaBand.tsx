@@ -12,13 +12,13 @@ export function CtaBand({ id = "cta" }: { id?: string }) {
           <div className="max-w-xl">
             <h2
               id={`${id}-title`}
-              className="font-display text-3xl font-bold tracking-tight text-black md:text-4xl"
+              className="font-display text-3xl font-bold tracking-tight text-white md:text-4xl"
             >
               {t("title")}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-brand-tint">{t("body")}</p>
+            <p className="mt-4 text-base leading-relaxed text-white/80">{t("body")}</p>
           </div>
-          <Link href="/contact" className="btn-dark shrink-0 px-7 py-3.5 hover:bg-white">
+          <Link href="/contact" className="btn-dark shrink-0 px-7 py-3.5 hover:bg-white hover:text-neutral-950">
             {t("action")}
             <span aria-hidden="true">→</span>
           </Link>

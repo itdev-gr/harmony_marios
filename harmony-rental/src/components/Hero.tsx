@@ -50,11 +50,11 @@ export function Hero() {
           wash only, so nothing 404s and the section never collapses. */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 -z-10 h-2/3 bg-[radial-gradient(90%_70%_at_85%_0%,rgba(112,244,109,0.20)_0%,rgba(112,244,109,0)_60%)]"
+        className="absolute inset-x-0 top-0 -z-10 h-2/3 bg-[radial-gradient(90%_70%_at_85%_0%,rgba(37,117,252,0.14)_0%,rgba(37,117,252,0)_60%)]"
       />
 
       <div className="mx-auto w-full max-w-6xl px-6 pt-16 md:pt-24">
-        <p className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 font-display text-xs font-bold tracking-wide text-black uppercase">
+        <p className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 font-display text-xs font-bold tracking-wide text-white uppercase">
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-black" />
           {t("heroBadge")}
         </p>

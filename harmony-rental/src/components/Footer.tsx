@@ -51,7 +51,7 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={platform}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 font-display text-xs font-bold uppercase transition hover:border-brand hover:bg-brand hover:text-black"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 font-display text-xs font-bold uppercase transition hover:border-brand hover:bg-brand hover:text-white"
                   >
                     {platform.slice(0, 1).toUpperCase()}
                   </a>
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
 
         <nav aria-label={tFooter("exploreHeading")}>
-          <p className="font-display text-sm font-bold tracking-wide text-brand uppercase">
+          <p className="font-display text-sm font-bold tracking-wide text-accent uppercase">
             {tFooter("exploreHeading")}
           </p>
           <ul className="mt-5 space-y-2.5 text-sm">
@@ -80,7 +80,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="font-display text-sm font-bold tracking-wide text-brand uppercase">
+          <p className="font-display text-sm font-bold tracking-wide text-accent uppercase">
             {tFooter("contactHeading")}
           </p>
           <ul className="mt-5 space-y-2.5 text-sm text-neutral-300">

@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
-/* Design tokens transplanted from the Carento template (public/assets/css/main.css
-   `:root`), renamed to our own vocabulary. Light scheme throughout: white and
-   pastel section grounds, near-black type, one loud green for actions. */
+/* Carento layout language, recolored with the client's own brand palette
+   (extracted from harmonyrental.gr: primary blue #2575fc, deep navy #00072d,
+   cyan #00afef, pale blue grounds #e8e8ff/#f7f7ff). Light scheme throughout:
+   white and pastel section grounds, navy type, one strong blue for actions. */
 @theme {
-  /* Clear Tailwind's stock neutral ramp so only Carento's greys are reachable. */
+  /* Clear Tailwind's stock neutral ramp so only our greys are reachable. */
   --color-neutral-*: initial;
 
-  --color-brand: #70f46d;
-  --color-brand-dark: #5edd5b;
-  --color-brand-tint: #2d4a2c;
-  --color-link-hover: #235922;
+  --color-brand: #2575fc;
+  --color-brand-dark: #1b5fd9;
+  --color-brand-tint: #143c8f;
+  --color-link-hover: #123a85;
+  /* Client's cyan — reserved for accents on dark/navy grounds (fails AA on white). */
+  --color-accent: #00afef;
 
   --color-neutral-100: #f2f4f6;
   --color-neutral-200: #e4e6e8;
@@ -19,15 +22,15 @@
   --color-neutral-500: #737373;
   --color-neutral-700: #4d4d4d;
   --color-neutral-900: #313131;
-  --color-neutral-950: #1e1e1e;
+  --color-neutral-950: #00072d;
 
   --color-pastel-peach: #fff0ec;
-  --color-pastel-green: #d8f4db;
-  --color-pastel-blue: #e3f0ff;
+  --color-pastel-green: #e6f4fd;
+  --color-pastel-blue: #e8e8ff;
   --color-pastel-lilac: #f6f3fc;
-  --color-pastel-cream: #fcfcf3;
+  --color-pastel-cream: #f7f7ff;
 
-  --color-line: #dde1de;
+  --color-line: #dde1ef;
   --color-warning: #ffc700;
   /* Carento's danger is #ff2e00; darkened so 14px error text still clears AA. */
   --color-danger: #cc2500;
@@ -64,13 +67,13 @@
    controls, so every page speaks the same dialect. */
 @layer components {
   .btn-primary {
-    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-display text-sm font-bold text-black transition duration-200 hover:bg-brand-dark;
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-display text-sm font-bold text-white transition duration-200 hover:bg-brand-dark;
   }
   .btn-dark {
-    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 py-3 font-display text-sm font-bold text-white transition duration-200 hover:bg-brand hover:text-black;
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 py-3 font-display text-sm font-bold text-white transition duration-200 hover:bg-brand hover:text-white;
   }
   .btn-outline {
-    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-display text-sm font-bold text-neutral-950 transition duration-200 hover:border-brand hover:bg-brand;
+    @apply inline-flex w-fit items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-display text-sm font-bold text-neutral-950 transition duration-200 hover:border-brand hover:bg-brand hover:text-white;
   }
   .btn-sm {
     @apply px-5 py-2.5;
