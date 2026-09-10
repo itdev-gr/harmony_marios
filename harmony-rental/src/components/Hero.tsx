@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
 const GUEST_OPTIONS = [1, 2, 3, 4, 5] as const;
@@ -54,18 +55,36 @@ export function Hero() {
       />
 
       <div className="mx-auto w-full max-w-6xl px-6 pt-16 md:pt-24">
-        <p className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 font-display text-xs font-bold tracking-wide text-white uppercase">
-          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-black" />
-          {t("heroBadge")}
-        </p>
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_400px]">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-1.5 font-display text-xs font-bold tracking-wide text-white uppercase">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-black" />
+              {t("heroBadge")}
+            </p>
 
-        <h1 className="mt-7 max-w-4xl font-display text-5xl leading-[1.02] font-extrabold tracking-tight text-balance text-neutral-950 md:text-6xl lg:text-7xl">
-          {t("heroTitle")}
-        </h1>
+            <h1 className="mt-7 font-display text-5xl leading-[1.02] font-extrabold tracking-tight text-balance text-neutral-950 md:text-6xl lg:text-7xl">
+              {t("heroTitle")}
+            </h1>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-500 md:text-lg">
-          {t("heroSubtitle")}
-        </p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-500 md:text-lg">
+              {t("heroSubtitle")}
+            </p>
+          </div>
+
+          {/* Carento Hero1's media panel — a real apartment photo (Coastal
+              Harmony Alimos living room) until the client supplies a dedicated
+              hero shot at /images/hero.jpg. */}
+          <div className="relative hidden aspect-[4/5] overflow-hidden rounded-3xl border border-line shadow-card lg:block">
+            <Image
+              src="/images/coastal-harmony-alimos/01.jpg"
+              alt=""
+              fill
+              priority
+              sizes="400px"
+              className="object-cover"
+            />
+          </div>
+        </div>
 
         {/* Carento's `box-search-advance`: a white card floating over the seam
             between the hero and the section below. No-JS — a plain GET to the

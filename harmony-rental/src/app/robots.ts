@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://harmonyrental.gr";
+import { BASE_URL } from "@/lib/seo";
 
 /**
  * `/stay/:token` is a per-guest, token-gated page (see src/app/stay) —

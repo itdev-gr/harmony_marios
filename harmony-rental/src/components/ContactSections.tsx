@@ -52,6 +52,14 @@ export function ContactSections() {
             >
               {site.contact.email}
             </a>
+            <a
+              href={`https://wa.me/${site.contact.phone.replace(/[^0-9]/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display text-sm font-bold text-neutral-950 transition hover:text-link-hover"
+            >
+              WhatsApp
+            </a>
 
             <iframe
               src={`https://maps.google.com/maps?q=${encodeURIComponent("Vizantiou 2, Athina 117 41, Greece")}&z=16&output=embed`}

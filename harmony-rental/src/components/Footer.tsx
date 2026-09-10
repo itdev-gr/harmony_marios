@@ -98,6 +98,16 @@ export function Footer() {
                 {contact.email}
               </a>
             </li>
+            <li>
+              <a
+                href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-brand"
+              >
+                WhatsApp
+              </a>
+            </li>
           </ul>
         </div>
       </div>

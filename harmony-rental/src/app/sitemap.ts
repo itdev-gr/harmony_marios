@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 import { properties } from "@/content/properties";
 import { getPosts } from "@/lib/journal";
 
-const BASE_URL = "https://harmonyrental.gr";
+import { BASE_URL } from "@/lib/seo";
 
 /**
  * Every locale-prefixed page in the app, excluding the gated `/stay/:token`
