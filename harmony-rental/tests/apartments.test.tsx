@@ -201,13 +201,12 @@ describe("Apartment detail", () => {
     expect(container.textContent ?? "").not.toMatch(/AMA/);
   });
 
-  it("links the neighbourhood out to Google Maps rather than embedding one", () => {
-    const { container } = renderWithIntl(<ApartmentDetail property={alimos} />);
+  it("links the location out to Google Maps alongside the embed", () => {
+    renderWithIntl(<ApartmentDetail property={alimos} />);
     expect(screen.getByRole("link", { name: en.apartments.detail.map })).toHaveAttribute(
       "href",
-      `https://maps.google.com/?q=${encodeURIComponent(`${alimos.neighborhood}, Athens`)}`,
+      `https://maps.google.com/?q=${encodeURIComponent("Vasilissis Amalias 20, Alimos 174 55")}`,
     );
-    expect(container.querySelector("iframe")).not.toBeInTheDocument();
   });
 
   it("shows no OTA badges while no listing URLs are known", () => {
@@ -264,10 +263,12 @@ describe("Apartment detail", () => {
   });
 
   it("falls back to a monogram plate when there are no photos yet", () => {
-    const { container } = renderWithIntl(
-      <ApartmentDetail property={{ ...alimos, images: [] }} />,
-    );
-    expect(container.querySelector("img")).not.toBeInTheDocument();
+    renderWithIntl(<ApartmentDetail property={{ ...alimos, images: [] }} />);
+    // The gallery shows no photo of THIS property (related cards may still
+    // carry their own photos further down the page).
+    expect(
+      screen.queryByRole("img", { name: /Coastal Harmony Alimos — photo/ }),
+    ).not.toBeInTheDocument();
     expect(screen.getByText(en.apartments.detail.photosSoon)).toBeInTheDocument();
   });
 
@@ -275,6 +276,42 @@ describe("Apartment detail", () => {
     renderWithIntl(<ApartmentDetail property={alimos} />, "el", el);
     expect(screen.getByText(el.apartments.detail.about)).toBeInTheDocument();
     expect(screen.getByText("62 τ.μ.")).toBeInTheDocument();
+  });
+
+  it("embeds a map pinned at the confirmed address", () => {
+    renderWithIntl(<ApartmentDetail property={alimos} />);
+    const frame = screen.getByTitle(/Coastal Harmony Alimos/);
+    expect(frame).toHaveAttribute(
+      "src",
+      expect.stringContaining(encodeURIComponent("Vasilissis Amalias 20, Alimos 174 55")),
+    );
+    expect(frame).toHaveAttribute("src", expect.stringContaining("output=embed"));
+    expect(frame).toHaveAttribute("loading", "lazy");
+  });
+
+  it("falls back to a neighborhood-level map when no address is confirmed", () => {
+    const gazi = getProperty("harmony-gazi-living")!;
+    renderWithIntl(<ApartmentDetail property={gazi} />);
+    const frame = screen.getByTitle(/Harmony Gazi Living/);
+    expect(frame).toHaveAttribute(
+      "src",
+      expect.stringContaining(encodeURIComponent(`${gazi.neighborhood}, Athens, Greece`)),
+    );
+  });
+
+  it("shows up to three related apartments, same-area first, never itself", () => {
+    renderWithIntl(<ApartmentDetail property={withRegistration} />);
+    const related = within(
+      screen.getByRole("region", { name: en.apartments.detail.relatedTitle }),
+    ).getAllByRole("heading", { level: 3 });
+    expect(related).toHaveLength(3);
+    const names = related.map((h) => h.textContent);
+    expect(names).not.toContain(withRegistration.name);
+    // Acropolis Harmony Loft is an Athens property; with 7 other Athens
+    // apartments available, every related card must be Athens too.
+    for (const name of names) {
+      expect(properties.find((p) => p.name === name)?.area).toBe("athens");
+    }
   });
 });
 

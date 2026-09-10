@@ -2,8 +2,10 @@ import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/content/site";
+import { properties } from "@/content/properties";
 import type { Property } from "@/content/types";
 import { Gallery } from "./Gallery";
+import { PropertyCard } from "./PropertyCard";
 import { StickyBookBar } from "./StickyBookBar";
 import { InquiryCta } from "./InquiryCta";
 
@@ -81,9 +83,15 @@ export function ApartmentDetail({ property }: { property: Property }) {
     },
   ].filter((fact): fact is { key: string; label: string; value: string } => Boolean(fact));
 
-  const mapsHref = `https://maps.google.com/?q=${encodeURIComponent(
-    `${property.neighborhood}, Athens`,
-  )}`;
+  // Exact address when the inventory confirms one, neighborhood-level otherwise.
+  const mapQuery = property.address ?? `${property.neighborhood}, Athens, Greece`;
+  const mapsHref = `https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`;
+  const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=15&output=embed`;
+  // Up to three cross-sell cards: same-area neighbours first, then the rest.
+  const related = [
+    ...properties.filter((p) => p.slug !== property.slug && p.area === property.area),
+    ...properties.filter((p) => p.slug !== property.slug && p.area !== property.area),
+  ].slice(0, 3);
   // All null in today's inventory, so this renders nothing until the client
   // hands over real listing URLs.
   const listings = OTA_PLATFORMS.flatMap((platform) => {
@@ -195,6 +203,16 @@ export function ApartmentDetail({ property }: { property: Property }) {
               </Block>
             )}
 
+            <Block title={tDetail("location")}>
+              <iframe
+                src={mapEmbedSrc}
+                title={tDetail("mapTitle", { name: property.name })}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-72 w-full rounded-2xl border border-line"
+              />
+            </Block>
+
             {property.registrationNo && (
               <p className="text-xs text-neutral-500">
                 {tDetail("registration", { number: property.registrationNo })}
@@ -246,6 +264,36 @@ export function ApartmentDetail({ property }: { property: Property }) {
             </div>
           </aside>
         </div>
+
+        {related.length > 0 && (
+          <section aria-labelledby="related-title" className="mt-16 border-t border-line pt-10">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2
+                id="related-title"
+                className="font-display text-2xl font-bold tracking-tight text-neutral-950"
+              >
+                {tDetail("relatedTitle")}
+              </h2>
+              <Link href="/apartments" className="btn-outline btn-sm">
+                {tDetail("relatedAll")}
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+            <div
+              className={
+                related.length >= 3
+                  ? "mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                  : related.length === 2
+                    ? "mt-8 grid max-w-3xl gap-6 sm:grid-cols-2"
+                    : "mt-8 grid max-w-sm gap-6"
+              }
+            >
+              {related.map((p) => (
+                <PropertyCard key={p.slug} property={p} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
 
       <StickyBookBar property={property} />

@@ -85,7 +85,11 @@
       "registration": "Property registration (AMA): {number}",
       "alsoOn": "Also on {platform}",
       "book": "Request to book",
-      "bookLead": "Tell us your dates and who is coming. We answer in person, usually within the hour, and hold the apartment while you decide."
+      "bookLead": "Tell us your dates and who is coming. We answer in person, usually within the hour, and hold the apartment while you decide.",
+      "location": "Location",
+      "mapTitle": "Map showing the location of {name}",
+      "relatedTitle": "You may also like",
+      "relatedAll": "All apartments"
     }
   },
   "services": {

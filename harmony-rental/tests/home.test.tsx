@@ -34,6 +34,7 @@ const nullish: Property = {
   slug: "test-apartment",
   name: "Test Apartment",
   provisionalName: false,
+  address: null,
   area: "athens",
   neighborhood: "Koukaki",
   sizeSqm: null,

@@ -5,7 +5,8 @@ export const propertySchema = z.object({
   name: z.string(),
   provisionalName: z.boolean().default(false),
   area: z.enum(["athens", "alimos"]),
-  neighborhood: z.string(), // e.g. "Gazi – Kerameikos"
+  neighborhood: z.string(),
+  address: z.string().nullable(),          // street address when confirmed; null renders neighborhood-level map // e.g. "Gazi – Kerameikos"
   sizeSqm: z.number().nullable(),
   bedrooms: z.number().nullable(),
   bathrooms: z.number().nullable(),
