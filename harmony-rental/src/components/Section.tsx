@@ -49,6 +49,7 @@ export function Section({
   lead,
   action,
   tone = "sand",
+  align = "left",
   children,
 }: {
   id: string;
@@ -57,14 +58,23 @@ export function Section({
   lead?: string;
   action?: ReactNode;
   tone?: Tone;
+  /** "center" centers the header block — for sections without a side action. */
+  align?: "left" | "center";
   children?: ReactNode;
 }) {
   const styles = TONE[tone];
+  const centered = align === "center";
 
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={styles.section}>
       <div className="mx-auto w-full max-w-6xl px-6 py-20 md:py-24">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div
+          className={
+            centered
+              ? "flex flex-col items-center gap-6 text-center"
+              : "flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          }
+        >
           <div className="max-w-2xl">
             {eyebrow && (
               <p className={`font-display text-sm font-bold tracking-wide uppercase ${styles.eyebrow}`}>

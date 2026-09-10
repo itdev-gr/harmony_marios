@@ -16,8 +16,15 @@ export function Faq({
   const t = useTranslations("faq");
 
   return (
-    <Section id={id} eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} tone={tone}>
-      <div className="flex max-w-3xl flex-col gap-3">
+    <Section
+      id={id}
+      eyebrow={t("eyebrow")}
+      title={t("title")}
+      lead={t("lead")}
+      tone={tone}
+      align="center"
+    >
+      <div className="mx-auto flex max-w-3xl flex-col gap-3">
         {items.map((item) => (
           <details
             key={item.question}
