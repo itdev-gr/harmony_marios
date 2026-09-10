@@ -31,7 +31,7 @@ function CategoryPill({ category }: { category: string }) {
  * rounded-2xl plate, category pill + date, title, excerpt (the post's meta
  * description doubles as the card excerpt), and a "Read more" pill link.
  */
-function JournalCard({ post }: { post: JournalPost }) {
+export function JournalCard({ post }: { post: JournalPost }) {
   const t = useTranslations("journal");
   const format = useFormatter();
 

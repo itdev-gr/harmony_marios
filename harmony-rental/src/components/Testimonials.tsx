@@ -9,6 +9,8 @@ const GREEK = /\p{Script=Greek}/u;
  * data layer rather than the message catalogue; on the Greek locale we show a
  * review's own Greek original when it has one. Country names are translated.
  */
+const FLAGS: Record<string, string> = { Slovakia: "🇸🇰", Poland: "🇵🇱", France: "🇫🇷" };
+
 export function Testimonials({
   tone = "blue",
 }: {
@@ -40,7 +42,10 @@ export function Testimonials({
                 </blockquote>
                 <figcaption className="border-t border-line pt-5 text-sm">
                   <span className="font-display font-bold text-neutral-950">{testimonial.name}</span>
-                  <span className="text-neutral-500"> · {t(`countries.${testimonial.country}`)}</span>
+                  <span className="text-neutral-500">
+                    {" "}· <span aria-hidden="true">{FLAGS[testimonial.country] ?? ""}</span>{" "}
+                    {t(`countries.${testimonial.country}`)}
+                  </span>
                 </figcaption>
               </figure>
             </li>

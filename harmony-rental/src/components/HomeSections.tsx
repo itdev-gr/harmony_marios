@@ -2,6 +2,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { properties } from "@/content/properties";
 import { site } from "@/content/site";
+import { getPosts } from "@/lib/journal";
+import { JournalCard } from "./JournalSections";
 import { Hero } from "./Hero";
 import { Section } from "./Section";
 import { PropertyCard } from "./PropertyCard";
@@ -18,6 +20,7 @@ const FEATURED_COUNT = 3;
  * asserted on) without a Next request context.
  */
 export function HomeSections() {
+  const tJournal = useTranslations("home.journal");
   const t = useTranslations("home");
   const tServices = useTranslations("services");
   const featured = properties.slice(0, FEATURED_COUNT);
@@ -65,6 +68,28 @@ export function HomeSections() {
       <Testimonials tone="blue" />
 
       <Faq items={site.faqs.guest} tone="paper" />
+
+      <Section
+        id="home-journal"
+        tone="sand"
+        eyebrow={tJournal("eyebrow")}
+        title={tJournal("title")}
+        lead={tJournal("lead")}
+        action={
+          <Link href="/journal" className="btn-outline btn-sm">
+            {tJournal("viewAll")}
+            <span aria-hidden="true">→</span>
+          </Link>
+        }
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          {getPosts()
+            .slice(0, 3)
+            .map((post) => (
+              <JournalCard key={post.slug} post={post} />
+            ))}
+        </div>
+      </Section>
 
       <CtaBand id="home-cta" />
     </>

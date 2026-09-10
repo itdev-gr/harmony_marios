@@ -107,6 +107,11 @@ export function PropertyCard({
         <p className="absolute top-5 left-5 rounded-full bg-white px-4 py-1 font-display text-xs font-bold tracking-wide text-brand-tint uppercase">
           {tFilters(property.area)}
         </p>
+        {property.sizeSqm !== null && (
+          <p className="absolute top-5 right-5 rounded-full bg-neutral-950/75 px-3 py-1 font-display text-xs font-bold tracking-wide text-white">
+            {t("sizeSqm", { size: property.sizeSqm })}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-6">

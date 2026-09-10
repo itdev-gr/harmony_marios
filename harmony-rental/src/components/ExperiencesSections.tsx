@@ -51,10 +51,23 @@ export function ExperiencesSections() {
         <div className="max-w-2xl">
           <p className="text-base leading-relaxed text-neutral-700">{boatTourService.description}</p>
           <p className="mt-4 text-base leading-relaxed text-neutral-700">{boatFaq.answer}</p>
-          <Link href="/contact" className="btn-primary mt-8">
-            {t("boatTours.cta")}
-            <span aria-hidden="true">→</span>
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn-primary">
+              {t("boatTours.cta")}
+              <span aria-hidden="true">→</span>
+            </Link>
+            {/* client to confirm partner link — the newer harmony-rental.vercel.app
+                site links boat4all.gr as the boat-tour operator */}
+            <a
+              href="https://boat4all.gr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              {t("boatTours.partnerCta")}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </Section>
 

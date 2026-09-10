@@ -48,6 +48,12 @@
       "title": "Planning a stay in Athens?",
       "body": "Tell us your dates and who is coming, and we will suggest the apartment that fits — or hold one for you while you decide.",
       "action": "Talk to us"
+    },
+    "journal": {
+      "eyebrow": "Journal",
+      "title": "Tips for your stay in Athens",
+      "lead": "Guides and local know-how from the people who host you.",
+      "viewAll": "View all articles"
     }
   },
   "apartments": {
@@ -109,7 +115,8 @@
     "boatTours": {
       "eyebrow": "On the water",
       "title": "Boat Tours",
-      "cta": "Contact us about a boat tour"
+      "cta": "Contact us about a boat tour",
+      "partnerCta": "Visit our boat partner"
     },
     "guidedTours": {
       "eyebrow": "Guided tours",
@@ -287,7 +294,8 @@
     "title": "Talk to us",
     "metaTitle": "Contact",
     "lead": "Questions about a stay, a renovation, or anything else — send a message and a person replies, usually within the hour.",
-    "formTitle": "Send us a message"
+    "formTitle": "Send us a message",
+    "mapTitle": "Map showing the Harmony Rental office"
   },
   "guestInfo": {
     "eyebrow": "Before you arrive",
@@ -306,7 +314,12 @@
       "requirement1": "A photo of your passport",
       "requirement2": "A phone number",
       "requirement3": "An email address",
-      "regulationNote": "Greek law requires every guest to be registered with the authorities before check-in, so we can't confirm your arrival without these details."
+      "regulationNote": "Greek law requires every guest to be registered with the authorities before check-in, so we can't confirm your arrival without these details.",
+      "requirement4": "Your flight number, so we can keep an eye on delays",
+      "checkoutRulesTitle": "When you check out",
+      "checkoutRule1": "Leave the keys on the table inside the apartment — never in the door",
+      "checkoutRule2": "Switch off the lights and the air conditioning",
+      "checkoutRule3": "Leave the space as tidy as you found it"
     },
     "transport": {
       "eyebrow": "Getting here",
@@ -346,6 +359,7 @@
     "tagline": "Apartments, experiences and property care in Athens & Alimos.",
     "exploreHeading": "Explore",
     "contactHeading": "Contact",
-    "legal": "© {year} Harmony Rental"
+    "legal": "© {year} Harmony Rental",
+    "backToTop": "Back to top"
   }
 }

@@ -87,10 +87,19 @@ export function GuestInfoSections() {
               <li>{t("policy.requirement1")}</li>
               <li>{t("policy.requirement2")}</li>
               <li>{t("policy.requirement3")}</li>
+              <li>{t("policy.requirement4")}</li>
             </ul>
             <p className="mt-5 text-sm leading-relaxed text-neutral-500">
               {t("policy.regulationNote")}
             </p>
+            <h3 className="mt-8 font-display text-base font-bold text-neutral-950">
+              {t("policy.checkoutRulesTitle")}
+            </h3>
+            <ul className="mt-3 flex list-disc flex-col gap-2 pl-5 text-sm text-neutral-700">
+              <li>{t("policy.checkoutRule1")}</li>
+              <li>{t("policy.checkoutRule2")}</li>
+              <li>{t("policy.checkoutRule3")}</li>
+            </ul>
           </div>
         </div>
       </Section>

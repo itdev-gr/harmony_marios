@@ -149,13 +149,19 @@ describe("PropertyCard", () => {
     expect(screen.queryByText(/NA|null|undefined/)).not.toBeInTheDocument();
   });
 
+  it("shows a three-post journal teaser", () => {
+    renderWithIntl(<HomeSections />);
+    expect(screen.getByText(en.home.journal.title)).toBeInTheDocument();
+    expect(screen.getAllByText(en.journal.readMore).length).toBeGreaterThanOrEqual(3);
+  });
+
   it("renders the facts it does have", () => {
     renderWithIntl(
       <PropertyCard property={{ ...nullish, sleeps: 4, bedrooms: 2, sizeSqm: 62 }} />,
     );
     expect(screen.getByText("4 guests")).toBeInTheDocument();
     expect(screen.getByText("2 bedrooms")).toBeInTheDocument();
-    expect(screen.getByText("62 m²")).toBeInTheDocument();
+    expect(screen.getAllByText("62 m²").length).toBeGreaterThanOrEqual(1);
   });
 
   it("falls back to an initial placeholder when there is no photo yet", () => {

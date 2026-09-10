@@ -52,6 +52,14 @@ export function ContactSections() {
             >
               {site.contact.email}
             </a>
+
+            <iframe
+              src={`https://maps.google.com/maps?q=${encodeURIComponent("Vizantiou 2, Athina 117 41, Greece")}&z=16&output=embed`}
+              title={t("mapTitle")}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="mt-3 h-56 w-full rounded-2xl border border-line"
+            />
           </div>
         </div>
       </section>

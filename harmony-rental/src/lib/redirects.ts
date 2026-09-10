@@ -41,6 +41,10 @@ const STATIC_REDIRECTS: Redirect[] = [
   { source: "/ways-to-go", destination: "/en/guest-info", permanent: true },
   { source: "/blog", destination: "/en/journal", permanent: true },
   { source: "/apartment-showcase", destination: "/en/apartments", permanent: true },
+  // Slug variants exposed by the interim harmony-rental.vercel.app deployment
+  { source: "/apartment-5", destination: "/en/apartments", permanent: true },
+  { source: "/property/vasilis-luxury-apartment-4-in-athens", destination: "/en/apartments/harmony-luxe-living", permanent: true },
+  { source: "/property/vasilis-luxury-apartment-alimos", destination: "/en/apartments/coastal-harmony-alimos", permanent: true },
   // theme junk (Elementor/Luxus demo content, WooCommerce shop scaffolding,
   // agent/agency chrome the old site never used for real) -> home.
   { source: "/elements/:path*", destination: "/en", permanent: true },

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./LocaleSwitcher";
@@ -20,12 +22,19 @@ const navLink =
   "font-display text-sm font-semibold text-neutral-950 transition hover:text-link-hover";
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
   const tA11y = useTranslations("a11y");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
+    <header className={`sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur transition-shadow ${scrolled ? "shadow-md" : ""}`}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
         {/* Wordmark stays one text node — the green dot is decoration, not a
             character, so the mark reads as "Harmony Rental" everywhere. */}

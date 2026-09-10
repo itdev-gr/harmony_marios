@@ -103,9 +103,15 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-6xl px-6 py-6 text-xs text-neutral-400">
-          {tFooter("legal", { year })}
-        </p>
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-6">
+          <p className="text-xs text-neutral-400">{tFooter("legal", { year })}</p>
+          <a
+            href="#"
+            className="font-display text-xs font-bold text-neutral-400 transition hover:text-accent"
+          >
+            {tFooter("backToTop")} ↑
+          </a>
+        </div>
       </div>
     </footer>
   );
