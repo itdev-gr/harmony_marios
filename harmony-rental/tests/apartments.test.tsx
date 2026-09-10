@@ -256,12 +256,11 @@ describe("Apartment detail", () => {
     );
   });
 
-  it("shows the photo when the inventory has one", () => {
+  it("shows the photos when the inventory has them", () => {
     renderWithIntl(<ApartmentDetail property={alimos} />);
-    expect(screen.getByRole("img", { name: /Coastal Harmony Alimos/ })).toHaveAttribute(
-      "src",
-      "/images/coastal-harmony-alimos/01.jpg",
-    );
+    const photos = screen.getAllByRole("img", { name: /Coastal Harmony Alimos/ });
+    expect(photos.length).toBeGreaterThanOrEqual(1);
+    expect(photos[0]).toHaveAttribute("src", "/images/coastal-harmony-alimos/01.jpg");
   });
 
   it("falls back to a monogram plate when there are no photos yet", () => {

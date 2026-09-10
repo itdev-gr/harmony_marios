@@ -25,7 +25,7 @@ export const properties: Property[] = [
     ],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/coastal-harmony-alimos/01.jpg"],
+    images: ["/images/coastal-harmony-alimos/01.jpg", "/images/coastal-harmony-alimos/02.jpg", "/images/coastal-harmony-alimos/03.jpg", "/images/coastal-harmony-alimos/04.jpg", "/images/coastal-harmony-alimos/05.jpg", "/images/coastal-harmony-alimos/06.jpg", "/images/coastal-harmony-alimos/07.jpg", "/images/coastal-harmony-alimos/08.jpg", "/images/coastal-harmony-alimos/09.jpg", "/images/coastal-harmony-alimos/10.jpg"],
     legacyUrls: ["/property/coastal-harmony-alimos/", "/property/vasilis-luxury-apartment-in-alimos/"],
   },
   {
@@ -57,7 +57,7 @@ export const properties: Property[] = [
     ],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-luxury-grand-suite/01.jpg"],
+    images: ["/images/harmony-luxury-grand-suite/01.jpg", "/images/harmony-luxury-grand-suite/02.jpg", "/images/harmony-luxury-grand-suite/03.jpg", "/images/harmony-luxury-grand-suite/04.jpg", "/images/harmony-luxury-grand-suite/05.jpg", "/images/harmony-luxury-grand-suite/06.jpg", "/images/harmony-luxury-grand-suite/07.jpg", "/images/harmony-luxury-grand-suite/08.jpg", "/images/harmony-luxury-grand-suite/09.jpg", "/images/harmony-luxury-grand-suite/10.jpg"],
     legacyUrls: ["/property/harmony-luxury-grand-suite/", "/property/vasilis-luxury-apartment/"],
   },
   {
@@ -79,7 +79,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: "00002966980",
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/acropolis-harmony-loft/01.jpg"],
+    images: ["/images/acropolis-harmony-loft/01.jpg", "/images/acropolis-harmony-loft/02.jpg", "/images/acropolis-harmony-loft/03.jpg", "/images/acropolis-harmony-loft/04.jpg", "/images/acropolis-harmony-loft/05.jpg", "/images/acropolis-harmony-loft/06.jpg", "/images/acropolis-harmony-loft/07.jpg", "/images/acropolis-harmony-loft/08.jpg", "/images/acropolis-harmony-loft/09.jpg", "/images/acropolis-harmony-loft/10.jpg"],
     legacyUrls: ["/property/acropolis-harmony-loft/"],
   },
   {
@@ -117,7 +117,7 @@ export const properties: Property[] = [
     ],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-gazi-living/01.jpg"],
+    images: ["/images/harmony-gazi-living/01.jpg", "/images/harmony-gazi-living/02.jpg", "/images/harmony-gazi-living/03.jpg", "/images/harmony-gazi-living/04.jpg", "/images/harmony-gazi-living/05.jpg", "/images/harmony-gazi-living/06.jpg", "/images/harmony-gazi-living/07.jpg", "/images/harmony-gazi-living/08.jpg", "/images/harmony-gazi-living/09.jpg", "/images/harmony-gazi-living/10.jpg"],
     legacyUrls: ["/property/harmony-gazi-living/", "/property/vasilis-luxury-apartment-6/"],
   },
   {
@@ -143,7 +143,7 @@ export const properties: Property[] = [
     ],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-syngrou-residence/01.jpg"],
+    images: ["/images/harmony-syngrou-residence/01.jpg", "/images/harmony-syngrou-residence/02.jpg", "/images/harmony-syngrou-residence/03.jpg", "/images/harmony-syngrou-residence/04.jpg", "/images/harmony-syngrou-residence/05.jpg", "/images/harmony-syngrou-residence/06.jpg", "/images/harmony-syngrou-residence/07.jpg", "/images/harmony-syngrou-residence/08.jpg", "/images/harmony-syngrou-residence/09.jpg", "/images/harmony-syngrou-residence/10.jpg"],
     legacyUrls: ["/property/vasilis-luxury-aparment-5/"],
   },
   {
@@ -171,7 +171,7 @@ export const properties: Property[] = [
     ],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-luxe-living/01.jpg"],
+    images: ["/images/harmony-luxe-living/01.jpg", "/images/harmony-luxe-living/02.jpg", "/images/harmony-luxe-living/03.jpg", "/images/harmony-luxe-living/04.jpg", "/images/harmony-luxe-living/05.jpg", "/images/harmony-luxe-living/06.jpg", "/images/harmony-luxe-living/07.jpg", "/images/harmony-luxe-living/08.jpg", "/images/harmony-luxe-living/09.jpg", "/images/harmony-luxe-living/10.jpg"],
     legacyUrls: ["/property/harmony-luxe-living/", "/property/vasilis-luxury-apartment-4/"],
   },
   {
@@ -193,7 +193,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-athens-city-apartment/01.jpg"],
+    images: ["/images/harmony-athens-city-apartment/01.jpg", "/images/harmony-athens-city-apartment/02.jpg", "/images/harmony-athens-city-apartment/03.jpg", "/images/harmony-athens-city-apartment/04.jpg", "/images/harmony-athens-city-apartment/05.jpg", "/images/harmony-athens-city-apartment/06.jpg", "/images/harmony-athens-city-apartment/07.jpg", "/images/harmony-athens-city-apartment/08.jpg", "/images/harmony-athens-city-apartment/09.jpg", "/images/harmony-athens-city-apartment/10.jpg"],
     legacyUrls: ["/harmony-athens-city-apartment/"],
   },
   {
@@ -215,7 +215,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-twin-lofts-metaxourgeio-1/01.jpg"],
+    images: ["/images/harmony-twin-lofts-metaxourgeio-1/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/02.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/03.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/04.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/05.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/06.jpg"],
     legacyUrls: ["/harmony-twin-lofts-metaxourgeio-1/"],
   },
   {
@@ -237,7 +237,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-twin-lofts-metaxourgeio-2/01.jpg"],
+    images: ["/images/harmony-twin-lofts-metaxourgeio-2/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/02.jpg"],
     legacyUrls: ["/harmony-twin-lofts-metaxourgeio-2/"],
   },
 ];
