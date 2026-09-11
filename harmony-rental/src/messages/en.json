@@ -153,6 +153,12 @@
       "title": "Apartments near these places",
       "lead": "A few apartments a short walk or drive from everything above.",
       "cta": "All {area} apartments"
+    },
+    "rows": {
+      "boatAlt": "Two sailing boats anchored off a Greek beach",
+      "guidedAlt": "Visitors walking a marble street in Plaka, below the Acropolis",
+      "athensAlt": "Athens rooftops with Lycabettus Hill in the distance",
+      "alimosAlt": "The Athens coastline along the Saronic Gulf"
     }
   },
   "hosts": {

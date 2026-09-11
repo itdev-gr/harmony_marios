@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { site } from "@/content/site";
 import { experiences, type ExperienceArea } from "@/content/experiences";
-import { Section } from "./Section";
-import { PageHero } from "./PageHero";
+import { VideoHero } from "./VideoHero";
+import { MediaRow } from "./MediaRow";
 import { CtaBand } from "./CtaBand";
 
 const AREAS = ["athens", "alimos"] as const satisfies readonly ExperienceArea[];
@@ -23,11 +23,13 @@ const boatFaq = (() => {
   return faq;
 })();
 
+const body = "text-base leading-relaxed text-neutral-700";
+
 /**
- * The `/experiences` page body: an intro, the Boat Tours service (advertised
- * on the legacy home page but with no landing page anywhere on the old site
- * — inventory §1's "gap"), a guided-tours pitch, and two cards into the
- * Athens/Alimos area guides.
+ * The `/experiences` page body: a video hero, then four alternating photo/copy
+ * rows — the two experience services (boat tours, guided tours) and the two
+ * area guides. The 16 attractions themselves live on `/experiences/[area]`,
+ * which these rows lead into.
  */
 export function ExperiencesSections() {
   const t = useTranslations("experiences");
@@ -35,85 +37,78 @@ export function ExperiencesSections() {
 
   return (
     <>
-      <PageHero id="experiences" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <VideoHero
+        id="experiences"
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+        video="/videos/experiences-athens.mp4"
+        poster="/images/experiences/hero-poster.jpg"
+      />
 
-      <Section
+      <MediaRow
         id="boat-tours"
-        tone="blue"
         eyebrow={t("boatTours.eyebrow")}
         title={t("boatTours.title")}
+        image={{ src: "/images/experiences/boat-tours.jpg", alt: t("rows.boatAlt") }}
+        imageSide="right"
       >
-        <div className="max-w-2xl">
-          <p className="text-base leading-relaxed text-neutral-700">{boatTourService.description}</p>
-          <p className="mt-4 text-base leading-relaxed text-neutral-700">{boatFaq.answer}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="btn-primary">
-              {t("boatTours.cta")}
-              <span aria-hidden="true">→</span>
-            </Link>
-            {/* client to confirm partner link — the newer harmony-rental.vercel.app
-                site links boat4all.gr as the boat-tour operator */}
-            <a
-              href="https://boat4all.gr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              {t("boatTours.partnerCta")}
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </Section>
-
-      <Section
-        id="guided-tours"
-        tone="green"
-        eyebrow={t("guidedTours.eyebrow")}
-        title={t("guidedTours.title")}
-        lead={t("guidedTours.lead")}
-        action={
-          <Link href="/contact" className="btn-outline btn-sm">
-            {t("guidedTours.cta")}
+        <p className={body}>{boatTourService.description}</p>
+        <p className={`mt-4 ${body}`}>{boatFaq.answer}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/contact" className="btn-primary">
+            {t("boatTours.cta")}
             <span aria-hidden="true">→</span>
           </Link>
-        }
-      >
-        <p className="max-w-2xl text-base leading-relaxed text-neutral-700">
-          {guidedTourService.description}
-        </p>
-      </Section>
-
-      <Section
-        id="experience-areas"
-        tone="paper"
-        eyebrow={t("areas.eyebrow")}
-        title={t("areas.title")}
-        lead={t("areas.lead")}
-      >
-        <div className="grid gap-6 sm:grid-cols-2">
-          {AREAS.map((area) => {
-            const count = experiences.filter((experience) => experience.area === area).length;
-            return (
-              <div
-                key={area}
-                className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-card"
-              >
-                <h3 className="font-display text-2xl font-bold tracking-tight text-neutral-950">
-                  {tFilters(area)}
-                </h3>
-                <p className="text-sm font-semibold text-brand-tint">
-                  {t("areas.count", { count })}
-                </p>
-                <Link href={`/experiences/${area}`} className="btn-outline btn-sm mt-auto self-start">
-                  {t("areas.cta", { area: tFilters(area) })}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            );
-          })}
+          {/* client to confirm partner link — the newer harmony-rental.vercel.app
+              site links boat4all.gr as the boat-tour operator */}
+          <a href="https://boat4all.gr" target="_blank" rel="noopener noreferrer" className="btn-outline">
+            {t("boatTours.partnerCta")}
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
-      </Section>
+      </MediaRow>
+
+      <MediaRow
+        id="guided-tours"
+        eyebrow={t("guidedTours.eyebrow")}
+        title={t("guidedTours.title")}
+        image={{ src: "/images/experiences/guided-tours.jpg", alt: t("rows.guidedAlt") }}
+        imageSide="left"
+        tone="cream"
+      >
+        <p className={body}>{guidedTourService.description}</p>
+        <p className={`mt-4 ${body}`}>{t("guidedTours.lead")}</p>
+        <Link href="/contact" className="btn-outline mt-8">
+          {t("guidedTours.cta")}
+          <span aria-hidden="true">→</span>
+        </Link>
+      </MediaRow>
+
+      {AREAS.map((area, index) => {
+        const count = experiences.filter((experience) => experience.area === area).length;
+        return (
+          <MediaRow
+            key={area}
+            id={`area-${area}`}
+            eyebrow={t(`guide.${area}.eyebrow`)}
+            title={t(`guide.${area}.title`)}
+            image={{ src: `/images/experiences/${area}.jpg`, alt: t(`rows.${area}Alt`) }}
+            // Rows keep alternating from where the services left off.
+            imageSide={index % 2 === 0 ? "right" : "left"}
+            tone={index % 2 === 0 ? "paper" : "cream"}
+          >
+            <p className={body}>{t(`guide.${area}.lead`)}</p>
+            <p className="mt-4 font-display text-sm font-bold text-brand-tint">
+              {t("areas.count", { count })}
+            </p>
+            <Link href={`/experiences/${area}`} className="btn-primary mt-8">
+              {t("areas.cta", { area: tFilters(area) })}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </MediaRow>
+        );
+      })}
 
       <CtaBand id="experiences-cta" />
     </>
