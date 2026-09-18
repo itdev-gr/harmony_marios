@@ -466,11 +466,46 @@ export const stays: Stay[] = [
     sections: [
       {
         title: "Arrival & access",
-        body: "At the building's main entrance, on the left side, you'll find a keypad — your access code is sent once you complete the check-in form.\n\nEnter the code on the keypad and collect your keys from the bottom locker, marked \"2\" — message us on WhatsApp an hour before your check-in for the locker code.\n\nTake the stairs to the 1st floor. Your apartment is on the left-hand side, marked \"2\" — it's the left-hand one of the two apartments on this floor.\n\nJust inside the door, on the left-hand side, insert the magnetic key card into the slot to switch the electricity on. The power stays on only while the card remains in the slot.",
+        body: "Please complete the check-in form first — the keypad code for the building is released once you've submitted it.",
+        steps: [
+          {
+            title: "The building keypad",
+            body: "At the building's main entrance, on the left side, you'll find a keypad. Enter the access code you receive after completing the check-in form.",
+          },
+          {
+            title: "Your key locker",
+            body: "Collect your keys from the bottom locker, marked \"2\". Message us on WhatsApp an hour before your check-in for the locker code.",
+          },
+          {
+            title: "Up to the first floor",
+            body: "Take the stairs to the 1st floor. Your apartment is on the left-hand side, marked \"2\" — it's the left-hand one of the two apartments on this floor.",
+            photo: {
+              src: "/images/stay/harmony-twin-lofts-metaxourgeio-2/01.jpg",
+              alt: "The apartment's pale wood door with a black frame, seen from the first-floor landing",
+              width: 563,
+              height: 1369,
+            },
+          },
+          {
+            title: "Switching the power on",
+            body: "Just inside the door, on the left-hand side, insert the magnetic key card into the slot to switch the electricity on. The power stays on only while the card remains in the slot.",
+          },
+        ],
       },
       {
         title: "Wi-Fi",
-        body: "Network: VODAFONE_GigaWiFiHome_6565\nPassword: 7yTn746695Mtb545",
+        body: "Network: VODAFONE_GigaWiFiHome_2889\nPassword: 7yTn746695Mtb545\n\nYou can also scan the QR code on the card in the apartment to connect straight away.",
+        // The legacy page's TEXT said ..._6565 (the same SSID it also claims
+        // for Twin Lofts 1 and Gazi Living, which are different networks —
+        // README open question 12). The photo of the physical card in this
+        // apartment reads ..._2889, so the card wins over the copy-pasted
+        // text. Worth confirming with the client on the next visit.
+        photo: {
+          src: "/images/stay/harmony-twin-lofts-metaxourgeio-2/02.jpg",
+          alt: "The printed Wi-Fi card in the apartment, showing the network name, password and a QR code",
+          width: 863,
+          height: 248,
+        },
       },
       {
         title: "Heating & hot water",

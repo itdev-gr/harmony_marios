@@ -323,7 +323,10 @@ sensible defaults already applied so development wasn't blocked on them.
     found rather than guessed at. Confirm whether that is deliberate.
 12. The legacy site records the **same Wi-Fi SSID
     (`VODAFONE_GigaWiFiHome_6565`) for Gazi Living and both Twin Lofts**,
-    which are not the same building. At least one of those three is wrong.
+    which are not the same building — so at least one was copy-pasted. Twin
+    Lofts 2 is now corrected to `..._2889`, read off the photo of the
+    physical card in that apartment; Gazi Living and Twin Lofts 1 still both
+    claim `..._6565` on text alone and should be checked on the next visit.
 13. **Street addresses** for `acropolis-harmony-loft` and both Twin Lofts
     are still `null`, so their arrival pages link a neighbourhood-level map
     pin rather than a door. The legacy "click here for address" links were

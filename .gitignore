@@ -2,3 +2,7 @@
 .DS_Store
 node_modules/
 .claude/
+.vercel
+.env*
+# …but the checked-in template that documents which vars to set stays.
+!.env.example
