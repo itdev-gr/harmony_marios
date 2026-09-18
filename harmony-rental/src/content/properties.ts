@@ -226,7 +226,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-twin-lofts-metaxourgeio-1/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/02.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/03.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/04.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/05.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/06.jpg"],
+    images: ["/images/harmony-twin-lofts-metaxourgeio-1/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/02.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/03.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/04.jpg", "/images/harmony-twin-lofts-metaxourgeio-1/05.jpg"],
     legacyUrls: ["/harmony-twin-lofts-metaxourgeio-1/"],
   },
   {
@@ -249,7 +249,11 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    images: ["/images/harmony-twin-lofts-metaxourgeio-2/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/02.jpg"],
+    // No listing photos: the only two the legacy site had were close-ups of
+    // the apartment's Wi-Fi card, which must never sit in a public gallery.
+    // PropertyCard falls back to a monogram plate until the client shoots
+    // real interiors — see the README's images checklist.
+    images: [],
     legacyUrls: ["/harmony-twin-lofts-metaxourgeio-2/"],
   },
 ];

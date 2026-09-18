@@ -1,30 +1,9 @@
 import { existsSync, globSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { jpegSize } from "./jpeg-size";
 import { stays, getStay } from "@/content/stay";
 import { getProperty } from "@/content/properties";
 
-/**
- * Minimal JPEG dimension reader — walks the segment markers to the first
- * Start-Of-Frame and reads the size out of it. Inline rather than a
- * dependency: the only thing the suite needs from an image is whether the
- * width/height recorded in `stay.ts` match the file on disk.
- */
-function jpegSize(buffer: Buffer): { width: number; height: number } {
-  let offset = 2; // skip SOI
-  while (offset < buffer.length) {
-    if (buffer[offset] !== 0xff) throw new Error("not a JPEG segment marker");
-    const marker = buffer[offset + 1];
-    // SOF0–SOF15, excluding the non-frame markers DHT/JPG/DAC.
-    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
-      return {
-        height: buffer.readUInt16BE(offset + 5),
-        width: buffer.readUInt16BE(offset + 7),
-      };
-    }
-    offset += 2 + buffer.readUInt16BE(offset + 2);
-  }
-  throw new Error("no JPEG frame header found");
-}
 
 const stayContentSource = readFileSync(
   path.resolve(process.cwd(), "src/content/stay.ts"),
