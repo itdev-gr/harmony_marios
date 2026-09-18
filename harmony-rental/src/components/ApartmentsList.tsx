@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { properties } from "@/content/properties";
 import type { Property } from "@/content/types";
+import { PageHero } from "./PageHero";
 import { PropertyCard } from "./PropertyCard";
 import { CtaBand } from "./CtaBand";
 
@@ -83,22 +84,22 @@ export function ApartmentsList({
 
   return (
     <>
-      <section aria-labelledby="apartments-title" className="bg-white">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-14 pb-20 md:pt-20 md:pb-24">
-          <p className="font-display text-sm font-bold tracking-wide text-brand-tint uppercase">
-            {t("eyebrow")}
-          </p>
-          <h1
-            id="apartments-title"
-            className="mt-4 max-w-3xl font-display text-4xl leading-tight font-extrabold tracking-tight text-balance text-neutral-950 md:text-5xl lg:text-6xl"
-          >
-            {t("title")}
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-500 md:text-lg">
-            {t("lead")}
-          </p>
+      <PageHero
+        id="apartments"
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+        media={{
+          src: "/images/harmony-luxe-living/02.jpg",
+          alt: "The living room of one of the apartments, with a corner sofa and parquet floor",
+        }}
+      />
 
-          <div className="mt-10 flex flex-col gap-5 rounded-2xl border border-line bg-white p-5 shadow-float md:flex-row md:items-center md:justify-between">
+      <section aria-label={t("title")} className="bg-white">
+        <div className="mx-auto w-full max-w-6xl px-6 pt-14 pb-20 md:pt-16 md:pb-24">
+          {/* The filter bar leads this band now that the hero carries the
+              headline — it is the first thing a browsing guest reaches for. */}
+          <div className="flex flex-col gap-5 rounded-2xl border border-line bg-white p-5 shadow-float md:flex-row md:items-center md:justify-between">
             <nav aria-label={t("filters.area")} className="flex flex-wrap items-center gap-2">
               {tabs.map((tab) => {
                 const isActive = tab.area === activeArea;

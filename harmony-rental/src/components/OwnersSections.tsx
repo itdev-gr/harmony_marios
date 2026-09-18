@@ -85,7 +85,16 @@ export function OwnersSections() {
 
   return (
     <>
-      <PageHero id="owners" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")}>
+      <PageHero
+        id="owners"
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        lead={t("lead")}
+        media={{
+          src: "/images/harmony-syngrou-residence/03.jpg",
+          alt: "A bedroom in one of the apartments we furnish and host, made up for arrival",
+        }}
+      >
           <a href="#owner-inquiry" className="btn-primary mt-8">
             {t("heroCta")}
             <span aria-hidden="true">→</span>

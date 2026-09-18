@@ -1,4 +1,5 @@
 import { Children, type ReactNode } from "react";
+import Image from "next/image";
 import { useTranslations, useFormatter } from "next-intl";
 import Markdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -11,7 +12,6 @@ import {
   type Heading,
   type JournalPost,
 } from "@/lib/journal";
-import { PageHero } from "./PageHero";
 import { CtaBand } from "./CtaBand";
 
 /** How many section titles a guide card previews before it says "+N more". */
@@ -156,13 +156,92 @@ function GuideCard({ post }: { post: JournalPost }) {
   );
 }
 
-/** `/journal` — hero + the guide library, two up. */
-export function JournalIndex({ posts }: { posts: JournalPost[] }) {
+/**
+ * `/journal` — a full-bleed hero over the Plaka rooftops, carrying the guide
+ * we most want a new reader to start with, then the library two up.
+ *
+ * The hero does a job rather than decorating: the step-by-step guide answers
+ * the question most people arrive with, so it is offered directly instead of
+ * making them scan four cards to find it. The photo is of Athens housing,
+ * which is what every guide is about.
+ */
+function JournalHero({ featured }: { featured: JournalPost | undefined }) {
   const t = useTranslations("journal");
 
   return (
+    <section
+      aria-labelledby="journal-title"
+      className="relative isolate flex min-h-[32rem] items-end overflow-hidden bg-neutral-950 md:min-h-[38rem]"
+    >
+      {/* Painting order is DOM order for positioned siblings, so the photo,
+          the scrim and the copy stack without any z-index: a negative z-index
+          would drop the photo behind the section's own opaque background. */}
+      <Image
+        src="/images/experiences/athens.jpg"
+        alt={t("heroAlt")}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-neutral-950/92 via-neutral-950/70 to-neutral-950/25"
+      />
+
+      <div className="relative mx-auto w-full max-w-6xl px-6 pt-28 pb-14 md:pt-36 md:pb-16">
+        <p className="font-display text-sm font-bold tracking-wide text-accent uppercase">
+          {t("eyebrow")}
+        </p>
+        <h1
+          id="journal-title"
+          className="mt-4 max-w-3xl font-display text-4xl leading-[1.05] font-extrabold tracking-tight text-balance text-white md:text-5xl lg:text-6xl"
+        >
+          {t("title")}
+        </h1>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+          {t("lead")}
+        </p>
+
+        {featured && (
+          <div className="group relative mt-10 flex max-w-lg flex-col gap-3 rounded-2xl bg-white/95 p-6 backdrop-blur-sm transition duration-300 hover:bg-white">
+            <p className="font-display text-xs font-bold tracking-wide text-brand-tint uppercase">
+              {t("startHere")}
+            </p>
+            <h2 className="font-display text-xl leading-snug font-bold tracking-tight text-neutral-950">
+              {featured.title}
+            </h2>
+            <div className="mt-1 flex items-center justify-between gap-4">
+              <span className="text-sm font-medium text-neutral-500">
+                {t("readingTime", { minutes: getReadingMinutes(featured.body) })}
+              </span>
+              <Link
+                href={`/journal/${featured.slug}`}
+                className="inline-flex items-center gap-2 font-display text-sm font-bold text-brand-tint transition after:absolute after:inset-0 hover:gap-3 hover:text-link-hover"
+              >
+                {t("readMore")}
+                <span className="sr-only"> — {featured.title}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/** `/journal` — hero + the guide library, two up. */
+export function JournalIndex({ posts }: { posts: JournalPost[] }) {
+  const t = useTranslations("journal");
+  // The step-by-step guide is the one most readers arrive needing; fall back
+  // to the newest post if it is ever renamed or removed.
+  const featured =
+    posts.find((post) => post.slug === "how-to-secure-rental-apartment-athens-guide") ?? posts[0];
+
+  return (
     <>
-      <PageHero id="journal" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <JournalHero featured={featured} />
 
       <section aria-label={t("title")} className="bg-white">
         <div className="mx-auto w-full max-w-6xl px-6 py-20 md:py-24">

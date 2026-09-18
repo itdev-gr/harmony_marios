@@ -18,7 +18,16 @@ export function AboutSections() {
 
   return (
     <>
-      <PageHero id="about" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")} />
+      <PageHero
+          id="about"
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          lead={t("lead")}
+          media={{
+            src: "/images/experiences/alimos.jpg",
+            alt: "The Alimos coast, a short tram ride from the apartments we host in Athens",
+          }}
+        />
 
       <section className="bg-white">
         <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-20 md:grid-cols-3 md:py-24">
