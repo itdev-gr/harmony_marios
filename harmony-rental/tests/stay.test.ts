@@ -1,7 +1,30 @@
-import { readFileSync } from "node:fs";
+import { existsSync, globSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { stays, getStay } from "@/content/stay";
 import { getProperty } from "@/content/properties";
+
+/**
+ * Minimal JPEG dimension reader — walks the segment markers to the first
+ * Start-Of-Frame and reads the size out of it. Inline rather than a
+ * dependency: the only thing the suite needs from an image is whether the
+ * width/height recorded in `stay.ts` match the file on disk.
+ */
+function jpegSize(buffer: Buffer): { width: number; height: number } {
+  let offset = 2; // skip SOI
+  while (offset < buffer.length) {
+    if (buffer[offset] !== 0xff) throw new Error("not a JPEG segment marker");
+    const marker = buffer[offset + 1];
+    // SOF0–SOF15, excluding the non-frame markers DHT/JPG/DAC.
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return {
+        height: buffer.readUInt16BE(offset + 5),
+        width: buffer.readUInt16BE(offset + 7),
+      };
+    }
+    offset += 2 + buffer.readUInt16BE(offset + 2);
+  }
+  throw new Error("no JPEG frame header found");
+}
 
 const stayContentSource = readFileSync(
   path.resolve(process.cwd(), "src/content/stay.ts"),
@@ -50,6 +73,79 @@ describe("stays data", () => {
         expect(section.title.length).toBeGreaterThan(0);
         expect(section.body.length).toBeGreaterThan(0);
       }
+    }
+  });
+
+  it("points every check-in form at JotForm, or at nothing", () => {
+    for (const stay of stays) {
+      if (stay.checkInFormUrl === null) continue;
+      expect(stay.checkInFormUrl).toMatch(/^https:\/\/form\.jotform\.com\/Harmonyrental\//);
+    }
+  });
+
+  it("gives every arrival step a title and body", () => {
+    for (const stay of stays) {
+      for (const section of stay.sections) {
+        for (const step of section.steps ?? []) {
+          expect(step.title.length).toBeGreaterThan(0);
+          expect(step.body.length).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
+  // Every referenced photo must exist on disk with the dimensions recorded
+  // in the data — a wrong width/height is invisible in tests that only read
+  // the data, but shifts the layout under the guest as the image loads.
+  it("backs every arrival photo with a real file of the recorded size", () => {
+    for (const stay of stays) {
+      for (const section of stay.sections) {
+        const photos = [
+          section.photo,
+          ...(section.steps ?? []).map((step) => step.photo),
+        ].filter((photo) => photo !== undefined);
+
+        for (const photo of photos) {
+          expect(photo.src).toMatch(
+            new RegExp(`^/images/stay/${stay.propertySlug}/\\d{2}\\.jpg$`),
+          );
+          expect(photo.alt.length).toBeGreaterThan(0);
+
+          const file = path.resolve(process.cwd(), "public", photo.src.slice(1));
+          expect(existsSync(file), `missing photo: ${photo.src}`).toBe(true);
+
+          const { width, height } = jpegSize(readFileSync(file));
+          expect({ src: photo.src, width, height }).toEqual({
+            src: photo.src,
+            width: photo.width,
+            height: photo.height,
+          });
+        }
+      }
+    }
+  });
+
+  // Every file in the folder must be wired to a stay entry. An orphan is
+  // either dead weight or — given that four of these photos are router and
+  // Wi-Fi-card close-ups (see the security note in stay.ts) — a credential
+  // shot someone dropped in and forgot about, sitting at a public static
+  // URL with nothing pointing at it to explain why.
+  it("references every file in the arrival photo folder", () => {
+    const shipped = globSync("public/images/stay/*/*.jpg", { cwd: process.cwd() });
+    expect(shipped.length).toBeGreaterThan(0);
+
+    const referenced = new Set(
+      stays.flatMap((stay) =>
+        stay.sections.flatMap((section) =>
+          [section.photo, ...(section.steps ?? []).map((step) => step.photo)]
+            .filter((photo) => photo !== undefined)
+            .map((photo) => path.join("public", photo.src.slice(1))),
+        ),
+      ),
+    );
+
+    for (const file of shipped) {
+      expect(referenced.has(file.split(path.sep).join("/"))).toBe(true);
     }
   });
 

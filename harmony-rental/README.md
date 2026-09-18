@@ -126,7 +126,7 @@ array — the before/after portfolio on `/owners/renovation` only renders once
 this has `{ before, after, caption }` entries with real image paths).
 
 **Adding a stay token** (gated arrival-info page) — `src/content/stay.ts`,
-typed as `Stay { token, propertySlug, sections }`:
+typed as `Stay { token, propertySlug, checkInFormUrl, sections }`:
 
 1. Generate a token the same way the existing ones were made — a random
    value, never derived from the slug:
@@ -137,12 +137,41 @@ typed as `Stay { token, propertySlug, sections }`:
    array of `{ title, body }` sections (arrival/access, Wi-Fi, heating,
    house notes, etc. — see existing entries for the pattern; check-out has a
    shared `STANDARD_CHECKOUT` section you can reuse).
-3. The page at `/stay/<token>` is `noindex, nofollow` and intentionally
+3. Set `checkInFormUrl` to the property's JotForm
+   (`https://form.jotform.com/Harmonyrental/<form-slug>`) — the guest
+   registration that collects the passport details Greek law requires, and
+   for several properties the step that releases the building access code.
+   The page shows it both above and below the instructions. Use `null` only
+   when the property genuinely has no working form.
+4. The page at `/stay/<token>` is `noindex, nofollow` and intentionally
    never appears in the sitemap — see the Security note below for why this
    exists and what NOT to put in the repo (e.g. no door-keypad codes in
    plain text).
-4. Send the guest the `/stay/<token>` URL directly; it isn't discoverable
+5. Send the guest the `/stay/<token>` URL directly; it isn't discoverable
    any other way.
+
+**Arrival photos** — a section can carry a single `photo`, and an
+`Arrival & access` section can carry `steps: { title, body, photo? }[]`
+which render as a numbered walk-through (`src/components/ArrivalSteps.tsx`).
+Photos live at `public/images/stay/<propertySlug>/NN.jpg`, numbered in step
+order, and their `width`/`height` in the data must match the file — a test
+reads the JPEG header and fails on a mismatch, because a wrong value shifts
+the layout under the guest while the image loads.
+
+> **Four of these photos show credentials.** The Wi-Fi sections for the
+> Loft, Coastal Alimos, the Grand Suite and Twin Lofts 1 carry a close-up of
+> a router label or a printed Wi-Fi card; the Alimos and Grand Suite ones
+> also show the router's admin login. They were migrated deliberately — the
+> same images are still public and indexed on the legacy WordPress site, so
+> a token-gated, robots-disallowed copy is an improvement on the status quo.
+> It is not a fix: files under `public/` sit at a guessable static URL
+> regardless of who can reach the page, so treat these credentials as
+> already leaked and rotate them (see the Security note below).
+>
+> Before adding any *new* photo of this kind, check the password on it has
+> been rotated since. A test fails on any file in `public/images/stay/` that
+> no stay entry references, so an orphan dropped in "temporarily" can't sit
+> there unexplained.
 
 **Adding a journal (blog) post** — `src/content/journal/<slug>.mdx`:
 
@@ -279,6 +308,28 @@ sensible defaults already applied so development wasn't blocked on them.
 8. Booking engine phase 2: if they use a channel manager (Hostaway/Smoobu/
    etc.), the inquiry form gets swapped for its widget — which one do they
    use, if any?
+9. ⛔ **Arrival photos for both Twin Lofts.** Their legacy check-in pages
+   describe a keypad, a numbered key locker, a first-floor door and a card
+   slot but never showed any of them — the only usable photo on either page
+   is the electrical panel. A guest arriving after dark has text only. Needs
+   five phone photos per unit: building entrance, keypad, locker (marked "1"
+   / "2"), the apartment door on the 1st floor, and the card slot inside.
+   These cannot be borrowed from Gazi Living — that is a different building.
+10. **`harmony-gazi-living`'s JotForm returns 404.** `checkInFormUrl` is
+    `null` for it, so its stay page currently shows no check-in call to
+    action at all. Needs a working form URL.
+11. **`harmony-luxe-living`'s JotForm is the generic
+    `/Harmonyrental/harmony-rental` form**, not a per-property one — left as
+    found rather than guessed at. Confirm whether that is deliberate.
+12. The legacy site records the **same Wi-Fi SSID
+    (`VODAFONE_GigaWiFiHome_6565`) for Gazi Living and both Twin Lofts**,
+    which are not the same building. At least one of those three is wrong.
+13. **Street addresses** for `acropolis-harmony-loft` and both Twin Lofts
+    are still `null`, so their arrival pages link a neighbourhood-level map
+    pin rather than a door. The legacy "click here for address" links were
+    Firebase Dynamic Links and now all 404, so nothing is recoverable from
+    them. (The loft's entrance photo shows street number 80, if that helps
+    the client identify it.)
 
 **Resolved since the plan was written**: the design direction question
 implied by the original "Athenian Riviera" token set (sand/sea/terracotta)

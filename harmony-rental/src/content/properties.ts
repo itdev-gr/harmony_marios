@@ -218,7 +218,10 @@ export const properties: Property[] = [
       "The right-hand apartment on the first floor of a twin-loft building in Metaxourgeio, one of Athens's up-and-coming " +
       "creative neighbourhoods. It shares its building and floor with its sister apartment, Harmony Twin Lofts " +
       "Metaxourgeio 2. Full size and layout details are being finalized — contact our team to confirm availability.",
-    amenities: [],
+    // The only two amenities the legacy site actually documents for this
+    // unit, both from its check-in page (keypad entry, solar water heater).
+    // Everything else stays empty rather than copied from a sibling flat.
+    amenities: ["Free Wi-Fi", "Solar water heater"],
     bedSetup: [],
     distances: [],
     registrationNo: null,
