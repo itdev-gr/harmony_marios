@@ -358,6 +358,10 @@
     "readMore": "Read more",
     "backToAll": "All articles",
     "author": "Harmony Rental",
+    "readingTime": "{minutes} min read",
+    "inThisGuide": "In this guide",
+    "moreSections": "+{count} more",
+    "related": "More guides",
     "categories": {
       "renting-in-athens": "Renting in Athens"
     }

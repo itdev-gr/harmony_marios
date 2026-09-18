@@ -358,6 +358,10 @@
     "readMore": "Διαβάστε περισσότερα",
     "backToAll": "Όλα τα άρθρα",
     "author": "Harmony Rental",
+    "readingTime": "{minutes} λεπτά ανάγνωσης",
+    "inThisGuide": "Σε αυτόν τον οδηγό",
+    "moreSections": "+{count} ακόμη",
+    "related": "Περισσότεροι οδηγοί",
     "categories": {
       "renting-in-athens": "Ενοικίαση στην Αθήνα"
     }

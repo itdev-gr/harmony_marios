@@ -136,4 +136,30 @@
   .journal-prose tr:last-child > td {
     @apply border-b-0;
   }
+  /* Jumping from the table of contents lands on the heading, not under the
+     sticky site header. */
+  .journal-prose h2,
+  .journal-prose h3 {
+    scroll-margin-top: 6rem;
+  }
+
+  /* The closing "Frequently Asked Questions" block, lifted onto its own
+     tinted plate. Its heading opens the plate, so it drops the 3rem top
+     margin `.journal-prose h2` would otherwise give it. */
+  .journal-faq > :first-child {
+    @apply mt-0;
+  }
+
+  /* On wide screens the contents panel is a fixed sidebar rather than a
+     disclosure: the triangle goes, and the summary stops reading as a
+     control it would be pointless to operate. */
+  @media (width >= 64rem) {
+    .journal-toc > summary {
+      list-style: none;
+      pointer-events: none;
+    }
+    .journal-toc > summary::-webkit-details-marker {
+      display: none;
+    }
+  }
 }
