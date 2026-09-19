@@ -317,30 +317,26 @@ sensible defaults already applied so development wasn't blocked on them.
 8. Booking engine phase 2: if they use a channel manager (Hostaway/Smoobu/
    etc.), the inquiry form gets swapped for its widget — which one do they
    use, if any?
-9. ⛔ **Twin Lofts 2 has no listing photos at all.** The only two the legacy
-    site provided were close-ups of the apartment's Wi-Fi card, which cannot
-    sit in a public gallery, so they were removed and the card now falls back
-    to a monogram plate. Needs a normal interior shoot.
-10. ⛔ **Arrival photos for both Twin Lofts.** Their legacy check-in pages
+9. ⛔ **Arrival photos for both Twin Lofts.** Their legacy check-in pages
    describe a keypad, a numbered key locker, a first-floor door and a card
    slot but never showed any of them — the only usable photo on either page
    is the electrical panel. A guest arriving after dark has text only. Needs
    five phone photos per unit: building entrance, keypad, locker (marked "1"
    / "2"), the apartment door on the 1st floor, and the card slot inside.
    These cannot be borrowed from Gazi Living — that is a different building.
-11. **`harmony-gazi-living`'s JotForm returns 404.** `checkInFormUrl` is
+10. **`harmony-gazi-living`'s JotForm returns 404.** `checkInFormUrl` is
     `null` for it, so its stay page currently shows no check-in call to
     action at all. Needs a working form URL.
-12. **`harmony-luxe-living`'s JotForm is the generic
+11. **`harmony-luxe-living`'s JotForm is the generic
     `/Harmonyrental/harmony-rental` form**, not a per-property one — left as
     found rather than guessed at. Confirm whether that is deliberate.
-13. The legacy site records the **same Wi-Fi SSID
+12. The legacy site records the **same Wi-Fi SSID
     (`VODAFONE_GigaWiFiHome_6565`) for Gazi Living and both Twin Lofts**,
     which are not the same building — so at least one was copy-pasted. Twin
     Lofts 2 is now corrected to `..._2889`, read off the photo of the
     physical card in that apartment; Gazi Living and Twin Lofts 1 still both
     claim `..._6565` on text alone and should be checked on the next visit.
-14. **Street addresses** for `acropolis-harmony-loft` and both Twin Lofts
+13. **Street addresses** for `acropolis-harmony-loft` and both Twin Lofts
     are still `null`, so their arrival pages link a neighbourhood-level map
     pin rather than a door. The legacy "click here for address" links were
     Firebase Dynamic Links and now all 404, so nothing is recoverable from

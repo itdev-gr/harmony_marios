@@ -249,11 +249,7 @@ export const properties: Property[] = [
     distances: [],
     registrationNo: null,
     otaLinks: { airbnb: null, booking: null },
-    // No listing photos: the only two the legacy site had were close-ups of
-    // the apartment's Wi-Fi card, which must never sit in a public gallery.
-    // PropertyCard falls back to a monogram plate until the client shoots
-    // real interiors — see the README's images checklist.
-    images: [],
+    images: ["/images/harmony-twin-lofts-metaxourgeio-2/01.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/02.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/03.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/04.jpg", "/images/harmony-twin-lofts-metaxourgeio-2/05.jpg"],
     legacyUrls: ["/harmony-twin-lofts-metaxourgeio-2/"],
   },
 ];
